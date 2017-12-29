@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         //Get ViewPager from layout
         ViewPager pager = (ViewPager)findViewById(R.id.activity_main_viewpager);
         //Set Adapter PageAdapter and glue it together
-        pager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources().getIntArray(R.array.colorPagesViewPager)));
+        pager.setAdapter(new PageAdapter(getSupportFragmentManager()));
 
         // 1 - Get TabLayout from layout
         TabLayout tabs= (TabLayout)findViewById(R.id.activity_main_tabs);

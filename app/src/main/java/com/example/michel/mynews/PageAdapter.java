@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class PageAdapter extends FragmentPagerAdapter {
 
     //Default Constructor
-    public PageAdapter(FragmentManager mgr, int[] intArray) {
+    public PageAdapter(FragmentManager mgr) {
         super(mgr);
     }
 
