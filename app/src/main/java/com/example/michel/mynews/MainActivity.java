@@ -1,5 +1,6 @@
 package com.example.michel.mynews;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -52,16 +53,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //3 - Handle actions on menu items
+        // implement menu selected
         switch (item.getItemId()) {
-            //case R.id.menu_activity_main_params:
-                //Toast.makeText(this, "Il n'y a rien à paramétrer ici, passez votre chemin...", Toast.LENGTH_LONG).show();
-                //return true;
+            // intent for Search
             case R.id.menu_activity_main_search:
-                Toast.makeText(this, "Recherche indisponible, demandez plutôt l'avis de Google, c'est mieux et plus rapide.", Toast.LENGTH_LONG).show();
+                launchDetailActivity(SearchActivity.class);
                 return true;
+            // intent for notifications
+            case R.id.menu_activity_main_notifications:
+                launchDetailActivity(NotificationsActivity.class);
+                return true;
+            // intent for help
+            case R.id.menu_activity_main_help:
+                launchDetailActivity(HelpActivity.class);
+                return true;
+            // intent for about
+            case R.id.menu_activity_main_about:
+                launchDetailActivity(AboutActivity.class);
+                return true;
+            // if else
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    // method for use intent
+    private void launchDetailActivity(Class context2) {
+        Intent myIntent = new Intent(MainActivity.this, context2);
+        this.startActivity(myIntent);
     }
 }
