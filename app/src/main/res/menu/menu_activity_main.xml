@@ -8,13 +8,13 @@
 
 
     <item
-        android:id="@+id/menu_activity_main_setting"
+        android:id="@+id/menu_activity_main_notifications"
         android:title="Notifications"
         android:icon="@drawable/ic_more_vert_white_24dp"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/menu_activity_main_notifications"
+        android:id="@+id/menu_activity_main_help"
         android:title="Help"
         app:showAsAction="never"/>
 
