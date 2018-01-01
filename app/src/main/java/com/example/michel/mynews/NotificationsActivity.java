@@ -13,6 +13,9 @@ public class NotificationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notifications);
 
         this.configureToolbar();
+
+        EditTextQueryTermFragment editTextQueryTermFragment = (EditTextQueryTermFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.michel);
     }
     private void configureToolbar(){
         //Get the toolbar (Serialise)
