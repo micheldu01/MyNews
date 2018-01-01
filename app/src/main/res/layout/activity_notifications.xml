@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <!-- Importation de notre Toolbar -->
     <include
+        xmlns:android="http://schemas.android.com/apk/res/android"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/michel"
+        android:name="com.example.michel.mynews.EditTextQueryTermFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+    <fragment
+        android:id="@+id/michel2"
+        android:name="com.example.michel.mynews.BoxFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <fragment
+        android:id="@+id/michel3"
+        android:name="com.example.michel.mynews.EnableNotificationsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
