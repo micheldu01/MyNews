@@ -12,6 +12,9 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        EditTextQueryTermFragment editTextQueryTermFragment = (EditTextQueryTermFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.michel);
+
         this.configureToolbar();
     }
     private void configureToolbar(){
