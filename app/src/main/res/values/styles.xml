@@ -8,5 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorSecondary">@color/white</item>
     </style>
+    // style CheckBox
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorControlNormal">@color/gray</item>
+    <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
 
 </resources>
