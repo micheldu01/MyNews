@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 /**
  * Created by michel on 03/01/2018.
@@ -28,7 +29,7 @@ public class NotificationService extends Service {
 
         Intent intent_main_activity = new Intent(this.getApplicationContext(), MainActivity.class);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 intent_main_activity, 0);
 
         Notification notification_poupup = new Notification.Builder(this)
@@ -39,8 +40,14 @@ public class NotificationService extends Service {
                 .setAutoCancel(true)
                 .build();
 
-        notify_manager.notify(0,notification_poupup);
+        notify_manager.notify(0, notification_poupup);
 
 
         return START_NOT_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        Toast.makeText(this,"On Destroy called", Toast.LENGTH_SHORT).show();
+    }
 }
