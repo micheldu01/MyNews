@@ -15,8 +15,8 @@
         <TextView
             android:id="@+id/begin_date"
             android:text="@string/begin_date"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/margin_left_textview_date"
+            android:layout_marginTop="@dimen/margin_top_textview_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -28,9 +28,9 @@
                 android:layout_weight="1"
                 android:id="@+id/show_date_begin"
                 android:text="20/02/2017"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="@dimen/margin_left_textview_date"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp" />
+                android:layout_height="@dimen/height_textview_date" />
 
             <ImageButton
                 android:id="@+id/btn_date_left"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/line_right"
-            android:background="#757575"
+            android:background="@color/gray"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
 
         <TextView
             android:id="@+id/line_left"
-            android:background="#757575"
+            android:background="@color/gray"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_width="match_parent"

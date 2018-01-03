@@ -10,4 +10,8 @@
     <dimen name="margin_top_btn">20dp</dimen>
     <dimen name="margin_right_btn">20dp</dimen>
     <dimen name="height_btn">40dp</dimen>
+    // fragment date
+    <dimen name="margin_left_textview_date">20dp</dimen>
+    <dimen name="margin_top_textview_date">10dp</dimen>
+    <dimen name="height_textview_date">30dp</dimen>
 </resources>
