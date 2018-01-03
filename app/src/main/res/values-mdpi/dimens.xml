@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // fragment box
+    // margin top
+    <dimen name="margin_top_box">10dp</dimen>
+    // margin left
+    <dimen name="margin_left_box">20dp</dimen>
+    // fragment btn search
+    <dimen name="margin_left_btn">20dp</dimen>
+    <dimen name="margin_top_btn">20dp</dimen>
+    <dimen name="margin_right_btn">20dp</dimen>
+    <dimen name="height_btn">40dp</dimen>
+    // fragment date
+    <dimen name="margin_left_textview_date">20dp</dimen>
+    <dimen name="margin_top_textview_date">10dp</dimen>
+    <dimen name="height_textview_date">30dp</dimen>
+    <dimen name="margin_right_textview_date">20dp</dimen>
+    <dimen name="height_line_gray_date">1dp</dimen>
+    <dimen name="imagebutton_margin_right_date">25dp</dimen>
+    <dimen name="imagebutton_layout_wight_date">15dp</dimen>
+    <dimen name="imagebutton_layout_height_date">15dp</dimen>
+    // fragment query term
+    <dimen name="margin_left_query_term">15dp</dimen>
+    <dimen name="margin_right_query_term">15dp</dimen>
+    <dimen name="layout_height_query_term">60dp</dimen>
+    // fragment enable_notifications
+    <dimen name="margin_top_enable">20dp</dimen>
+    <dimen name="margin_left_enable">20dp</dimen>
+    <dimen name="margin_right_enable">20dp</dimen>
+    <dimen name="height_enable">1dp</dimen>
+</resources>
