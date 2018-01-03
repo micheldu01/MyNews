@@ -35,7 +35,7 @@ public class NotificationService extends Service {
         Notification notification_poupup = new Notification.Builder(this)
                 .setContentTitle("le message est bien passé")
                 .setContentText("ajout du text")
-                //.setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .build();
