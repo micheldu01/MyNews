@@ -23,8 +23,8 @@ public class NotificationsActivity extends AppCompatActivity {
         AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR_OF_DAY, 22); // For 1 PM or 2 PM
-        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.HOUR_OF_DAY, 11); // For 1 PM or 2 PM
+        calendar.set(Calendar.MINUTE, 27);
         calendar.set(Calendar.SECOND, 0);
 
         PendingIntent pi = PendingIntent.getBroadcast(this, 0,
@@ -32,7 +32,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
         am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pi);
-        
+
     }
     private void configureToolbar(){
         //Get the toolbar (Serialise)
