@@ -36,19 +36,19 @@
                 android:id="@+id/btn_date_left"
                 android:src="@drawable/ic_arrow_drop_down_black_24dp"
                 android:background="@color/transparent"
-                android:layout_marginRight="25dp"
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
+                android:layout_marginRight="@dimen/imagebutton_margin_right_date"
+                android:layout_width="@dimen/imagebutton_layout_wight_date"
+                android:layout_height="@dimen/imagebutton_layout_height_date" />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/line_right"
             android:background="@color/gray"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="@dimen/margin_left_textview_date"
+            android:layout_marginRight="@dimen/margin_right_textview_date"
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="@dimen/height_line_gray_date" />
 
     </LinearLayout>
 
@@ -61,8 +61,8 @@
         <TextView
             android:id="@+id/end_date"
             android:text="@string/begin_date"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/margin_left_textview_date"
+            android:layout_marginTop="@dimen/margin_top_textview_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -75,27 +75,27 @@
                 android:layout_weight="1"
                 android:id="@+id/show_date_end"
                 android:text="20/02/2017"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="@dimen/margin_left_textview_date"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp" />
+                android:layout_height="@dimen/height_textview_date" />
 
             <ImageButton
                 android:id="@+id/btn_date_right"
                 android:src="@drawable/ic_arrow_drop_down_black_24dp"
                 android:background="@color/transparent"
-                android:layout_marginRight="25dp"
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
+                android:layout_marginRight="@dimen/imagebutton_margin_right_date"
+                android:layout_width="@dimen/imagebutton_layout_wight_date"
+                android:layout_height="@dimen/imagebutton_layout_height_date" />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/line_left"
             android:background="@color/gray"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="@dimen/margin_left_textview_date"
+            android:layout_marginRight="@dimen/margin_right_textview_date"
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="@dimen/height_line_gray_date" />
 
     </LinearLayout>
 
