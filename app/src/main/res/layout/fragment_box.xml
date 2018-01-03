@@ -14,8 +14,8 @@
         <CheckBox
             android:id="@+id/checkbox_art"
             android:text="@string/arts"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/margin_top_box"
+            android:layout_marginLeft="@dimen/margin_left_box"
             android:theme="@style/MyCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -23,7 +23,7 @@
         <CheckBox
             android:id="@+id/checkbox_business"
             android:text="@string/business"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/margin_left_box"
             android:theme="@style/MyCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -31,7 +31,7 @@
         <CheckBox
             android:id="@+id/checkbox_entrepreneurs"
             android:text="@string/entrepreneurs"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/margin_left_box"
             android:theme="@style/MyCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -47,8 +47,8 @@
         <CheckBox
             android:id="@+id/checkbox_politics"
             android:text="@string/politics"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/margin_top_box"
+            android:layout_marginLeft="@dimen/margin_left_box"
             android:theme="@style/MyCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -56,7 +56,7 @@
         <CheckBox
             android:id="@+id/checkbox_sport"
             android:text="@string/arts"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/margin_left_box"
             android:theme="@style/MyCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -64,7 +64,7 @@
         <CheckBox
             android:id="@+id/checkbox_travel"
             android:text="@string/travel"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/margin_left_box"
             android:theme="@style/MyCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

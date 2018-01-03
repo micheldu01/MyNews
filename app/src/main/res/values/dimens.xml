@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // fragment box
+    // margin top
+    <dimen name="margin_top_box">10dp</dimen>
+    // margin left
+    <dimen name="margin_left_box">20dp</dimen>
+    // fragment btn search
+    <dimen name="margin_left_btn">20dp</dimen>
+    <dimen name="margin_top_btn">20dp</dimen>
+    <dimen name="margin_right_btn">20dp</dimen>
+    <dimen name="height_btn">40dp</dimen>
+</resources>
