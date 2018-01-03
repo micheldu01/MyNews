@@ -1,9 +1,15 @@
 package com.example.michel.mynews;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import java.util.Calendar;
 
 public class NotificationsActivity extends AppCompatActivity {
 
@@ -14,8 +20,19 @@ public class NotificationsActivity extends AppCompatActivity {
 
         this.configureToolbar();
 
-        EditTextQueryTermFragment editTextQueryTermFragment = (EditTextQueryTermFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.michel);
+        AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR_OF_DAY, 22); // For 1 PM or 2 PM
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 0);
+
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0,
+                new Intent(this, AlarmReceiver.class),PendingIntent.FLAG_UPDATE_CURRENT);
+
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pi);
+        
     }
     private void configureToolbar(){
         //Get the toolbar (Serialise)
