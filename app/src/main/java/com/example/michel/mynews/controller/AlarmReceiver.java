@@ -1,4 +1,4 @@
-package com.example.michel.mynews;
+package com.example.michel.mynews.controller;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

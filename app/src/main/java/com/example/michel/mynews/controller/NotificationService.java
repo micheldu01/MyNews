@@ -1,4 +1,4 @@
-package com.example.michel.mynews;
+package com.example.michel.mynews.controller;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
+
+import com.example.michel.mynews.R;
+import com.example.michel.mynews.view.MainActivity;
 
 /**
  * Created by michel on 03/01/2018.

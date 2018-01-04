@@ -1,4 +1,4 @@
-package com.example.michel.mynews;
+package com.example.michel.mynews.controller;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.michel.mynews.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BoxFragment extends Fragment {
+public class EnableNotificationsFragment extends Fragment {
 
 
-    public BoxFragment() {
+    public EnableNotificationsFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +25,7 @@ public class BoxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_box, container, false);
+        return inflater.inflate(R.layout.fragment_enable_notifications, container, false);
     }
 
 }

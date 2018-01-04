@@ -1,4 +1,4 @@
-package com.example.michel.mynews;
+package com.example.michel.mynews.view;
 
 import android.app.DatePickerDialog;
 import android.support.v7.app.ActionBar;
@@ -13,11 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.michel.mynews.controller.BtnSearchFragment;
+import com.example.michel.mynews.controller.DateFragment;
+import com.example.michel.mynews.R;
+
 import java.util.Calendar;
 
 public class SearchActivity extends AppCompatActivity
     implements BtnSearchFragment.OnButtonClickedListener,
-               DateFragment.OnButtonClickedListener,
+        DateFragment.OnButtonClickedListener,
                 DateFragment.OnButtonClickedListener2{
 
     //EditText

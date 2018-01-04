@@ -14,19 +14,19 @@
 
     <fragment
         android:id="@+id/michel"
-        android:name="com.example.michel.mynews.EditTextQueryTermFragment"
+        android:name="com.example.michel.mynews.controller.EditTextQueryTermFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/michel2"
-        android:name="com.example.michel.mynews.BoxFragment"
+        android:name="com.example.michel.mynews.controller.BoxFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/michel3"
-        android:name="com.example.michel.mynews.EnableNotificationsFragment"
+        android:name="com.example.michel.mynews.controller.EnableNotificationsFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -1,9 +1,11 @@
-package com.example.michel.mynews;
+package com.example.michel.mynews.view;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import com.example.michel.mynews.R;
 
 public class HelpActivity extends AppCompatActivity {
 
