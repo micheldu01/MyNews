@@ -36,6 +36,10 @@ public class SearchActivity extends AppCompatActivity
         //EditText
         editText = (EditText)findViewById(R.id.search_query_term);
         //CheckBox
+        arrayBox = new CheckBox[] {arts, business, entrepreneurs, politics, travel, sport};
+        arrayIdBox = new int[] {R.id.checkbox_art,R.id.checkbox_business,R.id.checkbox_entrepreneurs,
+                R.id.checkbox_politics,R.id.checkbox_travel,R.id.checkbox_sport};
+        // implement CheckBox
         while(numberarray <6){
             arrayBox[numberarray] = (CheckBox)findViewById(arrayIdBox[numberarray]);
             Log.i("mycoursviewpager","number = " + numberarray);
@@ -61,7 +65,9 @@ public class SearchActivity extends AppCompatActivity
 
         Log.i("mycoursviewpager", "Button clicked = ");
         Toast.makeText(SearchActivity.this," Button clicked ", Toast.LENGTH_LONG).show();
-
+        if(arrayBox[0].isChecked()){
+            Toast.makeText(SearchActivity.this," Arts ", Toast.LENGTH_LONG).show();
+        }
 
     }
 }
