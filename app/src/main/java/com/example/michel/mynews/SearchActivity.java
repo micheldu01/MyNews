@@ -4,8 +4,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity
+    implements BtnSearchFragment.OnButtonClickedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +28,10 @@ public class SearchActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onButonClicked(View view) {
+
     }
 }
