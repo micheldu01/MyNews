@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class SearchActivity extends AppCompatActivity
-    implements BtnSearchFragment.OnButtonClickedListener{
+    implements BtnSearchFragment.OnButtonClickedListener,
+               DateFragment.OnButtonClickedListener,
+                DateFragment.OnButtonClickedListener2{
 
     //EditText
     private EditText editText;
@@ -68,6 +70,18 @@ public class SearchActivity extends AppCompatActivity
         if(arrayBox[0].isChecked()){
             Toast.makeText(SearchActivity.this," Arts ", Toast.LENGTH_LONG).show();
         }
+
+    }
+
+    @Override
+    public void onButonClickedDateLeft(View view) {
+        Toast.makeText(SearchActivity.this," Button left ", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onButonClickedDateRight(View view) {
+        Toast.makeText(SearchActivity.this," Button right ", Toast.LENGTH_LONG).show();
 
     }
 }
