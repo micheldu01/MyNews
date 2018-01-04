@@ -55,7 +55,7 @@ public class SearchActivity extends AppCompatActivity
         month = mCurrentDate.get(Calendar.MONTH);
         year = mCurrentDate.get(Calendar.YEAR);
         month = month +1;
-        begin_date.setText(day+"/"+month+"/"+year);
+        begin_date.setText(convertDate(day)+"/"+convertDate(month)+"/"+year);
 
         //EditText
         editText = (EditText)findViewById(R.id.search_query_term);
@@ -100,12 +100,12 @@ public class SearchActivity extends AppCompatActivity
         DatePickerDialog datePickerDialog = new DatePickerDialog
                 (SearchActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int yeat, int month, int day) {
-                        begin_date.setText(day+"/"+month+"/"+year);
-                        month = month +1;
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        begin_date.setText(convertDate(day)+"/"+convertDate(month+1)+"/"+year);
                     }
                 }, year, month, day);
         datePickerDialog.show();
+
     }
 
     @Override
@@ -113,11 +113,18 @@ public class SearchActivity extends AppCompatActivity
         DatePickerDialog datePickerDialog = new DatePickerDialog
                 (SearchActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int yeat, int month, int day) {
-                        end_date.setText(day+"/"+month+"/"+year);
-                        month = month +1;
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        end_date.setText(convertDate(day)+"/"+convertDate(month+1)+"/"+year);
                     }
                 }, year, month, day);
         datePickerDialog.show();
+    }
+    // Method for add 0 in the date
+    public String convertDate(int input) {
+        if (input >= 10) {
+            return String.valueOf(input);
+        } else {
+            return "0" + String.valueOf(input);
+        }
     }
 }
