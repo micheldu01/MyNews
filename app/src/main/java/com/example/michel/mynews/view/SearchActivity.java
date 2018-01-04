@@ -49,17 +49,8 @@ public class SearchActivity extends AppCompatActivity
 
         this.configureToolbar();
 
-        //date
-        begin_date = (TextView) findViewById(R.id.show_date_begin);
-        end_date = (TextView) findViewById(R.id.show_date_end);
         //CurrentDate
-        mCurrentDate = Calendar.getInstance();
-        mCurrentDate = Calendar.getInstance();
-        day = mCurrentDate.get(Calendar.DAY_OF_MONTH);
-        month = mCurrentDate.get(Calendar.MONTH);
-        year = mCurrentDate.get(Calendar.YEAR);
-        month = month +1;
-        begin_date.setText(convertDate(day)+"/"+convertDate(month)+"/"+year);
+        currentDateMethod();
 
         //EditText
         editText = (EditText)findViewById(R.id.search_query_term);
@@ -130,5 +121,17 @@ public class SearchActivity extends AppCompatActivity
         } else {
             return "0" + String.valueOf(input);
         }
+    }
+
+    public void currentDateMethod(){
+        //date current
+        begin_date = (TextView) findViewById(R.id.show_date_begin);
+        end_date = (TextView) findViewById(R.id.show_date_end);
+        mCurrentDate = Calendar.getInstance();
+        day = mCurrentDate.get(Calendar.DAY_OF_MONTH);
+        month = mCurrentDate.get(Calendar.MONTH);
+        year = mCurrentDate.get(Calendar.YEAR);
+        begin_date.setText(convertDate(day)+"/"+convertDate(month+1)+"/"+year);
+
     }
 }
