@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.example.michel.mynews.controller.AlarmReceiver;
 import com.example.michel.mynews.R;
@@ -15,6 +16,8 @@ import com.example.michel.mynews.R;
 import java.util.Calendar;
 
 public class NotificationsActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class NotificationsActivity extends AppCompatActivity {
         this.configureToolbar();
 
         methodAlarmManager();
+
+
 
 
     }

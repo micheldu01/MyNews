@@ -47,15 +47,14 @@ public class SearchActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        //EditText
-        editText = (EditText)findViewById(R.id.search_query_term);
 
+        //Add toolbar
         this.configureToolbar();
 
-        //CurrentDate
+        //Add CurrentDate
         currentDateMethod();
 
-        //checkbox
+        //Add checkbox
         methodCheckBox();
 
 
@@ -74,8 +73,8 @@ public class SearchActivity extends AppCompatActivity
     @Override
     public void onButonClicked(View view) {
         // receive the editText
+        editText = (EditText)findViewById(R.id.search_query_term);
         String et = editText.getText().toString();
-        Toast.makeText(SearchActivity.this," Button clicked ", Toast.LENGTH_LONG).show();
         if(arrayBox[0].isChecked()){
             Toast.makeText(SearchActivity.this," Arts ", Toast.LENGTH_LONG).show();
         }

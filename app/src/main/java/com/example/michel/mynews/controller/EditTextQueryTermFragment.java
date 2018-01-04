@@ -1,11 +1,13 @@
 package com.example.michel.mynews.controller;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.michel.mynews.R;
 
@@ -15,6 +17,7 @@ import com.example.michel.mynews.R;
  */
 public class EditTextQueryTermFragment extends Fragment {
 
+    private EditText editText;
 
     public EditTextQueryTermFragment() {
         // Required empty public constructor
@@ -25,7 +28,10 @@ public class EditTextQueryTermFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_text_query_term, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit_text_query_term, container, false);
+        editText = (EditText)view.findViewById(R.id.search_query_term);
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("PREFS",0);
+        editText.setText(preferences.getString("value",""));
+        return view;
     }
-
 }
