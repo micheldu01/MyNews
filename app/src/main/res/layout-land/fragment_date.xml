@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/end_date"
-            android:text="@string/begin_date"
+            android:text="@string/end_date"
             android:layout_marginLeft="@dimen/margin_left_textview_date"
             android:layout_marginTop="@dimen/margin_top_textview_date"
             android:layout_width="wrap_content"

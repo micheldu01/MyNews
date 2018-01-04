@@ -37,8 +37,8 @@
                 android:src="@drawable/ic_arrow_drop_down_black_24dp"
                 android:background="@color/transparent"
                 android:layout_marginRight="@dimen/imagebutton_margin_right_date"
-                android:layout_width="@dimen/imagebutton_layout_wight_date"
-                android:layout_height="@dimen/imagebutton_layout_height_date" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/end_date"
-            android:text="@string/begin_date"
+            android:text="@string/end_date"
             android:layout_marginLeft="@dimen/margin_left_textview_date"
             android:layout_marginTop="@dimen/margin_top_textview_date"
             android:layout_width="wrap_content"
@@ -84,8 +84,8 @@
                 android:src="@drawable/ic_arrow_drop_down_black_24dp"
                 android:background="@color/transparent"
                 android:layout_marginRight="@dimen/imagebutton_margin_right_date"
-                android:layout_width="@dimen/imagebutton_layout_wight_date"
-                android:layout_height="@dimen/imagebutton_layout_height_date" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
