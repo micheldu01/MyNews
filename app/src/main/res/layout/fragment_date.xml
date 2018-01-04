@@ -27,7 +27,7 @@
             <TextView
                 android:layout_weight="1"
                 android:id="@+id/show_date_begin"
-                android:text="20/02/2017"
+                android:text=""
                 android:layout_marginLeft="@dimen/margin_left_textview_date"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/height_textview_date" />
@@ -74,7 +74,7 @@
             <TextView
                 android:layout_weight="1"
                 android:id="@+id/show_date_end"
-                android:text="20/02/2017"
+                android:text=""
                 android:layout_marginLeft="@dimen/margin_left_textview_date"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/height_textview_date" />
