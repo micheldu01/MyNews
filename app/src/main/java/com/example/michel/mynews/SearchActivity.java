@@ -4,18 +4,24 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class SearchActivity extends AppCompatActivity
     implements BtnSearchFragment.OnButtonClickedListener{
+
+    //EditText
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        EditTextQueryTermFragment editTextQueryTermFragment = (EditTextQueryTermFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.michel);
+        //EditText
+        editText = (EditText)findViewById(R.id.search_query_term);
 
         this.configureToolbar();
     }
@@ -32,6 +38,12 @@ public class SearchActivity extends AppCompatActivity
 
     @Override
     public void onButonClicked(View view) {
+        // receive the editText
+        String et = editText.getText().toString();
+
+        Log.i("mycoursviewpager", "Button clicked = ");
+        Toast.makeText(SearchActivity.this," Button clicked ", Toast.LENGTH_LONG).show();
+
 
     }
 }
