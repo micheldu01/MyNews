@@ -47,25 +47,17 @@ public class SearchActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        //EditText
+        editText = (EditText)findViewById(R.id.search_query_term);
+
         this.configureToolbar();
 
         //CurrentDate
         currentDateMethod();
 
-        //EditText
-        editText = (EditText)findViewById(R.id.search_query_term);
+        //checkbox
+        methodCheckBox();
 
-        //CheckBox
-        arrayBox = new CheckBox[] {arts, business, entrepreneurs, politics, travel, sport};
-        arrayIdBox = new int[] {R.id.checkbox_art,R.id.checkbox_business,R.id.checkbox_entrepreneurs,
-                R.id.checkbox_politics,R.id.checkbox_travel,R.id.checkbox_sport};
-
-        // implement CheckBox
-        while(numberarray <6){
-            arrayBox[numberarray] = (CheckBox)findViewById(arrayIdBox[numberarray]);
-            Log.i("mycoursviewpager","number = " + numberarray);
-            numberarray++;
-        }
 
     }
     private void configureToolbar(){
@@ -133,5 +125,18 @@ public class SearchActivity extends AppCompatActivity
         year = mCurrentDate.get(Calendar.YEAR);
         begin_date.setText(convertDate(day)+"/"+convertDate(month+1)+"/"+year);
 
+    }
+
+    public void methodCheckBox(){
+        //CheckBox
+        arrayBox = new CheckBox[] {arts, business, entrepreneurs, politics, travel, sport};
+        arrayIdBox = new int[] {R.id.checkbox_art,R.id.checkbox_business,R.id.checkbox_entrepreneurs,
+                R.id.checkbox_politics,R.id.checkbox_travel,R.id.checkbox_sport};
+        // implement CheckBox
+        while(numberarray <6){
+            arrayBox[numberarray] = (CheckBox)findViewById(arrayIdBox[numberarray]);
+            Log.i("mycoursviewpager","number = " + numberarray);
+            numberarray++;
+        }
     }
 }
