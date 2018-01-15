@@ -47,7 +47,6 @@ public class SearchActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
         //Add toolbar
         this.configureToolbar();
 
@@ -56,7 +55,6 @@ public class SearchActivity extends AppCompatActivity
 
         //Add checkbox
         methodCheckBox();
-
 
     }
     private void configureToolbar(){
@@ -122,8 +120,6 @@ public class SearchActivity extends AppCompatActivity
         day = mCurrentDate.get(Calendar.DAY_OF_MONTH);
         month = mCurrentDate.get(Calendar.MONTH);
         year = mCurrentDate.get(Calendar.YEAR);
-        begin_date.setText(convertDate(day)+"/"+convertDate(month+1)+"/"+year);
-
     }
 
     public void methodCheckBox(){
