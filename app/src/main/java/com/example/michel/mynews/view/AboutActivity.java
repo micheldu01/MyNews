@@ -4,15 +4,23 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.example.michel.mynews.R;
 
 public class AboutActivity extends AppCompatActivity {
 
+    //add TextView value
+    private TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        // implement TextView
+        textView = (TextView) findViewById(R.id.text_about);
+
 
         //use the configureToolbar method
         this.configureToolbar();

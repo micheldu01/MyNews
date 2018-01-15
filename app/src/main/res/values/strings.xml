@@ -16,5 +16,14 @@
     <string name="travel">Travel</string>
     <string name="search">Search</string>
     <string name="enable_notifications">Enable notifications (once per day)</string>
+    // string activity_about
+    <string name="text_about">MyNews application provides access to all articles published by the New York Times,
+movie book review ...</string>
+    // string activity_help
+    <string name="text_help">On the main page you will find the top stories.
+The most popular items
+and also on the business page.
+You have in the menu the possibility to search the articles of your choice, with the posibility to use dates.
+You have notofications in the right menu to warn you when a new article is published.</string>
 
 </resources>

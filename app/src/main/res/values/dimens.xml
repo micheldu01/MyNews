@@ -28,4 +28,9 @@
     <dimen name="margin_left_enable">20dp</dimen>
     <dimen name="margin_right_enable">20dp</dimen>
     <dimen name="height_enable">1dp</dimen>
+    //fragment activity_about
+    <dimen name="margin_actiity_about">20dp</dimen>
+    //fragment activity_help
+    <dimen name="margin_actiity_help">20dp</dimen>
+
 </resources>
