@@ -29,12 +29,9 @@ public class NotificationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notifications);
 
 
-
         this.configureToolbar();
 
-        //start methodAlarmManager
-        methodAlarmManager();
-
+        methodSwitch();
 
     }
     private void configureToolbar(){
@@ -63,5 +60,23 @@ public class NotificationsActivity extends AppCompatActivity {
         am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 //repeat start notification one a day
                 AlarmManager.INTERVAL_DAY, pi);
+    }
+
+    // method for start notification
+    public void methodSwitch(){
+        //implementation of Switch
+        aSwitch = (Switch) findViewById(R.id.switch_notification);
+        //implementation of onCheckedChangeListener
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            // on start onChecked
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                //if true start notification
+                if (b){
+                    //start alarmManager
+                    methodAlarmManager();
+                }
+            }
+        });
     }
 }
