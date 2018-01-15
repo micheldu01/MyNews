@@ -19,6 +19,7 @@ public class BtnSearchFragment extends Fragment implements View.OnClickListener 
 
     // declare callback
     private OnButtonClickedListener mCallback;
+    // declare editText
     private EditText editText;
 
     // declare callback

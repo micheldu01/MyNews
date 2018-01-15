@@ -27,9 +27,8 @@ public class NotificationsActivity extends AppCompatActivity {
 
         this.configureToolbar();
 
+
         methodAlarmManager();
-
-
 
 
     }
@@ -47,6 +46,7 @@ public class NotificationsActivity extends AppCompatActivity {
     public void methodAlarmManager(){
         //alarmManager
         AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        //use calendar for define the hour
         Calendar calendar = Calendar.getInstance();
         //set date
         calendar.set(Calendar.HOUR_OF_DAY, 12); // For 1 PM or 2 PM
@@ -56,6 +56,7 @@ public class NotificationsActivity extends AppCompatActivity {
         PendingIntent pi = PendingIntent.getBroadcast(this, 0,
                 new Intent(this, AlarmReceiver.class),PendingIntent.FLAG_UPDATE_CURRENT);
         am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                //repeat start notification one a day
                 AlarmManager.INTERVAL_DAY, pi);
     }
 }

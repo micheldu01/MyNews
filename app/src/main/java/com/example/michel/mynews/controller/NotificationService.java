@@ -16,6 +16,7 @@ import com.example.michel.mynews.view.MainActivity;
  * Created by michel on 03/01/2018.
  */
 
+    // create class for use notification service
 public class NotificationService extends Service {
 
 
@@ -24,6 +25,7 @@ public class NotificationService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
+
 
     public int onStartCommand(Intent intent, int flags, int startId) {
 
@@ -34,15 +36,20 @@ public class NotificationService extends Service {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 intent_main_activity, 0);
-
+        // create notification poupup
         Notification notification_poupup = new Notification.Builder(this)
+                //add title
                 .setContentTitle("le message est bien passé")
+                //add text
                 .setContentText("ajout du text")
+                //add icon
                 .setSmallIcon(R.mipmap.ic_launcher)
+                //use pendingIntent
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .build();
 
+        // use notify
         notify_manager.notify(0, notification_poupup);
 
 
@@ -50,7 +57,5 @@ public class NotificationService extends Service {
     }
 
     @Override
-    public void onDestroy() {
-        Toast.makeText(this,"On Destroy called", Toast.LENGTH_SHORT).show();
-    }
+    public void onDestroy() {}
 }

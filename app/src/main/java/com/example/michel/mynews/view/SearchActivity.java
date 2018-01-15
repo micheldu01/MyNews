@@ -33,6 +33,7 @@ public class SearchActivity extends AppCompatActivity
     private CheckBox politics;
     private CheckBox travel;
     private CheckBox sport;
+    //
     private CheckBox[] arrayBox;
     private int[] arrayIdBox;
     private int numberarray = 0;
@@ -103,7 +104,7 @@ public class SearchActivity extends AppCompatActivity
                 }, year, month, day);
         datePickerDialog.show();
     }
-    // Method for add 0 in the date
+    // Method for add 0 in the date (day and month)
     public String convertDate(int input) {
         if (input >= 10) {
             return String.valueOf(input);
@@ -114,17 +115,21 @@ public class SearchActivity extends AppCompatActivity
 
     public void currentDateMethod(){
         //date current
+        // implement TextView
         begin_date = (TextView) findViewById(R.id.show_date_begin);
         end_date = (TextView) findViewById(R.id.show_date_end);
+        //get current date
         mCurrentDate = Calendar.getInstance();
         day = mCurrentDate.get(Calendar.DAY_OF_MONTH);
         month = mCurrentDate.get(Calendar.MONTH);
         year = mCurrentDate.get(Calendar.YEAR);
     }
 
+    //method for implement checkbox
     public void methodCheckBox(){
-        //CheckBox
+        //CheckBox name in array
         arrayBox = new CheckBox[] {arts, business, entrepreneurs, politics, travel, sport};
+        //CheckBox resource  btn in array
         arrayIdBox = new int[] {R.id.checkbox_art,R.id.checkbox_business,R.id.checkbox_entrepreneurs,
                 R.id.checkbox_politics,R.id.checkbox_travel,R.id.checkbox_sport};
         // implement CheckBox

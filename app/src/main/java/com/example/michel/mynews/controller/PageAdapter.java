@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Created by michel on 29/12/2017.
  */
 
+    // create FragmentPagerAdapter
 public class PageAdapter extends FragmentPagerAdapter {
 
     //Default Constructor
@@ -20,6 +21,7 @@ public class PageAdapter extends FragmentPagerAdapter {
         return(3);
     }
 
+    // create 3 page 1 2 3
     @Override
     public Fragment getItem(int position) {
         switch (position){
@@ -35,6 +37,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     }
 
 
+    //set the name of the pages
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position){
