@@ -27,7 +27,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
         this.configureToolbar();
 
-
+        //start methodAlarmManager
         methodAlarmManager();
 
 
