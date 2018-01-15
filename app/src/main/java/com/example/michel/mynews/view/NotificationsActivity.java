@@ -20,7 +20,8 @@ import java.util.Calendar;
 
 public class NotificationsActivity extends AppCompatActivity {
 
-
+    //Switck
+    private Switch aSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
