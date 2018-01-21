@@ -19,13 +19,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //configuring Toolbar
+        //3.toolbar execute method Toolbar
         this.configureToolbar();
-        // Configure tablayout
+        //2.TabLayout execute tabLayout
         this.configureViewPagerAndTabs();
 
     }
 
+    // 1.Toolbar_menu implement menu in toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //2 - Inflate the menu and add it to the Toolbar
@@ -33,19 +34,20 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // 1.toolbar create method Toolbar
     private void configureToolbar() {
-        // Get the toolbar view inside the activity layout
+        // Get the toolbar view inside the activity layout (implement)
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         // Sets the Toolbar
         setSupportActionBar(toolbar);
     }
 
+    //1.TabLayout create method for implement ViewPager and TabLayout
     private void configureViewPagerAndTabs(){
         //Get ViewPager from layout
         ViewPager pager = (ViewPager)findViewById(R.id.activity_main_viewpager);
         //Set Adapter PageAdapter and glue it together
         pager.setAdapter(new PageAdapter(getSupportFragmentManager()));
-
         // 1 - Get TabLayout from layout
         TabLayout tabs= (TabLayout)findViewById(R.id.activity_main_tabs);
         // 2 - Glue TabLayout and ViewPager together
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         tabs.setTabMode(TabLayout.MODE_FIXED);
     }
 
+    //2.Toolbar_menu implement button in Toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // implement menu selected
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    // method for use intent
+    // method for use intent for onOptionItemSelected (Toolbar menu)
     private void launchDetailActivity(Class context2) {
         Intent myIntent = new Intent(MainActivity.this, context2);
         this.startActivity(myIntent);

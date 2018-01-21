@@ -51,8 +51,8 @@ public class NotificationsActivity extends AppCompatActivity {
         //use calendar for define the hour
         Calendar calendar = Calendar.getInstance();
         //set date
-        calendar.set(Calendar.HOUR_OF_DAY, 12); // For 1 PM or 2 PM
-        calendar.set(Calendar.MINUTE, 9);
+        calendar.set(Calendar.HOUR_OF_DAY, 17); // For 1 PM or 2 PM
+        calendar.set(Calendar.MINUTE, 30);
         calendar.set(Calendar.SECOND, 0);
         // PendingIntent for AlarmReceiver
         PendingIntent pi = PendingIntent.getBroadcast(this, 0,

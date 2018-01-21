@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     //add toolbar
-    <!-- Déclaration de notre Toolbar -->
+    <!-- Add  Toolbar -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/activity_main_toolbar"
         android:minHeight="?attr/actionBarSize"
@@ -27,6 +27,7 @@
         app:tabTextColor="@color/tabTextColor"
         app:tabSelectedTextColor="@color/white"/>
 
+    // add ViewPager
     <android.support.v4.view.ViewPager
         android:id="@+id/activity_main_viewpager"
         android:layout_width="match_parent"
