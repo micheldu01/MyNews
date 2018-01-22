@@ -35,7 +35,7 @@ public class SearchActivity extends AppCompatActivity
     private CheckBox politics;
     private CheckBox travel;
     private CheckBox sport;
-    //
+    // value into array for implement the CheckBox
     private CheckBox[] arrayBox;
     private int[] arrayIdBox;
     private int numberarray = 0;
@@ -63,6 +63,7 @@ public class SearchActivity extends AppCompatActivity
         methodCheckBox();
 
     }
+    // method for create toolbar view
     private void configureToolbar(){
         //Get the toolbar (Serialise)
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -74,6 +75,7 @@ public class SearchActivity extends AppCompatActivity
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
+    // method for get the result of the checkBox and the EditText
     @Override
     public void onButonClicked(View view) {
         // receive the editText
@@ -85,8 +87,10 @@ public class SearchActivity extends AppCompatActivity
 
     }
 
+    // method for get the date number 1
     @Override
     public void onButonClickedDateLeft(View view) {
+        // using DatePickerDialog for show the date
         DatePickerDialog datePickerDialog = new DatePickerDialog
                 (SearchActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -98,8 +102,10 @@ public class SearchActivity extends AppCompatActivity
 
     }
 
+    // method for get the date number 2
     @Override
     public void onButonClickedDateRight(View view) {
+        // using DatePickerDialog for show the date
         DatePickerDialog datePickerDialog = new DatePickerDialog
                 (SearchActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -118,6 +124,7 @@ public class SearchActivity extends AppCompatActivity
         }
     }
 
+    // method for get current date
     public void currentDateMethod(){
         //date current
         // implement TextView

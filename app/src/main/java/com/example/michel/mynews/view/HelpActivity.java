@@ -21,6 +21,7 @@ public class HelpActivity extends AppCompatActivity {
         //implement TextView
         textView = (TextView) findViewById(R.id.text_help);
 
+        //show the toolbar
         this.configureToolbar();
     }
     private void configureToolbar(){

@@ -34,7 +34,7 @@ public class DateFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-
+    // implement the View (date)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

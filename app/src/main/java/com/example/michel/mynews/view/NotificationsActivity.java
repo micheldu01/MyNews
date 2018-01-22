@@ -28,9 +28,10 @@ public class NotificationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
-
+        // show toolbar
         this.configureToolbar();
 
+        // method for use the switch button
         methodSwitch();
 
     }
@@ -45,12 +46,13 @@ public class NotificationsActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
+    // method for get the time and the design of the notification
     public void methodAlarmManager(){
         //alarmManager
         AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         //use calendar for define the hour
         Calendar calendar = Calendar.getInstance();
-        //set date
+        //time for show the notification
         calendar.set(Calendar.HOUR_OF_DAY, 17); // For 1 PM or 2 PM
         calendar.set(Calendar.MINUTE, 30);
         calendar.set(Calendar.SECOND, 0);
