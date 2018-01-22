@@ -12,6 +12,7 @@ import com.example.michel.mynews.R;
 // create TopStoriesFragment
 public class TopStoriesFragment extends Fragment {
 
+    // create constructor
     public static TopStoriesFragment newInstance() {
         return (new TopStoriesFragment());
     }

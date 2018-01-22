@@ -33,7 +33,7 @@ public class BtnSearchFragment extends Fragment implements View.OnClickListener 
 
 
 
-
+    // method View
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class BtnSearchFragment extends Fragment implements View.OnClickListener 
         return result;
     }
 
+    // method for attach the createCallbackToParentActivity into the context
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

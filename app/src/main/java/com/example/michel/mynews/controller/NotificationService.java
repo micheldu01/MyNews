@@ -27,13 +27,15 @@ public class NotificationService extends Service {
     }
 
 
+    // create method for create the notification (text, icon ...)
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        // using NotificationManager for get Alarm
         NotificationManager notify_manager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
-
+        // create intent
         Intent intent_main_activity = new Intent(this.getApplicationContext(), MainActivity.class);
-
+        // create pendingIntent
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 intent_main_activity, 0);
         // create notification poupup
