@@ -20,6 +20,8 @@ import com.example.michel.mynews.RecyclerView.NYTAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
@@ -33,9 +35,10 @@ public class TopStoriesFragment extends Fragment {
     private NytResult nYresult;
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
-    private RecyclerView recyclerView;
-    private SwipeRefreshLayout refreshLayout;
 
+
+    @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
     // create constructor
     public static TopStoriesFragment newInstance() {
@@ -45,14 +48,15 @@ public class TopStoriesFragment extends Fragment {
     @Override
     // Inflate the layout for this fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_top_stories, container, false);
+        View view =  inflater.inflate(R.layout.fragment_top_stories, container, false);
 
-    recyclerView = (RecyclerView) findViewById(R.id.fragment_main_recycler_view);
-    refreshLayout = (SwipeRefreshLayout) findViewById(R.id.fragment_main_swipe_container);
+        ButterKnife.bind(this,view);
 
         this.configureSwipeRefreshLayout();
 
         this.recyclerViewHTTPNYT();
+
+        return view;
 
 }
 
