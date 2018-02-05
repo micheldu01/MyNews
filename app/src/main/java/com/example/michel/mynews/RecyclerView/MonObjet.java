@@ -12,13 +12,11 @@ public class MonObjet {
 
     private String section;
 
-    private String subsection;
 
-    public MonObjet(String title, String date, String section, String subsection) {
+    public MonObjet(String title, String date, String section) {
         Title = title;
         this.date = date;
         this.section = section;
-        this.subsection = subsection;
     }
 
     public String getTitle() {
@@ -33,7 +31,4 @@ public class MonObjet {
         return section;
     }
 
-    public String getSubsection() {
-        return subsection;
-    }
 }

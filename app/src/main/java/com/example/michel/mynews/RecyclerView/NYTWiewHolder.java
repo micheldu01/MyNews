@@ -36,7 +36,6 @@ public class NYTWiewHolder extends RecyclerView.ViewHolder {
         textView.setText(monObjet.getTitle());
         textViewdate.setText(monObjet.getDate());
         section.setText(monObjet.getSection());
-        subsection.setText(monObjet.getSubsection());
 
     }
 }

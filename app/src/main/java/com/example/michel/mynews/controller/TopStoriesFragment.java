@@ -90,7 +90,6 @@ public class TopStoriesFragment extends Fragment {
                         for(int i = 0; i < nYresult.getResults().size(); i++){
                             monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                     nYresult.getResults().get(i).getPublishedDate(),
-                                    nYresult.getResults().get(i).getSection(),
                                     nYresult.getResults().get(i).getSubsection()));
 
                         }
