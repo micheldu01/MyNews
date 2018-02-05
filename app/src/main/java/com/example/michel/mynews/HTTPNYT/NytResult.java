@@ -9,16 +9,16 @@ import java.util.List;
  * Created by michel on 28/01/2018.
  */
 
-public class NYresult {
+public class NytResult {
 
 
     @SerializedName("results")
     @Expose
     public List<Result> results = null;
 
-    public NYresult() {}
+    public NytResult() {}
 
-    public NYresult(List<Result> results) {
+    public NytResult(List<Result> results) {
         this.results = results;
     }
 

@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class NytStreams {
 
-    public static io.reactivex.Observable<NYresult> streamTopStories() {
+    public static io.reactivex.Observable<NytResult> streamTopStories() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getTopStories()
                 .subscribeOn(Schedulers.io())
