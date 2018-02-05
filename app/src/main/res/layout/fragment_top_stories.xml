@@ -1,19 +1,18 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.michel.mynews.controller.TopStoriesFragment">
+    android:layout_height="match_parent" >
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle_top_stories"
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_main_swipe_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/top_stories_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Page top stories" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_main_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-</FrameLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>
