@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.michel.mynews.R;
+
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ public class NYTAdapter extends RecyclerView.Adapter<NYTWiewHolder> {
     @Override
     public NYTWiewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_main_item, parent, false);
+                .inflate(R.layout.fragment_item_topstories, parent, false);
         return new NYTWiewHolder(view);
     }
 

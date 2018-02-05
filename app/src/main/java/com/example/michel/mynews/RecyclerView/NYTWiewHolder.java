@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.michel.mynews.R;
+
 /**
  * Created by michel on 03/02/2018.
  */
