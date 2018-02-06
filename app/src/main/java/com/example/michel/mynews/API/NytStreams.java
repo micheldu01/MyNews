@@ -1,4 +1,4 @@
-package com.example.michel.mynews.HTTPNYT;
+package com.example.michel.mynews.API;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

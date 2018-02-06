@@ -1,4 +1,4 @@
-package com.example.michel.mynews.HTTPNYT;
+package com.example.michel.mynews.API;
 
 import io.reactivex.Observable;
 import retrofit2.Retrofit;

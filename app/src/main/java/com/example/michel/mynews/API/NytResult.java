@@ -1,4 +1,4 @@
-package com.example.michel.mynews.HTTPNYT;
+package com.example.michel.mynews.API;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
