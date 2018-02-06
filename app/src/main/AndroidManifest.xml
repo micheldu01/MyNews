@@ -55,9 +55,9 @@
                 android:value=".view.MainActivity" />
         </activity>
 
-        <receiver android:name=".controller.AlarmReceiver"/>
+        <receiver android:name=".Notification.AlarmReceiver"/>
 
-        <service android:name=".controller.NotificationService"
+        <service android:name=".Notification.NotificationService"
             android:enabled="true"/>
 
     </application>

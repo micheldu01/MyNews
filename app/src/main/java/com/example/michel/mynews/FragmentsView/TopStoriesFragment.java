@@ -1,4 +1,4 @@
-package com.example.michel.mynews.controller;
+package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -26,7 +26,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
 
-public class BusinessFragment extends Fragment {
+// create TopStoriesFragment
+public class TopStoriesFragment extends Fragment {
 
     private Disposable disposable;
     //RECYCLER VIEW NYT
@@ -36,18 +37,18 @@ public class BusinessFragment extends Fragment {
     private Context context;
 
 
-    @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
+    @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
-
-    public static BusinessFragment newInstance() {
-        return (new BusinessFragment());
+    // create constructor
+    public static TopStoriesFragment newInstance() {
+        return (new TopStoriesFragment());
     }
 
     @Override
     // Inflate the layout for this fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_most_popular, container, false);
+        View view =  inflater.inflate(R.layout.fragment_top_stories, container, false);
 
         ButterKnife.bind(this,view);
 
@@ -57,7 +58,7 @@ public class BusinessFragment extends Fragment {
 
         return view;
 
-    }
+}
 
     private void configureSwipeRefreshLayout() {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -73,8 +74,9 @@ public class BusinessFragment extends Fragment {
     private void recyclerViewHTTPNYT(){
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamMostPopular()
+        this.disposable = NytStreams.streamTopStories()
                 .subscribeWith(new DisposableObserver<TopStoriesAPI>() {
+
 
                     @Override
                     public void onNext(TopStoriesAPI nYresult) {
@@ -116,3 +118,4 @@ public class BusinessFragment extends Fragment {
         this.disposeWhenDestroy();
     }
 }
+

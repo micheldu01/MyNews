@@ -1,4 +1,4 @@
-package com.example.michel.mynews.controller;
+package com.example.michel.mynews.FragmentsView;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

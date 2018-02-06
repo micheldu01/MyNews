@@ -8,15 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.michel.mynews.controller.BtnSearchFragment;
-import com.example.michel.mynews.controller.DateFragment;
+import com.example.michel.mynews.Fragments.BtnSearchFragment;
+import com.example.michel.mynews.Fragments.DateFragment;
 import com.example.michel.mynews.R;
 
 import java.util.Calendar;

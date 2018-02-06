@@ -1,4 +1,4 @@
-package com.example.michel.mynews.controller;
+package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -26,7 +26,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
 
-public class MostPopularFragment extends Fragment {
+public class BusinessFragment extends Fragment {
 
     private Disposable disposable;
     //RECYCLER VIEW NYT
@@ -35,14 +35,14 @@ public class MostPopularFragment extends Fragment {
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
 
-    @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
+
+    @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
 
-    public static MostPopularFragment newInstance() {
-        return (new MostPopularFragment());
+    public static BusinessFragment newInstance() {
+        return (new BusinessFragment());
     }
-
 
     @Override
     // Inflate the layout for this fragment

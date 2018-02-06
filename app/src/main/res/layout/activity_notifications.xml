@@ -14,13 +14,13 @@
 
     <fragment
         android:id="@+id/michel"
-        android:name="com.example.michel.mynews.controller.EditTextQueryTermFragment"
+        android:name="com.example.michel.mynews.Fragments.EditTextQueryTermFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/michel2"
-        android:name="com.example.michel.mynews.controller.BoxFragment"
+        android:name="com.example.michel.mynews.Fragments.BoxFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

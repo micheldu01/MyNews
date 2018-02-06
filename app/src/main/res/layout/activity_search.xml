@@ -14,25 +14,25 @@
 
     <fragment
         android:id="@+id/michel"
-        android:name="com.example.michel.mynews.controller.EditTextQueryTermFragment"
+        android:name="com.example.michel.mynews.Fragments.EditTextQueryTermFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/michel2"
-        android:name="com.example.michel.mynews.controller.DateFragment"
+        android:name="com.example.michel.mynews.Fragments.DateFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/michel3"
-        android:name="com.example.michel.mynews.controller.BoxFragment"
+        android:name="com.example.michel.mynews.Fragments.BoxFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/michel4"
-        android:name="com.example.michel.mynews.controller.BtnSearchFragment"
+        android:name="com.example.michel.mynews.Fragments.BtnSearchFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

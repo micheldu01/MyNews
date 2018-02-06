@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.michel.mynews.controller.PageAdapter;
+import com.example.michel.mynews.FragmentsView.PageAdapter;
 import com.example.michel.mynews.R;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.michel.mynews.controller;
+package com.example.michel.mynews.Fragments;
 
 
 import android.content.Context;

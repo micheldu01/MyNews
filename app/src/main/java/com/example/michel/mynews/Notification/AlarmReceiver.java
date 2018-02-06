@@ -1,8 +1,10 @@
-package com.example.michel.mynews.controller;
+package com.example.michel.mynews.Notification;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.example.michel.mynews.Notification.NotificationService;
 
 /**
  * Created by michel on 03/01/2018.

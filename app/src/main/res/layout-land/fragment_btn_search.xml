@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.michel.mynews.controller.BtnSearchFragment">
+    tools:context="com.example.michel.mynews.Fragments.BtnSearchFragment">
 
     <Button
         android:id="@+id/btn_search"

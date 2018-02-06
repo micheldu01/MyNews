@@ -10,10 +10,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.michel.mynews.controller.AlarmReceiver;
+import com.example.michel.mynews.Notification.AlarmReceiver;
 import com.example.michel.mynews.R;
 
 import java.util.Calendar;

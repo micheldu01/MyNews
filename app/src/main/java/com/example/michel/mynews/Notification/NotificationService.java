@@ -1,4 +1,4 @@
-package com.example.michel.mynews.controller;
+package com.example.michel.mynews.Notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;
