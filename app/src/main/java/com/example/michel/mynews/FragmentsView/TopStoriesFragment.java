@@ -1,6 +1,8 @@
 package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
+import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 import com.example.michel.mynews.RecyclerView.NYTAdapter;
 
@@ -35,6 +38,10 @@ public class TopStoriesFragment extends Fragment {
     private TopStoriesAPI nYresult;
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
+    //SharedPreferences
+    protected SharedPreferences mSharedPreferences;
+    public static final String MYMOOD = "MyMood";
+    public static final String MOOD_TEMPORARY = "Comment";
 
 
     @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
@@ -56,9 +63,29 @@ public class TopStoriesFragment extends Fragment {
 
         this.recyclerViewHTTPNYT();
 
+        this.configureOnClickRecyclerView();
+
         return view;
 
 }
+
+    //configure item click on RecyclerView
+    private void configureOnClickRecyclerView() {
+        ItemClickSupport.addTo(recyclerView, R.layout.fragment_item_topstories)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        Log.e("TAG", "Position  :  " + position);
+
+
+                        //mSharedPreferences.edit().putInt(MOOD_TEMPORARY, (position)).commit();
+                        /*
+                        Intent intent = new Intent(getActivity(), Main2Activity.class);
+                        startActivity(intent);
+                        */
+                    }
+                });
+    }
 
     private void configureSwipeRefreshLayout() {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
