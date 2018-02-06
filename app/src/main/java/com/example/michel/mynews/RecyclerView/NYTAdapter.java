@@ -21,6 +21,10 @@ public class NYTAdapter extends RecyclerView.Adapter<NYTWiewHolder> {
         this.monObjets = monObjets;
     }
 
+    public MonObjet myObjectAdapter(int position){
+        return this.monObjets.get(position);
+    }
+
     @Override
     public NYTWiewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
