@@ -1,5 +1,6 @@
-package com.example.michel.mynews.API;
+package com.example.michel.mynews.API.TopStories;
 
+import com.example.michel.mynews.API.TopStories.Multimedium;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

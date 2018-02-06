@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.michel.mynews.API.NytResult;
+import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.RecyclerView.MonObjet;
@@ -31,7 +31,7 @@ public class BusinessFragment extends Fragment {
     private Disposable disposable;
     //RECYCLER VIEW NYT
     private NYTAdapter nytAdapter;
-    private NytResult nYresult;
+    private TopStoriesAPI nYresult;
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
 
@@ -74,10 +74,10 @@ public class BusinessFragment extends Fragment {
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
         this.disposable = NytStreams.streamMostPopular()
-                .subscribeWith(new DisposableObserver<NytResult>() {
+                .subscribeWith(new DisposableObserver<TopStoriesAPI>() {
 
                     @Override
-                    public void onNext(NytResult nYresult) {
+                    public void onNext(TopStoriesAPI nYresult) {
 
                         monObjetList.clear();
 
