@@ -18,7 +18,7 @@ public class NytStreams {
 
     public static io.reactivex.Observable<NytResult> streamMostPopular() {
         NytService nytService = NytService.retrofit.create(NytService.class);
-        return nytService.getTopStories()
+        return nytService.getMostPopular()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

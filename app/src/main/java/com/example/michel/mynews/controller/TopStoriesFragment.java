@@ -81,16 +81,13 @@ public class TopStoriesFragment extends Fragment {
                     @Override
                     public void onNext(NytResult nYresult) {
 
-
-
-
                         monObjetList.clear();
 
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
                             monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                     nYresult.getResults().get(i).getPublishedDate(),
-                                    nYresult.getResults().get(i).getSubsection()));
+                                    nYresult.getResults().get(i).getSection()));
 
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
