@@ -1,4 +1,4 @@
-package com.example.michel.mynews.API.TopStories;
+package com.example.michel.mynews.API.TopStoriesMostPopular;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

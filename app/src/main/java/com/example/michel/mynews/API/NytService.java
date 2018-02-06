@@ -1,6 +1,6 @@
 package com.example.michel.mynews.API;
 
-import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
+import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
 
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
