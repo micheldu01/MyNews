@@ -1,5 +1,6 @@
 package com.example.michel.mynews.controller;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,16 +17,28 @@ import com.example.michel.mynews.R;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 import com.example.michel.mynews.RecyclerView.NYTAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
 
 public class BusinessFragment extends Fragment {
 
-    @BindView(R.id.fragment_main_recycler_view)
-    RecyclerView recyclerView;
+    private Disposable disposable;
+    //RECYCLER VIEW NYT
+    private NYTAdapter nytAdapter;
+    private NytResult nYresult;
+    private List<MonObjet> monObjetList = new ArrayList<>();
+    private Context context;
+
+
+    @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
+
 
     public static BusinessFragment newInstance() {
         return (new BusinessFragment());
