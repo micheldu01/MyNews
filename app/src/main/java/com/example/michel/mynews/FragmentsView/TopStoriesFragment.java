@@ -88,9 +88,10 @@ public class TopStoriesFragment extends Fragment {
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Log.e("TAG", "Position  :  " + position);
 
+                        //get URL for save it in a SharedPreferences
                         //implement ShredPreferences
+                        mSharedPreferences.edit().putString(URL_NYT, urlArray.get(position)).commit();
 
-                        //mSharedPreferences.edit().putInt(MOOD_TEMPORARY, (position)).commit();
                         /*
                         Intent intent = new Intent(getActivity(), Main2Activity.class);
                         startActivity(intent);
@@ -139,6 +140,7 @@ public class TopStoriesFragment extends Fragment {
 
                             // implement urlArray for get URL
                             urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+
 
                         }
                         // implement recycler view with setLayoutManager
