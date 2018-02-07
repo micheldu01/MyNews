@@ -4,15 +4,20 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.example.michel.mynews.R;
 
 public class ShowArticlesActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_articles);
+
+        webView = (WebView) findViewById(R.id.web_view_show_articles_fragment);
 
 
         //Add toolbar
