@@ -7,9 +7,13 @@ import android.support.v7.widget.Toolbar;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.example.michel.mynews.FragmentsView.ShowArticlesFragment;
 import com.example.michel.mynews.R;
 
 public class ShowArticlesActivity extends AppCompatActivity {
+
+    //declare Show articles fragment
+    private ShowArticlesFragment articlesFragment;
 
 
     @Override
@@ -18,9 +22,9 @@ public class ShowArticlesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_articles);
 
 
-
         //Add toolbar
         this.configureToolbar();
+
 
     }
 
