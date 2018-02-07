@@ -42,6 +42,8 @@ public class TopStoriesFragment extends Fragment {
     protected SharedPreferences mSharedPreferences;
     public static final String MYSHARED = "MyShared";
     public static final String URL_NYT = "UrlNYT";
+    // create Array for get and save URL
+    private List<String> urlArray = new ArrayList<>();
 
 
     @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
@@ -59,10 +61,10 @@ public class TopStoriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_top_stories, container, false);
 
+        //implement SharedPreferences
         mSharedPreferences = this.getActivity().getSharedPreferences(MYSHARED, context.MODE_PRIVATE);
 
-
-
+        //implement butterKnife
         ButterKnife.bind(this,view);
 
         this.configureSwipeRefreshLayout();
@@ -94,6 +96,7 @@ public class TopStoriesFragment extends Fragment {
                 });
     }
 
+    //methode for use SwipeRefresh
     private void configureSwipeRefreshLayout() {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -115,7 +118,11 @@ public class TopStoriesFragment extends Fragment {
                     @Override
                     public void onNext(TopStoriesAPI nYresult) {
 
+                        //delete date in array for refresh articles
                         monObjetList.clear();
+                        urlArray.clear();
+
+
 
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
