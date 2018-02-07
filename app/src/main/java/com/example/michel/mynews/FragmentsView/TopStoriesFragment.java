@@ -67,10 +67,13 @@ public class TopStoriesFragment extends Fragment {
         //implement butterKnife
         ButterKnife.bind(this,view);
 
+        //call method for refreshLayout
         this.configureSwipeRefreshLayout();
 
+        // call method for call Articles
         this.recyclerViewHTTPNYT();
 
+        // call method for use recycler view
         this.configureOnClickRecyclerView();
 
         return view;
@@ -123,15 +126,21 @@ public class TopStoriesFragment extends Fragment {
                         urlArray.clear();
 
 
+                        //CREATE ARRAY FOR GET DATA FROM NYT AND RETURN IT IN RECYCLER VIEW
 
+                        // Create array string for get data from nyt api
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
+
+                            //create monObjetList for set data in recycler view
                             monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                     nYresult.getResults().get(i).getPublishedDate(),
                                     nYresult.getResults().get(i).getSection()));
 
                         }
+                        // implement recycler view with setLayoutManager
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                        // implement recycler view with adapter
                         recyclerView.setAdapter(new NYTAdapter(monObjetList));
 
                         // 3 - Stop refreshing and clear actual list of users
