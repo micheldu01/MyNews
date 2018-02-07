@@ -132,10 +132,13 @@ public class TopStoriesFragment extends Fragment {
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
 
-                            //create monObjetList for set data in recycler view
+                            //implement monObjetList for set data in recycler view
                             monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                     nYresult.getResults().get(i).getPublishedDate(),
                                     nYresult.getResults().get(i).getSection()));
+
+                            // implement urlArray for get URL
+                            urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
 
                         }
                         // implement recycler view with setLayoutManager
