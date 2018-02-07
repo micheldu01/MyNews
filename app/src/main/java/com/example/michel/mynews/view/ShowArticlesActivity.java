@@ -17,7 +17,6 @@ public class ShowArticlesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_articles);
 
-        webView = (WebView) findViewById(R.id.web_view_show_articles_fragment);
 
 
         //Add toolbar
