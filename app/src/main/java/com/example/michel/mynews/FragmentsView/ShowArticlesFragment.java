@@ -16,6 +16,7 @@ import com.example.michel.mynews.R;
  */
 public class ShowArticlesFragment extends Fragment {
 
+    // declare web view
     private WebView webView;
 
 
@@ -30,8 +31,10 @@ public class ShowArticlesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_show_articles, container, false);
 
+        // implement web view
         webView = (WebView) view.findViewById(R.id.web_view_show_articles_fragment);
 
+        //call url with LoadUrl and show it in web view with web setting
         webView.loadUrl("http://www.cgtrvi.com");
         WebSettings webSettings =  webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
