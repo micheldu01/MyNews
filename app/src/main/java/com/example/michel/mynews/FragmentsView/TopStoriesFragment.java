@@ -40,12 +40,14 @@ public class TopStoriesFragment extends Fragment {
     private Context context;
     //SharedPreferences
     protected SharedPreferences mSharedPreferences;
-    public static final String MYMOOD = "MyMood";
-    public static final String MOOD_TEMPORARY = "Comment";
+    public static final String MYSHARED = "MyShared";
+    public static final String URL_NYT = "UrlNYT";
 
 
     @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
+
+
 
     // create constructor
     public static TopStoriesFragment newInstance() {
@@ -56,6 +58,10 @@ public class TopStoriesFragment extends Fragment {
     // Inflate the layout for this fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_top_stories, container, false);
+
+        mSharedPreferences = this.getActivity().getSharedPreferences(MYSHARED, context.MODE_PRIVATE);
+
+
 
         ButterKnife.bind(this,view);
 
@@ -77,6 +83,7 @@ public class TopStoriesFragment extends Fragment {
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Log.e("TAG", "Position  :  " + position);
 
+                        //implement ShredPreferences
 
                         //mSharedPreferences.edit().putInt(MOOD_TEMPORARY, (position)).commit();
                         /*
