@@ -6,11 +6,10 @@
     android:orientation="vertical">
 
     <!-- Importation de notre Toolbar -->
-    <include
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        layout="@layout/toolbar"
+    <WebView
+        android:id="@+id/web_view_show_articles"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
 
