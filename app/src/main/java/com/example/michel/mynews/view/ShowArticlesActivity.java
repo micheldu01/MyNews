@@ -12,8 +12,12 @@ import com.example.michel.mynews.R;
 
 public class ShowArticlesActivity extends AppCompatActivity {
 
+
+
     //declare Show articles fragment
     private ShowArticlesFragment articlesFragment;
+    //declare web view
+    private WebView webView;
 
 
     @Override
@@ -25,6 +29,14 @@ public class ShowArticlesActivity extends AppCompatActivity {
         //Add toolbar
         this.configureToolbar();
 
+
+        // implement web view
+        webView = (WebView) findViewById(R.id.web_view_show_articles_fragment);
+
+        //call url with LoadUrl and show it in web view with web setting
+        webView.loadUrl("http://www.cgtrvi.com");
+        WebSettings webSettings =  webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
     }
 
