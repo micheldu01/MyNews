@@ -31,7 +31,7 @@ public class ShowArticlesActivity extends AppCompatActivity {
 
 
         // implement web view
-        webView = (WebView) findViewById(R.id.web_view_show_articles_fragment);
+        webView = (WebView) findViewById(R.id.web_view_show_articles);
 
         //call url with LoadUrl and show it in web view with web setting
         webView.loadUrl("http://www.cgtrvi.com");
@@ -50,5 +50,6 @@ public class ShowArticlesActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+
     }
 }
