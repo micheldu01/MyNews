@@ -19,7 +19,6 @@ import com.example.michel.mynews.R;
 import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 import com.example.michel.mynews.RecyclerView.NYTAdapter;
-import com.example.michel.mynews.view.ShowArticlesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
