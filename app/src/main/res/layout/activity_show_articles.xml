@@ -9,8 +9,17 @@
     tools:context="com.example.michel.mynews.view.ShowArticles">
 
 
+    <!-- Importation de notre Toolbar -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/test_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@color/white"
+        android:background="?attr/colorPrimary"/>
+
     <WebView
-        android:id="@+id/web_view"
+        android:id="@+id/web_view_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
