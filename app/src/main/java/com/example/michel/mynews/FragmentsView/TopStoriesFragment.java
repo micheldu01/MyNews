@@ -3,6 +3,7 @@ package com.example.michel.mynews.FragmentsView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -89,12 +90,16 @@ public class TopStoriesFragment extends Fragment {
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Log.e("TAG", "Position  :  " + position);
 
+                        // INTENT FOR SHOW ARTICLES NYT
+                        Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position)));
+                        startActivity(browserIntent);
+
                         //get URL for save it in a SharedPreferences
                         //implement ShredPreferences
                         mSharedPreferences.edit().putString(URL_NYT, urlArray.get(position)).commit();
 
                         // create intent between this activity and ShowArticleActivity
-                        startActivity(new Intent(getActivity(), ShowArticles.class));
+                        //startActivity(new Intent(getActivity(), ShowArticles.class));
 
                     }
                 });
