@@ -1,6 +1,8 @@
 package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
+import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 import com.example.michel.mynews.RecyclerView.NYTAdapter;
 
@@ -67,6 +70,21 @@ public class MostPopularFragment extends Fragment {
 
             }
         });
+    }
+
+    //configure item click on RecyclerView
+    private void configureOnClickRecyclerView(){
+        ItemClickSupport.addTo(recyclerView, R.layout.fragment_most_popular)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+
+                        // INTENT FOR SHOW ARTICLES NYT
+                        Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position)));
+                        startActivity(browserIntent);
+
+                    }
+                });
     }
 
     // 1 - Execute our Stream
