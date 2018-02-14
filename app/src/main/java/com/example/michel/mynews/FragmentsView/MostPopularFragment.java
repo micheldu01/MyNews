@@ -37,6 +37,9 @@ public class MostPopularFragment extends Fragment {
     private TopStoriesAPI nYresult;
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
+    // CREATE ARRAY FOR GET URL
+    private List<String> urlArray = new ArrayList<>();
+
 
     @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
@@ -97,13 +100,21 @@ public class MostPopularFragment extends Fragment {
                     @Override
                     public void onNext(TopStoriesAPI nYresult) {
 
+                        //CLEAR  THE ARRAY FOR USE SWIPE REFRESH
                         monObjetList.clear();
+                        urlArray.clear();
+
+
 
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
                             monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                     nYresult.getResults().get(i).getPublishedDate(),
                                     nYresult.getResults().get(i).getSection()));
+
+                            // Implement urlArray for get URL
+                            urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+
 
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
