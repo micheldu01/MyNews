@@ -19,6 +19,7 @@ import com.example.michel.mynews.R;
 import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 import com.example.michel.mynews.RecyclerView.NYTAdapter;
+import com.example.michel.mynews.view.ShowArticles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,7 @@ public class TopStoriesFragment extends Fragment {
                         mSharedPreferences.edit().putString(URL_NYT, urlArray.get(position)).commit();
 
                         // create intent between this activity and ShowArticleActivity
-                        startActivity(new Intent(getActivity(), ShowArticlesActivity.class));
+                        startActivity(new Intent(getActivity(), ShowArticles.class));
 
                     }
                 });
