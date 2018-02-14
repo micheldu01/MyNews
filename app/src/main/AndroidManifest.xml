@@ -51,13 +51,13 @@
                 android:value=".view.MainActivity" />
         </activity>
 
-
         <receiver android:name=".Notification.AlarmReceiver" />
 
         <service
             android:name=".Notification.NotificationService"
             android:enabled="true" />
 
+        <activity android:name=".view.ShowArticles"></activity>
     </application>
 
 </manifest>
