@@ -49,6 +49,8 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return "Most Popular";
             case 2: //Page number 3
                 return "Business";
+            case 3: //Page number 4
+                return "Search Articles";
             default:
                 return null;
         }
