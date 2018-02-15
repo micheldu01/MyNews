@@ -10,6 +10,8 @@ import java.util.Observable;
 
 import io.reactivex.observers.TestObserver;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 /**
  * Created by michel on 15/02/2018.
  */
@@ -35,6 +37,11 @@ public class NyStreamsTest {
                 .assertNoTimeout() // 3.2 - Check if no Timeout
                 .awaitTerminalEvent(); // - Await the stream terminated before continue
 
+        // 4 - Test if streamTopStories is empty
+        TopStoriesAPI storiesAPI = testObserver.values().get(0);
+        // 5 - Ask if getResults is different to null
+        assertThat("result NYT",  storiesAPI.getResults() !=  null);
+
     }
 
     @Test
@@ -56,6 +63,10 @@ public class NyStreamsTest {
                 .assertNoTimeout() // 3.2 - Check if no Timeout
                 .awaitTerminalEvent(); // - Await the stream terminated before continue
 
+        // 4 - Test if streamTopStories is empty
+        TopStoriesAPI storiesAPI = testObserver.values().get(0);
+        // 5 - Ask if getResults is different to null
+        assertThat("result NYT",  storiesAPI.getResults() !=  null);
 
     }
 }
