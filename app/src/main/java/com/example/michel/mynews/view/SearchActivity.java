@@ -95,8 +95,9 @@ public class SearchActivity extends AppCompatActivity
     // method for get the result of the checkBox and the EditText
     @Override
     public void onButonClicked(View view) {
-        // receive the editText
+        // implement the editText
         editText = (EditText)findViewById(R.id.search_query_term);
+        // get the editText
         String et = editText.getText().toString();
 
         // Create SharedPreferences
@@ -114,8 +115,8 @@ public class SearchActivity extends AppCompatActivity
                 // Save value in Shared
                 preferences.edit().putString(MyCheckBox[i],arrayValue[i]).commit();
             }
+            // increment i
             i++;
-
         }
 
         //Create shared for get SearchArticles in mainActivity
