@@ -30,5 +30,6 @@ public class NytStreams {
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
 
+
     }
 }
