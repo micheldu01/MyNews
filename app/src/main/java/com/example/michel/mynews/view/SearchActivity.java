@@ -19,6 +19,7 @@ import com.example.michel.mynews.Fragments.BtnSearchFragment;
 import com.example.michel.mynews.Fragments.DateFragment;
 import com.example.michel.mynews.R;
 
+import java.lang.reflect.Array;
 import java.util.Calendar;
 
 public class SearchActivity extends AppCompatActivity
@@ -39,6 +40,7 @@ public class SearchActivity extends AppCompatActivity
     private CheckBox[] arrayBox;
     private int[] arrayIdBox;
     private int numberarray = 0;
+    private String[] arrayValue;
     // Date
     private TextView begin_date;
     private TextView end_date;
@@ -49,7 +51,8 @@ public class SearchActivity extends AppCompatActivity
     public static final String MyShared = "MyShared";
     public static final String MyEditText = "MyEditText";
     public static final String MyDateStart = "MyDateStart";
-
+    public static final String MyDateEnd = "MyDateEnd";
+    public static final String[] MyCheckBox = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
 
 
@@ -95,15 +98,22 @@ public class SearchActivity extends AppCompatActivity
         // Create SharedPreferences
         preferences.edit().putString(MyEditText, et).commit();
 
-        // Test Edit Text
-        String stg = preferences.getString(MyEditText, "");
-
-
-
         // get value CheckBox
-        if(arrayBox[0].isChecked()){
-            //Toast.makeText(SearchActivity.this," Arts ", Toast.LENGTH_LONG).show();
+        // create array for save value of checkbox
+        arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
+
+        // create while for check arrayBox
+        // create
+        int i = 0;
+        while (i < 6){
+            // Ask if a box is Checked if true save the value in Shared
+            if(arrayBox[i].isChecked()){
+                // Save value in Shared
+                preferences.edit().putString(MyCheckBox[i],arrayValue[i]).commit();
+
+            }
+            i++;
         }
 
     }
@@ -120,13 +130,8 @@ public class SearchActivity extends AppCompatActivity
 
                         // Create String for get date
                         String dateStart = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
-                        preferences.edit().putString(MyEditText, dateStart).commit();
-
-
-
-
-
-
+                        // use Shared for save dateStart
+                        preferences.edit().putString(MyDateStart, dateStart).commit();
 
                     }
                 }, year, month, day);
@@ -147,12 +152,15 @@ public class SearchActivity extends AppCompatActivity
 
                         // Create String for get date
                         String dateEnd = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
-                        Toast.makeText(SearchActivity.this, dateEnd, Toast.LENGTH_SHORT).show();
+                        // Use Shared for save dateEnd
+                        preferences.edit().putString(MyDateEnd, dateEnd).commit();
 
                     }
                 }, year, month, day);
         datePickerDialog.show();
     }
+
+
     // Method for add 0 in the date (day and month)
     public String convertDate(int input) {
         if (input >= 10) {
