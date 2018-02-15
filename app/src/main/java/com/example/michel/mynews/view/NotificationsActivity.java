@@ -38,6 +38,8 @@ public class NotificationsActivity extends AppCompatActivity {
     // SharedPreferences
     private SharedPreferences preferences;
     public static final String MyShared = "MyShared";
+    public static final String MyEditTextNoti = "MyEditTextNoti";
+
 
 
     @Override
@@ -45,12 +47,18 @@ public class NotificationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
+
+        // Declare SharedPreferences
+        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+
+
         // show toolbar
         this.configureToolbar();
 
         // method for use the switch button
         this.methodSwitch();
 
+        // method for save the edit text in shared
         this.methodEditText();
 
     }
@@ -109,6 +117,7 @@ public class NotificationsActivity extends AppCompatActivity {
     public void methodEditText(){
         editText = (EditText) findViewById(R.id.search_query_term);
 
+        //Save Edit text in method addTextChangedListener
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -120,12 +129,14 @@ public class NotificationsActivity extends AppCompatActivity {
 
             }
 
+            // after the edit text is changed
             @Override
             public void afterTextChanged(Editable editable) {
-
+                // get edit text
                 String edt = editText.getText().toString();
 
-                Toast.makeText(NotificationsActivity.this, edt, Toast.LENGTH_SHORT).show();
+                // Use Shared for save the edit text
+                preferences.edit().putString(MyEditTextNoti, edt).commit();
 
             }
         });
