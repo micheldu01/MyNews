@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -71,6 +72,8 @@ public class NotificationsActivity extends AppCompatActivity {
         // method for get the check box choice
         this.methodCheckBox();
 
+
+
     }
 
 
@@ -120,9 +123,13 @@ public class NotificationsActivity extends AppCompatActivity {
                     methodAlarmManager();
 
                     //Implement edit text
-                    editText = (EditText) findViewById(R.id.search_query_term);
-                    //get the edit text
-                    String str = editText.getText().toString();
+                    if(arrayBox[0].isChecked()){
+
+
+                        // Save value in Shared
+                        Toast.makeText(NotificationsActivity.this, "Le button art a été séléctionné !!!", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
             }
         });
@@ -170,6 +177,22 @@ public class NotificationsActivity extends AppCompatActivity {
             arrayBox[numberarray] = (CheckBox)findViewById(arrayIdBox[numberarray]);
             Log.i("mycoursviewpager","number = " + numberarray);
             numberarray++;
+        }
+
+        if(arrayBox[0].isChecked()){
+            // Save value in Shared
+
+            //Toast.makeText(NotificationsActivity.this, "Le button art a été séléctionné !!!", Toast.LENGTH_SHORT).show();
+            Log.e("mynews", "le button est testé !!!!!!!!!!");
+            // increment i
+        }
+    }
+
+    public void itemClicked(View v) {
+        //code to check if this checkbox is checked!
+        CheckBox checkBox = (CheckBox)v;
+        if(checkBox.isChecked()){
+
         }
     }
 }
