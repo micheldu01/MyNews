@@ -8,10 +8,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.michel.mynews.Notification.AlarmReceiver;
 import com.example.michel.mynews.R;
@@ -41,7 +44,9 @@ public class NotificationsActivity extends AppCompatActivity {
         this.configureToolbar();
 
         // method for use the switch button
-        methodSwitch();
+        this.methodSwitch();
+
+        this.methodEditText();
 
     }
     private void configureToolbar(){
@@ -86,8 +91,40 @@ public class NotificationsActivity extends AppCompatActivity {
                 if (b){
                     //start alarmManager
                     methodAlarmManager();
+
+                    //Implement edit text
+                    editText = (EditText) findViewById(R.id.search_query_term);
+                    //get the edit text
+                    String str = editText.getText().toString();
                 }
             }
         });
+    }
+
+    public void methodEditText(){
+        editText = (EditText) findViewById(R.id.search_query_term);
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                String edt = editText.getText().toString();
+
+                Toast.makeText(NotificationsActivity.this, edt, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
     }
 }
