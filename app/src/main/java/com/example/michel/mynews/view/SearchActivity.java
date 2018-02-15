@@ -1,6 +1,8 @@
 package com.example.michel.mynews.view;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,6 +44,10 @@ public class SearchActivity extends AppCompatActivity
     private TextView end_date;
     private Calendar mCurrentDate;
     private int day, month, year;
+    // SharedPreferences
+    private SharedPreferences preferences;
+    public static final String MyShared = "MyShared";
+    public static final String MyEditText = "MyEditText";
 
 
 
@@ -79,8 +85,16 @@ public class SearchActivity extends AppCompatActivity
         // receive the editText
         editText = (EditText)findViewById(R.id.search_query_term);
         String et = editText.getText().toString();
+
+        // Create SharedPreferences
+        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+
+
+
+        // get value CheckBox
         if(arrayBox[0].isChecked()){
             Toast.makeText(SearchActivity.this," Arts ", Toast.LENGTH_LONG).show();
+
         }
 
     }
