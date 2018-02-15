@@ -5,6 +5,7 @@ import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
 
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Observable;
 
 import io.reactivex.observers.TestObserver;
@@ -16,7 +17,7 @@ import io.reactivex.observers.TestObserver;
 public class NyStreamsTest {
 
     @Test
-    public void topStories() throws Exception {
+    public void topStoriesTest() throws Exception {
 
         // 1 - Get the stream
         //     Recupération de la stream
@@ -34,4 +35,6 @@ public class NyStreamsTest {
                 .assertNoTimeout() // 3.2 - Check if no Timeout
                 .awaitTerminalEvent(); // - Await the stream terminated before continue
     }
+
+
 }

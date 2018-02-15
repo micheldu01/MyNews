@@ -4,6 +4,7 @@ import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
 
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -13,7 +14,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class NytStreams {
 
-    public static io.reactivex.Observable<TopStoriesAPI> streamTopStories() {
+    public static Observable<TopStoriesAPI> streamTopStories() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getTopStories()
                 .subscribeOn(Schedulers.io())
@@ -22,7 +23,7 @@ public class NytStreams {
 
     }
 
-    public static io.reactivex.Observable<TopStoriesAPI> streamMostPopular() {
+    public static Observable<TopStoriesAPI> streamMostPopular() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getMostPopular()
                 .subscribeOn(Schedulers.io())
