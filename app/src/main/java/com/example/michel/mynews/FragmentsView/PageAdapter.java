@@ -32,7 +32,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 2: //Page number 3
                 return BusinessFragment.newInstance();
             case 3: //Page number 4
-                return ;
+                return SearchArticlesFragment.newInstance();
             default:
                 return null;
         }
