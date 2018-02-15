@@ -28,22 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Declare SharedPreferences
-        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
-        // get value in shared
-        String pageSave = preferences.getString(MySearchPage,"");
-        // if they are value in shared get the SearchArticlesFragment
-        if(pageSave.equals("searchPage")){
-
-            //select the item SearchArticles
-
-
-
-            //clear the Shared
-            preferences.edit().putString(MySearchPage, "").commit();
-
-        }
-
 
 
         //3.toolbar execute method Toolbar
@@ -82,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(pager);
         // 3 - Design purpose. Tabs have the same width
         tabs.setTabMode(TabLayout.MODE_FIXED);
+        //------------------
+        //get CurrentItem
+        //------------------
+        // Declare SharedPreferences
+        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+        // get value in shared
+        String pageSave = preferences.getString(MySearchPage,"");
+        // if they are value in shared get the SearchArticlesFragment
+        if(pageSave.equals("searchPage")){
+            //clear the Shared
+            preferences.edit().putString(MySearchPage, "").commit();
+            pager.setCurrentItem(3);
+        }
     }
 
     //2.Toolbar_menu implement button in Toolbar
