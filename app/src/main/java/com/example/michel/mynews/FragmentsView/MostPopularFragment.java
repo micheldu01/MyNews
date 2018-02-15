@@ -59,6 +59,8 @@ public class MostPopularFragment extends Fragment {
 
         this.configureSwipeRefreshLayout();
 
+        this.configureOnClickRecyclerView();
+
         this.recyclerViewHTTPNYT();
 
         return view;

@@ -2,6 +2,8 @@ package com.example.michel.mynews.API;
 
 import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -15,13 +17,17 @@ public class NytStreams {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getTopStories()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .timeout(10, TimeUnit.SECONDS);
+
     }
 
     public static io.reactivex.Observable<TopStoriesAPI> streamMostPopular() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getMostPopular()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .timeout(10, TimeUnit.SECONDS);
+
     }
 }
