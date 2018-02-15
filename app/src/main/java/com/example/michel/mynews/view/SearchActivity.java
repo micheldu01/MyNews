@@ -133,7 +133,7 @@ public class SearchActivity extends AppCompatActivity
 
         // Method if nothing box are choice dont get the intent but get a toast
         else{
-            Toast.makeText(SearchActivity.this, "Il n'y a pas de séléction !!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SearchActivity.this, R.string.no_box_was_chosen, Toast.LENGTH_SHORT).show();
         }
 
     }
