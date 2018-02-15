@@ -69,9 +69,11 @@ public class NotificationsActivity extends AppCompatActivity {
         // method for save the edit text in shared
         this.methodEditText();
 
-        // method for get the check box choice
+        // implement the check box choice
         this.methodCheckBox();
 
+        // method for save the check box choice in Shared
+        this.itemClicked();
 
 
     }
@@ -122,14 +124,6 @@ public class NotificationsActivity extends AppCompatActivity {
                     //start alarmManager
                     methodAlarmManager();
 
-                    //Implement edit text
-                    if(arrayBox[0].isChecked()){
-
-
-                        // Save value in Shared
-                        Toast.makeText(NotificationsActivity.this, "Le button art a été séléctionné !!!", Toast.LENGTH_SHORT).show();
-
-                    }
                 }
             }
         });
@@ -182,17 +176,32 @@ public class NotificationsActivity extends AppCompatActivity {
         if(arrayBox[0].isChecked()){
             // Save value in Shared
 
-            //Toast.makeText(NotificationsActivity.this, "Le button art a été séléctionné !!!", Toast.LENGTH_SHORT).show();
             Log.e("mynews", "le button est testé !!!!!!!!!!");
             // increment i
         }
     }
 
-    public void itemClicked(View v) {
+    // create method for get the box check in Shared
+    public void itemClicked() {
         //code to check if this checkbox is checked!
-        CheckBox checkBox = (CheckBox)v;
-        if(checkBox.isChecked()){
+        // get value CheckBox
+        // create array for save value of checkbox
+        arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
+        // create while for check arrayBox
+        int i = 0;
+        int no_check =0;
+        while (i < 6){
+            // Ask if a box is Checked if true save the value in Shared
+            if(arrayBox[i].isChecked()){
+                // Save value in Shared
+                //preferences.edit().putString(MyCheckBox[i],arrayValue[i]).commit();
+                no_check = 1;
+                Toast.makeText(NotificationsActivity.this, arrayValue[i], Toast.LENGTH_SHORT).show();
+            }
+            // increment i
+            i++;
         }
+
     }
 }
