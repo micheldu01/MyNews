@@ -37,4 +37,25 @@ public class NyStreamsTest {
 
     }
 
+    @Test
+    public void MostPopularTest() throws Exception {
+
+        // 1 - Get the stream
+        //     Recupération de la stream
+        io.reactivex.Observable<TopStoriesAPI> observableTopStoriesAPI =
+                NytStreams.streamMostPopular();
+
+        // - 2 Create a new TestObserver
+        //     Création d'un nouveau TestObserver
+        TestObserver<TopStoriesAPI> testObserver = new TestObserver<>();
+
+        // 3 - Launch observable
+        //     Lancement d'un observable
+        observableTopStoriesAPI.subscribeWith(testObserver)
+                .assertNoErrors() // 3.1 - Check if  no errors
+                .assertNoTimeout() // 3.2 - Check if no Timeout
+                .awaitTerminalEvent(); // - Await the stream terminated before continue
+
+
+    }
 }
