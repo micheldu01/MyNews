@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.michel.mynews.Fragments.BoxFragment;
 import com.example.michel.mynews.Notification.AlarmReceiver;
 import com.example.michel.mynews.R;
 
@@ -35,6 +36,11 @@ public class NotificationsActivity extends AppCompatActivity {
     private CheckBox politics;
     private CheckBox travel;
     private CheckBox sport;
+    // value into array for implement the CheckBox
+    private CheckBox[] arrayBox;
+    private int[] arrayIdBox;
+    private int numberarray = 0;
+    private String[] arrayValue;
     // SharedPreferences
     private SharedPreferences preferences;
     public static final String MyShared = "MyShared";
