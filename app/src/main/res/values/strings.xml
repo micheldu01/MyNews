@@ -26,4 +26,7 @@ and also on the business page.
 You have in the menu the possibility to search the articles of your choice, with the posibility to use dates.
 You have notofications in the right menu to warn you when a new article is published.</string>
 
+    // string Search Activity
+    <string name="no_box_was_chosen">no box was chosen</string>
+
 </resources>
