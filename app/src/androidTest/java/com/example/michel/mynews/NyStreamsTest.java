@@ -21,7 +21,7 @@ public class NyStreamsTest {
 
         // 1 - Get the stream
         //     Recupération de la stream
-        Observable<TopStoriesAPI> observableTopStoriesAPI =
+        io.reactivex.Observable<TopStoriesAPI> observableTopStoriesAPI =
                 NytStreams.streamTopStories();
 
         // - 2 Create a new TestObserver
@@ -34,7 +34,7 @@ public class NyStreamsTest {
                 .assertNoErrors() // 3.1 - Check if  no errors
                 .assertNoTimeout() // 3.2 - Check if no Timeout
                 .awaitTerminalEvent(); // - Await the stream terminated before continue
-    }
 
+    }
 
 }
