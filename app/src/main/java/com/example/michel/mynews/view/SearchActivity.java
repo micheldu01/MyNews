@@ -109,21 +109,40 @@ public class SearchActivity extends AppCompatActivity
 
         // create while for check arrayBox
         int i = 0;
+        int no_check =0;
         while (i < 6){
             // Ask if a box is Checked if true save the value in Shared
             if(arrayBox[i].isChecked()){
                 // Save value in Shared
                 preferences.edit().putString(MyCheckBox[i],arrayValue[i]).commit();
+                no_check = 1;
+                // increment i
             }
-            // increment i
             i++;
         }
 
-        //Create shared for get SearchArticles in mainActivity
-        preferences.edit().putString(MySearchPage, searchPage).commit();
+        // Method if a box are choice get the intent
+        if(no_check == 1){
 
-        //Create intent for go to MainActivity for look the articles choices
-        startActivity(new Intent(SearchActivity.this, MainActivity.class));
+            //Create shared for get SearchArticles in mainActivity
+            preferences.edit().putString(MySearchPage, searchPage).commit();
+
+            //Create intent for go to MainActivity for look the articles choices
+            startActivity(new Intent(SearchActivity.this, MainActivity.class));
+        }
+
+        // Method if nothing box are choice dont get the intent but get a toast
+        else{
+            Toast.makeText(SearchActivity.this, "Il n'y a pas de séléction !!!", Toast.LENGTH_SHORT).show();
+        }
+
+        //------------------
+        // Test
+        //------------------
+
+
+
+
     }
 
 
