@@ -136,13 +136,6 @@ public class SearchActivity extends AppCompatActivity
             Toast.makeText(SearchActivity.this, "Il n'y a pas de séléction !!!", Toast.LENGTH_SHORT).show();
         }
 
-        //------------------
-        // Test
-        //------------------
-
-
-
-
     }
 
 
