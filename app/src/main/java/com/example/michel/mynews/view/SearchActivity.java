@@ -103,7 +103,6 @@ public class SearchActivity extends AppCompatActivity
         arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
         // create while for check arrayBox
-        // create
         int i = 0;
         while (i < 6){
             // Ask if a box is Checked if true save the value in Shared
