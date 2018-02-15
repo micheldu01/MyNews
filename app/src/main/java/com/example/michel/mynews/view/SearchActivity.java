@@ -109,7 +109,6 @@ public class SearchActivity extends AppCompatActivity
             if(arrayBox[i].isChecked()){
                 // Save value in Shared
                 preferences.edit().putString(MyCheckBox[i],arrayValue[i]).commit();
-
             }
             i++;
         }
@@ -181,9 +180,6 @@ public class SearchActivity extends AppCompatActivity
         month = mCurrentDate.get(Calendar.MONTH);
         year = mCurrentDate.get(Calendar.YEAR);
 
-        // Create String for get date
-        String dateStart = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
-        Toast.makeText(SearchActivity.this, dateStart, Toast.LENGTH_SHORT).show();
     }
 
     //method for implement checkbox
