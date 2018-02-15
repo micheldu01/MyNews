@@ -172,36 +172,22 @@ public class NotificationsActivity extends AppCompatActivity {
             Log.i("mycoursviewpager","number = " + numberarray);
             numberarray++;
         }
-
-        if(arrayBox[0].isChecked()){
-            // Save value in Shared
-
-            Log.e("mynews", "le button est testé !!!!!!!!!!");
-            // increment i
-        }
     }
+
 
     // create method for get the box check in Shared
     public void itemClicked() {
-        //code to check if this checkbox is checked!
-        // get value CheckBox
         // create array for save value of checkbox
         arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
-        // create while for check arrayBox
-        int i = 0;
-        int no_check =0;
-        while (i < 6){
-            // Ask if a box is Checked if true save the value in Shared
-            if(arrayBox[i].isChecked()){
-                // Save value in Shared
-                //preferences.edit().putString(MyCheckBox[i],arrayValue[i]).commit();
-                no_check = 1;
-                Toast.makeText(NotificationsActivity.this, arrayValue[i], Toast.LENGTH_SHORT).show();
+        arrayBox[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(arrayBox[0].isChecked()){
+                    Toast.makeText(NotificationsActivity.this, arrayValue[0], Toast.LENGTH_SHORT).show();
+                }
             }
-            // increment i
-            i++;
-        }
+        });
 
     }
 }
