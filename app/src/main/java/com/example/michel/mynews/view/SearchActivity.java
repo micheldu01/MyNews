@@ -2,6 +2,7 @@ package com.example.michel.mynews.view;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -111,6 +112,8 @@ public class SearchActivity extends AppCompatActivity
                 preferences.edit().putString(MyCheckBox[i],arrayValue[i]).commit();
             }
             i++;
+
+            startActivity(new Intent(SearchActivity.this, MainActivity.class));
         }
 
     }
