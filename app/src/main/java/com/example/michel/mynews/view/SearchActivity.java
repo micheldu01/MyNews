@@ -54,6 +54,9 @@ public class SearchActivity extends AppCompatActivity
     public static final String MyDateStart = "MyDateStart";
     public static final String MyDateEnd = "MyDateEnd";
     public static final String[] MyCheckBox = {"values"};
+    // for save the page for the intent
+    public static final String MySearchPage = "MySearchPage";
+    private String searchPage = "searchPage";
 
 
 
@@ -113,9 +116,13 @@ public class SearchActivity extends AppCompatActivity
             }
             i++;
 
-            startActivity(new Intent(SearchActivity.this, MainActivity.class));
         }
 
+        //Create shared for get SearchArticles in mainActivity
+        preferences.edit().putString(MySearchPage, searchPage).commit();
+
+        //Create intent for go to MainActivity for look the articles choices
+        startActivity(new Intent(SearchActivity.this, MainActivity.class));
     }
 
 
