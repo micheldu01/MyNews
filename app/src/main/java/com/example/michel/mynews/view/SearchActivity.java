@@ -48,6 +48,8 @@ public class SearchActivity extends AppCompatActivity
     private SharedPreferences preferences;
     public static final String MyShared = "MyShared";
     public static final String MyEditText = "MyEditText";
+    public static final String MyDateStart = "MyDateStart";
+
 
 
 
@@ -96,7 +98,7 @@ public class SearchActivity extends AppCompatActivity
         // Test Edit Text
         String stg = preferences.getString(MyEditText, "");
 
-        //Toast.makeText(SearchActivity.this, stg, Toast.LENGTH_SHORT).show();
+
 
         // get value CheckBox
         if(arrayBox[0].isChecked()){
@@ -118,7 +120,11 @@ public class SearchActivity extends AppCompatActivity
 
                         // Create String for get date
                         String dateStart = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
-                        Toast.makeText(SearchActivity.this, dateStart, Toast.LENGTH_SHORT).show();
+                        preferences.edit().putString(MyEditText, dateStart).commit();
+
+
+
+
 
 
 
