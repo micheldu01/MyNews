@@ -52,7 +52,7 @@ public class SearchActivity extends AppCompatActivity
     public static final String MyEditText = "MyEditText";
     public static final String MyDateStart = "MyDateStart";
     public static final String MyDateEnd = "MyDateEnd";
-    public static final String[] MyCheckBox = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
+    public static final String[] MyCheckBox = {"values"};
 
 
 
@@ -102,7 +102,6 @@ public class SearchActivity extends AppCompatActivity
         // create array for save value of checkbox
         arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
-
         // create while for check arrayBox
         // create
         int i = 0;
@@ -117,6 +116,7 @@ public class SearchActivity extends AppCompatActivity
         }
 
     }
+
 
     // method for get the date number 1
     @Override
