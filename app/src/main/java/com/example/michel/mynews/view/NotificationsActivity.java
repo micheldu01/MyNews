@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -67,7 +68,12 @@ public class NotificationsActivity extends AppCompatActivity {
         // method for save the edit text in shared
         this.methodEditText();
 
+        // method for get the check box choice
+        this.methodCheckBox();
+
     }
+
+
     private void configureToolbar(){
         //Get the toolbar (Serialise)
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -78,6 +84,7 @@ public class NotificationsActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
     }
+
 
     // method for get the time and the design of the notification
     public void methodAlarmManager(){
@@ -96,6 +103,7 @@ public class NotificationsActivity extends AppCompatActivity {
                 //repeat start notification one a day
                 AlarmManager.INTERVAL_DAY, pi);
     }
+
 
     // method for start notification
     public void methodSwitch(){
@@ -119,6 +127,7 @@ public class NotificationsActivity extends AppCompatActivity {
             }
         });
     }
+
 
     public void methodEditText(){
         editText = (EditText) findViewById(R.id.search_query_term);
@@ -146,7 +155,21 @@ public class NotificationsActivity extends AppCompatActivity {
 
             }
         });
+    }
 
 
+    //method for implement checkbox
+    public void methodCheckBox(){
+        //CheckBox name in array
+        arrayBox = new CheckBox[] {arts, business, entrepreneurs, politics, travel, sport};
+        //CheckBox resource  btn in array
+        arrayIdBox = new int[] {R.id.checkbox_art,R.id.checkbox_business,R.id.checkbox_entrepreneurs,
+                R.id.checkbox_politics,R.id.checkbox_travel,R.id.checkbox_sport};
+        // implement CheckBox
+        while(numberarray <6){
+            arrayBox[numberarray] = (CheckBox)findViewById(arrayIdBox[numberarray]);
+            Log.i("mycoursviewpager","number = " + numberarray);
+            numberarray++;
+        }
     }
 }
