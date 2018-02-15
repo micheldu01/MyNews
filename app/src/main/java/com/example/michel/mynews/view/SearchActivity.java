@@ -56,6 +56,10 @@ public class SearchActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        // Declare SharedPreferences
+        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+
+
 
         //Add toolbar
         this.configureToolbar();
@@ -87,13 +91,16 @@ public class SearchActivity extends AppCompatActivity
         String et = editText.getText().toString();
 
         // Create SharedPreferences
-        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+        preferences.edit().putString(MyEditText, et).commit();
 
+        // Test Edit Text
+        String stg = preferences.getString(MyEditText, "");
 
+        //Toast.makeText(SearchActivity.this, stg, Toast.LENGTH_SHORT).show();
 
         // get value CheckBox
         if(arrayBox[0].isChecked()){
-            Toast.makeText(SearchActivity.this," Arts ", Toast.LENGTH_LONG).show();
+            //Toast.makeText(SearchActivity.this," Arts ", Toast.LENGTH_LONG).show();
 
         }
 
@@ -108,9 +115,17 @@ public class SearchActivity extends AppCompatActivity
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         begin_date.setText(convertDate(day)+"/"+convertDate(month+1)+"/"+year);
+
+                        // Create String for get date
+                        String dateStart = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
+                        Toast.makeText(SearchActivity.this, dateStart, Toast.LENGTH_SHORT).show();
+
+
+
                     }
                 }, year, month, day);
         datePickerDialog.show();
+
 
     }
 
@@ -123,6 +138,11 @@ public class SearchActivity extends AppCompatActivity
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         end_date.setText(convertDate(day)+"/"+convertDate(month+1)+"/"+year);
+
+                        // Create String for get date
+                        String dateEnd = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
+                        Toast.makeText(SearchActivity.this, dateEnd, Toast.LENGTH_SHORT).show();
+
                     }
                 }, year, month, day);
         datePickerDialog.show();
@@ -147,6 +167,10 @@ public class SearchActivity extends AppCompatActivity
         day = mCurrentDate.get(Calendar.DAY_OF_MONTH);
         month = mCurrentDate.get(Calendar.MONTH);
         year = mCurrentDate.get(Calendar.YEAR);
+
+        // Create String for get date
+        String dateStart = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
+        Toast.makeText(SearchActivity.this, dateStart, Toast.LENGTH_SHORT).show();
     }
 
     //method for implement checkbox
