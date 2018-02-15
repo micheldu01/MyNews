@@ -1,6 +1,8 @@
 package com.example.michel.mynews.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,21 +10,47 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.michel.mynews.FragmentsView.PageAdapter;
 import com.example.michel.mynews.R;
 
+import static com.example.michel.mynews.view.SearchActivity.MySearchPage;
+import static com.example.michel.mynews.view.SearchActivity.MyShared;
+
 public class MainActivity extends AppCompatActivity {
+
+    // SharedPreferences
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Declare SharedPreferences
+        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+        // get value in shared
+        String pageSave = preferences.getString(MySearchPage,"");
+        // if they are value in shared get the SearchArticlesFragment
+        if(pageSave.equals("searchPage")){
+
+            //select the item SearchArticles
+
+
+
+            //clear the Shared
+            preferences.edit().putString(MySearchPage, "").commit();
+
+        }
+
+
+
         //3.toolbar execute method Toolbar
         this.configureToolbar();
         //2.TabLayout execute tabLayout
         this.configureViewPagerAndTabs();
+
 
     }
 
