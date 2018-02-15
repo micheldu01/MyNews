@@ -94,6 +94,10 @@ public class TopStoriesFragment extends Fragment {
                         Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position)));
                         startActivity(browserIntent);
 
+
+                        //--------
+                        // TEST
+                        //--------
                         //get URL for save it in a SharedPreferences
                         //implement ShredPreferences
                         mSharedPreferences.edit().putString(URL_NYT, urlArray.get(position)).commit();

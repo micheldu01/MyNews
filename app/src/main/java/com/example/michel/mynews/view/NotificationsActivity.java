@@ -8,7 +8,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.michel.mynews.Notification.AlarmReceiver;
@@ -20,6 +22,15 @@ public class NotificationsActivity extends AppCompatActivity {
 
     //Switch
     private Switch aSwitch;
+    //EditText
+    private EditText editText;
+    //CheckBox
+    private CheckBox arts;
+    private CheckBox business;
+    private CheckBox entrepreneurs;
+    private CheckBox politics;
+    private CheckBox travel;
+    private CheckBox sport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +63,7 @@ public class NotificationsActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         //time for show the notification
         calendar.set(Calendar.HOUR_OF_DAY, 17); // For 1 PM or 2 PM
-        calendar.set(Calendar.MINUTE, 30);
+        calendar.set(Calendar.MINUTE, 47);
         calendar.set(Calendar.SECOND, 0);
         // PendingIntent for AlarmReceiver
         PendingIntent pi = PendingIntent.getBroadcast(this, 0,
