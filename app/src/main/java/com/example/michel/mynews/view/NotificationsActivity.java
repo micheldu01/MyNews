@@ -48,6 +48,8 @@ public class NotificationsActivity extends AppCompatActivity {
     public static final String MyShared = "MyShared";
     public static final String MyEditTextNoti = "MyEditTextNoti";
     public static final String[] MyCheckBoxNoti = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
+    //Share for know if nothing box are checked
+    public static final String CHECK = "NO_CHECK";
     //value for method checkbox
     private int num = 0;
 
@@ -126,8 +128,22 @@ public class NotificationsActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 //if true start notification
                 if (b) {
-                    //start alarmManager
-                    methodAlarmManager();
+
+                    // if a check box is choice accept to start method alarmManager else get a Toast
+                    // get the shared CHECK for know the result
+                    String str = preferences.getString(CHECK, "");
+                    // call method if for start the alarmManager
+                    if(str.equals("CHECK")){
+                        //start alarmManager
+                        methodAlarmManager();
+                        // clear the shared
+                        preferences.edit().putString(CHECK, "NO_CHECK").commit();
+                    }
+                    else{
+                        //get a Toast for ask to choice a check box
+                        Toast.makeText(NotificationsActivity.this, R.string.no_box_was_chosen, Toast.LENGTH_SHORT).show();
+                    }
+
 
                 }
             }
@@ -190,6 +206,8 @@ public class NotificationsActivity extends AppCompatActivity {
 
                             //Save choice box in Shared
                             preferences.edit().putString(MyCheckBoxNoti[i], arrayValue[i]).commit();
+                            //Save CHECK fo said a box is choice
+                            preferences.edit().putString(CHECK, "CHECK").commit();
                     }
                 }
             });
