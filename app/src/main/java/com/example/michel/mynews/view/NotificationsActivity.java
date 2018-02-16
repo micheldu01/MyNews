@@ -42,13 +42,14 @@ public class NotificationsActivity extends AppCompatActivity {
     private CheckBox[] arrayBox;
     private int[] arrayIdBox;
     private int numberarray = 0;
-    private String[] arrayValue;
-    private int i;
+    private String[] arrayValue = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
     // SharedPreferences
     private SharedPreferences preferences;
     public static final String MyShared = "MyShared";
     public static final String MyEditTextNoti = "MyEditTextNoti";
     public static final String[] MyCheckBoxNoti = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
+    //value for method checkbox
+    private int num = 0;
 
 
     @Override
@@ -73,12 +74,15 @@ public class NotificationsActivity extends AppCompatActivity {
         // implement the check box choice
         this.methodCheckBox();
 
-        // method for save check box choice
-        this.methodClickCheckBox();
+        //Boucle for use the method to put the check box in Shared
+        while (num<6){
+            //call method choice and save check box
+            this.methodClickCheckBox(num, arrayBox[num]);
+            num++;
+        }
 
 
     }
-
 
     private void configureToolbar() {
         //Get the toolbar (Serialise)
@@ -159,7 +163,6 @@ public class NotificationsActivity extends AppCompatActivity {
         });
     }
 
-
     //method for implement checkbox
     public void methodCheckBox() {
         //CheckBox name in array
@@ -170,38 +173,25 @@ public class NotificationsActivity extends AppCompatActivity {
         // implement CheckBox
         while (numberarray < 6) {
             arrayBox[numberarray] = (CheckBox) findViewById(arrayIdBox[numberarray]);
-            Log.i("mycoursviewpager", "number = " + numberarray);
             numberarray++;
         }
+
     }
 
     // method for save check box choice in shared
-    public void methodClickCheckBox(){
-
-        // create array for the strings choice
-        arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
-
-        // create number for get the 6 box
-        int number = 0;
-        while (number <6){
+    public void methodClickCheckBox(final int i, final CheckBox checkBox ){
             // implement onClick
-            final int finalNumber = number;
-            arrayBox[number].setOnClickListener(new View.OnClickListener() {
+            checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-
                         // ask if arrayBox[position] id checked
-                        if(arrayBox[0].isChecked()) {
+                        if(checkBox.isChecked()) {
 
                             //Save choice box in Shared
-                            preferences.edit().putString(MyCheckBoxNoti[0], arrayValue[0]).commit();
-
+                            preferences.edit().putString(MyCheckBoxNoti[i], arrayValue[i]).commit();
                     }
                 }
             });
-            Log.e("mynews", String.valueOf(number));
-            number ++;
         }
-    }
 }
