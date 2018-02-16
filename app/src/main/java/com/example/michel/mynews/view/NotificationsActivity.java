@@ -48,8 +48,9 @@ public class NotificationsActivity extends AppCompatActivity {
     public static final String MyShared = "MyShared";
     public static final String MyEditTextNoti = "MyEditTextNoti";
     public static final String[] MyCheckBoxNoti = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
-    //Share for know if nothing box are checked
+    //Share for know if nothing box are checked and nothing edit text
     public static final String CHECK = "NO_CHECK";
+    public static final String TEXT = "NO_TEXT";
     //value for method checkbox
     private int num = 0;
 
@@ -129,11 +130,17 @@ public class NotificationsActivity extends AppCompatActivity {
                 //if true start notification
                 if (b) {
 
-                    // if a check box is choice accept to start method alarmManager else get a Toast
+                    //-----------------------------------------------------//
+                    // if a check box is choice and edit text              //
+                    // accept to start method alarmManager else get a Toast//
+                    //-----------------------------------------------------//
+
+                    // get the shared EditText for know if is null
+                    String str_edit_text = preferences.getString(TEXT, "");
                     // get the shared CHECK for know the result
-                    String str = preferences.getString(CHECK, "");
+                    String str_box = preferences.getString(CHECK, "");
                     // call method if for start the alarmManager
-                    if(str.equals("CHECK")){
+                    if(str_box.equals("CHECK") && str_edit_text.equals("TEXT")){
                         //start alarmManager
                         methodAlarmManager();
                         // clear the shared
@@ -141,10 +148,8 @@ public class NotificationsActivity extends AppCompatActivity {
                     }
                     else{
                         //get a Toast for ask to choice a check box
-                        Toast.makeText(NotificationsActivity.this, R.string.no_box_was_chosen, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NotificationsActivity.this, R.string.no_choice, Toast.LENGTH_LONG).show();
                     }
-
-
                 }
             }
         });
@@ -174,6 +179,26 @@ public class NotificationsActivity extends AppCompatActivity {
 
                 // Use Shared for save the edit text
                 preferences.edit().putString(MyEditTextNoti, edt).commit();
+
+                //---------------------------------
+                // ask is edit text is empty
+                // and save the response in shared
+                //---------------------------------
+
+                //get shared
+                String str_shared = preferences.getString(MyEditTextNoti, "");
+                // if is not empty save NO_EMPTY in shared
+                if(str_shared.equals("")){
+                    // save NO_TEXT in Shared
+                    preferences.edit().putString(TEXT,"NO_TEXT").commit();
+                    Log.e("mynews", "il n'y a pas de texte");
+
+                }
+                else {
+                    preferences.edit().putString(TEXT, "TEXT").commit();
+                    Log.e("mynews", "il y a pas du texte");
+
+                }
 
             }
         });

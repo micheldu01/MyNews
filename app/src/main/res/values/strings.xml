@@ -29,4 +29,7 @@ You have notofications in the right menu to warn you when a new article is publi
     // string Search Activity
     <string name="no_box_was_chosen">no box was chosen</string>
 
+    // STRING NOTIFICATION ACTIVITY
+    <string name="no_choice">You must choose a category and a key word</string>
+
 </resources>
