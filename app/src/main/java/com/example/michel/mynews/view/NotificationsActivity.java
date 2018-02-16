@@ -43,11 +43,12 @@ public class NotificationsActivity extends AppCompatActivity {
     private int[] arrayIdBox;
     private int numberarray = 0;
     private String[] arrayValue;
+    private int i;
     // SharedPreferences
     private SharedPreferences preferences;
     public static final String MyShared = "MyShared";
     public static final String MyEditTextNoti = "MyEditTextNoti";
-
+    public static final String[] MyCheckBoxNoti = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
 
     @Override
@@ -72,14 +73,14 @@ public class NotificationsActivity extends AppCompatActivity {
         // implement the check box choice
         this.methodCheckBox();
 
-        // method for save the check box choice in Shared
-        this.itemClicked();
+        // method for save check box choice
+        this.methodClickCheckBox();
 
 
     }
 
 
-    private void configureToolbar(){
+    private void configureToolbar() {
         //Get the toolbar (Serialise)
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Set the toolbar
@@ -92,7 +93,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
 
     // method for get the time and the design of the notification
-    public void methodAlarmManager(){
+    public void methodAlarmManager() {
         //alarmManager
         AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         //use calendar for define the hour
@@ -103,7 +104,7 @@ public class NotificationsActivity extends AppCompatActivity {
         calendar.set(Calendar.SECOND, 0);
         // PendingIntent for AlarmReceiver
         PendingIntent pi = PendingIntent.getBroadcast(this, 0,
-                new Intent(this, AlarmReceiver.class),PendingIntent.FLAG_UPDATE_CURRENT);
+                new Intent(this, AlarmReceiver.class), PendingIntent.FLAG_UPDATE_CURRENT);
         am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 //repeat start notification one a day
                 AlarmManager.INTERVAL_DAY, pi);
@@ -111,7 +112,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
 
     // method for start notification
-    public void methodSwitch(){
+    public void methodSwitch() {
         //implementation of Switch
         aSwitch = (Switch) findViewById(R.id.switch_notification);
         //implementation of onCheckedChangeListener
@@ -120,7 +121,7 @@ public class NotificationsActivity extends AppCompatActivity {
             // on start onChecked
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 //if true start notification
-                if (b){
+                if (b) {
                     //start alarmManager
                     methodAlarmManager();
 
@@ -130,7 +131,7 @@ public class NotificationsActivity extends AppCompatActivity {
     }
 
 
-    public void methodEditText(){
+    public void methodEditText() {
         editText = (EditText) findViewById(R.id.search_query_term);
 
         //Save Edit text in method addTextChangedListener
@@ -160,34 +161,47 @@ public class NotificationsActivity extends AppCompatActivity {
 
 
     //method for implement checkbox
-    public void methodCheckBox(){
+    public void methodCheckBox() {
         //CheckBox name in array
-        arrayBox = new CheckBox[] {arts, business, entrepreneurs, politics, travel, sport};
+        arrayBox = new CheckBox[]{arts, business, entrepreneurs, politics, travel, sport};
         //CheckBox resource  btn in array
-        arrayIdBox = new int[] {R.id.checkbox_art,R.id.checkbox_business,R.id.checkbox_entrepreneurs,
-                R.id.checkbox_politics,R.id.checkbox_travel,R.id.checkbox_sport};
+        arrayIdBox = new int[]{R.id.checkbox_art, R.id.checkbox_business, R.id.checkbox_entrepreneurs,
+                R.id.checkbox_politics, R.id.checkbox_travel, R.id.checkbox_sport};
         // implement CheckBox
-        while(numberarray <6){
-            arrayBox[numberarray] = (CheckBox)findViewById(arrayIdBox[numberarray]);
-            Log.i("mycoursviewpager","number = " + numberarray);
+        while (numberarray < 6) {
+            arrayBox[numberarray] = (CheckBox) findViewById(arrayIdBox[numberarray]);
+            Log.i("mycoursviewpager", "number = " + numberarray);
             numberarray++;
         }
     }
 
+    // method for save check box choice in shared
+    public void methodClickCheckBox(){
 
-    // create method for get the box check in Shared
-    public void itemClicked() {
-        // create array for save value of checkbox
+        // create array for the strings choice
         arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
 
-        arrayBox[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(arrayBox[0].isChecked()){
-                    Toast.makeText(NotificationsActivity.this, arrayValue[0], Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        // create number for get the 6 box
+        int number = 0;
+        while (number <6){
+            // implement onClick
+            final int finalNumber = number;
+            arrayBox[number].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+
+                        // ask if arrayBox[position] id checked
+                        if(arrayBox[0].isChecked()) {
+
+                            //Save choice box in Shared
+                            preferences.edit().putString(MyCheckBoxNoti[0], arrayValue[0]).commit();
+
+                    }
+                }
+            });
+            Log.e("mynews", String.valueOf(number));
+            number ++;
+        }
     }
 }

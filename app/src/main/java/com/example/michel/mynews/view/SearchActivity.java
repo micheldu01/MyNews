@@ -53,7 +53,7 @@ public class SearchActivity extends AppCompatActivity
     public static final String MyEditText = "MyEditText";
     public static final String MyDateStart = "MyDateStart";
     public static final String MyDateEnd = "MyDateEnd";
-    public static final String[] MyCheckBox = {"values"};
+    public static final String[] MyCheckBox = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
     // for save the page for the intent
     public static final String MySearchPage = "MySearchPage";
     private String searchPage = "searchPage";
