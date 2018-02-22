@@ -13,6 +13,8 @@ public class MonObjet {
     private String section;
 
 
+
+
     public MonObjet(String title, String date, String section) {
         Title = title;
         this.date = date;

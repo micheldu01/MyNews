@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.michel.mynews.R;
 
 /**
@@ -36,6 +37,7 @@ public class NYTWiewHolder extends RecyclerView.ViewHolder {
         textView.setText(monObjet.getTitle());
         textViewdate.setText(monObjet.getDate());
         section.setText(monObjet.getSection());
+        Glide.with(imageView.getContext()).load(monObjet.getImage()).into(imageView);
 
     }
 }
