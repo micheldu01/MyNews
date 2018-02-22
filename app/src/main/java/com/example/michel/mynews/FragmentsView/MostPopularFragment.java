@@ -96,7 +96,7 @@ public class MostPopularFragment extends Fragment {
     private void recyclerViewHTTPNYT(){
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamMostPopular()
+        this.disposable = NytStreams.streamTopStories()
                 .subscribeWith(new DisposableObserver<TopStoriesAPI>() {
 
                     @Override
@@ -108,9 +108,9 @@ public class MostPopularFragment extends Fragment {
 
 
 
+
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
-
 
                             //--------------------------------
                             //  CREATE IF AND ELSE
@@ -118,24 +118,15 @@ public class MostPopularFragment extends Fragment {
                             //--------------------------------
 
                             if(nYresult.getResults().get(i).getMultimedia().size() == 0){
-                                //implement monObjetList for set data in recycler view
+
                                 monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                         nYresult.getResults().get(i).getPublishedDate(),
                                         nYresult.getResults().get(i).getSection()));
 
-                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
-
-                            }
-                            else{
-                                //implement monObjetList for set data in recycler view
-                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
-                                        nYresult.getResults().get(i).getPublishedDate(),
-                                        nYresult.getResults().get(i).getSection(),
-                                        nYresult.getResults().get(i).getMultimedia().get(0).getUrl()));
-
-                                // implement urlArray for get URL
+                                // Implement urlArray for get URL
                                 urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
                             }
+
 
 
                         }

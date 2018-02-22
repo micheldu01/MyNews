@@ -17,7 +17,7 @@ public interface NytService {
     @GET("svc/topstories/v2/home.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")
     Observable<TopStoriesAPI> getTopStories();
 
-    @GET("svc/mostpopular/v2/mostemailed/all-sections/7.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")
+    @GET("svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")
     Observable<TopStoriesAPI> getMostPopular();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
