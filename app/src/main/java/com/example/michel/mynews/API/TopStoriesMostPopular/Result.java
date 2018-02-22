@@ -36,6 +36,11 @@ public class Result {
     @Expose
     public List<RelatedUrl> relatedUrls = null;
 
+    //add media for mostpopular
+    @SerializedName("mulmedia")
+    @Expose
+    public List<Media> multimedia = null;
+
     public Result(String section, String subsection, String title, String _abstract, String url, String publishedDate, List<Multimedium> multimedia, List<RelatedUrl> relatedUrls) {
         this.section = section;
         this.subsection = subsection;
