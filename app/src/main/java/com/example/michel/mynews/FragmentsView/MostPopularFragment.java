@@ -96,7 +96,7 @@ public class MostPopularFragment extends Fragment {
     private void recyclerViewHTTPNYT(){
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamTopStories()
+        this.disposable = NytStreams.streamMostPopular()
                 .subscribeWith(new DisposableObserver<TopStoriesAPI>() {
 
                     @Override
@@ -108,6 +108,7 @@ public class MostPopularFragment extends Fragment {
 
 
 
+                        Log.e("mynews","test most populare ============   " + nYresult.getResults().get(0).getTitle());
 
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
@@ -117,7 +118,7 @@ public class MostPopularFragment extends Fragment {
                             //  IF THEY ARE OR NOT ARE PICTURE
                             //--------------------------------
 
-                            if(nYresult.getResults().get(i).getMultimedia().size() == 0){
+
 
                                 monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                         nYresult.getResults().get(i).getPublishedDate(),
@@ -125,7 +126,8 @@ public class MostPopularFragment extends Fragment {
 
                                 // Implement urlArray for get URL
                                 urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
-                            }
+
+
 
 
 

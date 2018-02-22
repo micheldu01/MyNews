@@ -14,6 +14,7 @@ public class MonObjet {
 
     private String image;
 
+
     public MonObjet(String title, String date, String section, String image) {
         Title = title;
         this.date = date;

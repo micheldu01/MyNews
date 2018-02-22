@@ -36,10 +36,7 @@ public class Result {
     @Expose
     public List<RelatedUrl> relatedUrls = null;
 
-    //add media for mostpopular
-    @SerializedName("media")
-    @Expose
-    public List<Media> media = null;
+
 
     public Result(String section, String subsection, String title, String _abstract, String url, String publishedDate, List<Multimedium> multimedia, List<RelatedUrl> relatedUrls) {
         this.section = section;
@@ -52,17 +49,6 @@ public class Result {
         this.relatedUrls = relatedUrls;
     }
 
-    public Result(String section, String subsection, String title, String _abstract, String url, String publishedDate, List<Multimedium> multimedia, List<RelatedUrl> relatedUrls, List<Media> media) {
-        this.section = section;
-        this.subsection = subsection;
-        this.title = title;
-        this._abstract = _abstract;
-        this.url = url;
-        this.publishedDate = publishedDate;
-        this.multimedia = multimedia;
-        this.relatedUrls = relatedUrls;
-        this.media = media;
-    }
 
     public String getSection() {
         return section;
@@ -96,8 +82,5 @@ public class Result {
         return relatedUrls;
     }
 
-    public List<Media> getMedia() {
-        return media;
-    }
 }
 
