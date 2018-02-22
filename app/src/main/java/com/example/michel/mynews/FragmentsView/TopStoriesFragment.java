@@ -142,13 +142,33 @@ public class TopStoriesFragment extends Fragment {
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
 
-                            //implement monObjetList for set data in recycler view
-                            monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
-                                    nYresult.getResults().get(i).getPublishedDate(),
-                                    nYresult.getResults().get(i).getSection()));
+                            //--------------------------------
+                            //  CREATE IF AND ELSE
+                            //  IF THEY ARE OR NOT ARE PICTURE
+                            //--------------------------------
 
-                            // implement urlArray for get URL
-                            urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+                            if(nYresult.getResults().get(i).getMultimedia().size() == 0){
+
+                                //implement monObjetList for set data in recycler view
+                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
+                                        nYresult.getResults().get(i).getPublishedDate(),
+                                        nYresult.getResults().get(i).getSection()));
+
+                                // implement urlArray for get URL
+                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+                            }
+
+                            else {
+
+                                //implement monObjetList for set data in recycler view
+                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
+                                        nYresult.getResults().get(i).getPublishedDate(),
+                                        nYresult.getResults().get(i).getSection(),
+                                        nYresult.getResults().get(i).getMultimedia().get(0).getUrl()));
+
+                                // implement urlArray for get URL
+                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+                            }
 
 
                         }

@@ -4,10 +4,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by michel on 28/01/2018.
+ * Created by michel on 19/02/2018.
  */
 
-class Multimedium {
+public class Multimedium {
+
 
     @SerializedName("url")
     @Expose
@@ -15,6 +16,9 @@ class Multimedium {
     @SerializedName("format")
     @Expose
     public String format;
+
+    public Multimedium() {
+    }
 
     public Multimedium(String url, String format) {
         this.url = url;
@@ -29,4 +33,3 @@ class Multimedium {
         return format;
     }
 }
-
