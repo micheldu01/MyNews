@@ -171,6 +171,7 @@ public class TopStoriesFragment extends Fragment {
                             }
 
 
+
                         }
                         // implement recycler view with setLayoutManager
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
