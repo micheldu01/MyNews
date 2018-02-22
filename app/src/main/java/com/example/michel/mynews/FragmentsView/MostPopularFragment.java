@@ -110,12 +110,32 @@ public class MostPopularFragment extends Fragment {
 
                         String[] strstories = new String[nYresult.getResults().size()];
                         for(int i = 0; i < nYresult.getResults().size(); i++){
-                            monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
-                                    nYresult.getResults().get(i).getPublishedDate(),
-                                    nYresult.getResults().get(i).getSection()));
 
-                            // Implement urlArray for get URL
-                            urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+
+                            //--------------------------------
+                            //  CREATE IF AND ELSE
+                            //  IF THEY ARE OR NOT ARE PICTURE
+                            //--------------------------------
+
+                            if(nYresult.getResults().get(i).getMultimedia().size() == 0){
+                                //implement monObjetList for set data in recycler view
+                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
+                                        nYresult.getResults().get(i).getPublishedDate(),
+                                        nYresult.getResults().get(i).getSection()));
+
+                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+
+                            }
+                            else{
+                                //implement monObjetList for set data in recycler view
+                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
+                                        nYresult.getResults().get(i).getPublishedDate(),
+                                        nYresult.getResults().get(i).getSection(),
+                                        nYresult.getResults().get(i).getMultimedia().get(0).getUrl()));
+
+                                // implement urlArray for get URL
+                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+                            }
 
 
                         }
