@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by michel on 28/01/2018.
  */
 
-class RelatedUrl {
+public class RelatedUrl {
 
 
     @SerializedName("suggested_link_text")
