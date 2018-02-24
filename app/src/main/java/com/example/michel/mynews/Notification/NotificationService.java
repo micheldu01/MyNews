@@ -4,7 +4,9 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
@@ -12,12 +14,23 @@ import android.widget.Toast;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.view.MainActivity;
 
+import io.reactivex.disposables.Disposable;
+
 /**
  * Created by michel on 03/01/2018.
  */
 
     // create class for use notification service
 public class NotificationService extends Service {
+
+    // DECLARE DISPOSABLE VALUE
+    private Disposable disposable;
+    private String str;
+    // DECLARE SHAREDPREFERENCES VALUES
+    private SharedPreferences preferences;
+    public static final String MyShared = "MyShared";
+    public static final String TITRE = "";
+    public static final String YES_NO = "YES";
 
 
     @Nullable
@@ -30,6 +43,15 @@ public class NotificationService extends Service {
     // create method for create the notification (text, icon ...)
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        //--------------------------------------
+        // CALL METHOD START OR NOT START ALARM
+        //--------------------------------------
+        this.myHTTPAlarm();
+
+        // IMPLEMENT SHAREDPREFERENCES
+        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+
+
         // using NotificationManager for get Alarm
         NotificationManager notify_manager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
@@ -38,24 +60,38 @@ public class NotificationService extends Service {
         // create pendingIntent
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 intent_main_activity, 0);
-        // create notification poupup
-        Notification notification_poupup = new Notification.Builder(this)
-                //add title
-                .setContentTitle("le message est bien passé")
-                //add text
-                .setContentText("ajout du text")
-                //add icon
-                .setSmallIcon(R.mipmap.ic_launcher)
-                //use pendingIntent
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .build();
 
-        // use notify
-        notify_manager.notify(0, notification_poupup);
+        //-------------------
+        // GET SHARED YES_NO
+        //-------------------
+        String stt = preferences.getString(YES_NO, "");
+
+        //------------------------------
+        // IF YES START THE NOTIFICATION
+        //------------------------------
+
+        if(stt.equals("YES"){
+
+            // create notification poupup
+            Notification notification_poupup = new Notification.Builder(this)
+                    //add title
+                    .setContentTitle("le message est bien passé")
+                    //add text
+                    .setContentText("ajout du text")
+                    //add icon
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    //use pendingIntent
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true)
+                    .build();
+
+            // use notify
+            notify_manager.notify(0, notification_poupup);
 
 
-        return START_NOT_STICKY;
+            return START_NOT_STICKY;
+        }
+
     }
 
     @Override
