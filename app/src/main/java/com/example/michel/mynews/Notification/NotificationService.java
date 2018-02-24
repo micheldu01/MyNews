@@ -10,10 +10,9 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.michel.mynews.API.NytStreams;
-import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
+import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.view.MainActivity;
 

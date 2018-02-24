@@ -14,13 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.michel.mynews.API.TopStoriesMostPopular.TopStoriesAPI;
+import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 import com.example.michel.mynews.RecyclerView.NYTAdapter;
-import com.example.michel.mynews.view.ShowArticles;
 
 import java.util.ArrayList;
 import java.util.List;
