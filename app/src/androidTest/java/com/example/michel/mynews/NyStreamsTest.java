@@ -2,6 +2,7 @@ package com.example.michel.mynews;
 
 import com.example.michel.mynews.API.MostPopular.MostPopular;
 import com.example.michel.mynews.API.NytStreams;
+import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 
 import org.junit.Test;
@@ -69,6 +70,32 @@ public class NyStreamsTest {
         MostPopular mostPopular = testObserver.values().get(0);
         // 5 - Ask if getResults is different to null
         assertThat("result NYT",  mostPopular.getResults() !=  null);
+
+    }
+
+    @Test
+    public void businessTest() throws Exception {
+
+        // 1 - Get the stream
+        //     Recupération de la stream
+        io.reactivex.Observable<SearchActicleAPI> observableBusiness =
+                NytStreams.streamBusiness();
+
+        // - 2 Create a new TestObserver
+        //     Création d'un nouveau TestObserver
+        TestObserver<SearchActicleAPI> testObserver = new TestObserver<>();
+
+        // 3 - Launch observable
+        //     Lancement d'un observable
+        observableBusiness.subscribeWith(testObserver)
+                .assertNoErrors() // 3.1 - Check if  no errors
+                .assertNoTimeout() // 3.2 - Check if no Timeout
+                .awaitTerminalEvent(); // - Await the stream terminated before continue
+
+        // 4 - Test if streamTopStories is empty
+        SearchActicleAPI searchActicleAPI = testObserver.values().get(0);
+        // 5 - Ask if getResults is different to null
+        assertThat("result NYT",  searchActicleAPI.getResponse() !=  null);
 
     }
 }
