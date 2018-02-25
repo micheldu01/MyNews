@@ -1,5 +1,6 @@
 package com.example.michel.mynews.API;
 
+import com.example.michel.mynews.API.MostPopular.MostPopular;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 
 import java.util.concurrent.TimeUnit;
@@ -23,7 +24,7 @@ public class NytStreams {
 
     }
 
-    public static Observable<TopStoriesAPI> streamMostPopular() {
+    public static Observable<MostPopular> streamMostPopular() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getMostPopular()
                 .subscribeOn(Schedulers.io())
