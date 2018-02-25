@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.michel.mynews.API.MostPopular.MostPopular;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
@@ -97,10 +98,10 @@ public class MostPopularFragment extends Fragment {
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
         this.disposable = NytStreams.streamMostPopular()
-                .subscribeWith(new DisposableObserver<TopStoriesAPI>() {
+                .subscribeWith(new DisposableObserver<MostPopular>() {
 
                     @Override
-                    public void onNext(TopStoriesAPI nYresult) {
+                    public void onNext(MostPopular mostPopular) {
 
                         //CLEAR  THE ARRAY FOR USE SWIPE REFRESH
                         monObjetList.clear();
@@ -108,10 +109,10 @@ public class MostPopularFragment extends Fragment {
 
 
 
-                        Log.e("mynews","test most populare ============   " + nYresult.getResults().get(0).getTitle());
+                        Log.e("mynews","test most populare ============   " + mostPopular.getResults().get(0).getTitle());
 
-                        String[] strstories = new String[nYresult.getResults().size()];
-                        for(int i = 0; i < nYresult.getResults().size(); i++){
+                        String[] strstories = new String[mostPopular.getResults().size()];
+                        for(int i = 0; i < mostPopular.getResults().size(); i++){
 
                             //--------------------------------
                             //  CREATE IF AND ELSE
@@ -120,12 +121,12 @@ public class MostPopularFragment extends Fragment {
 
 
 
-                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
-                                        nYresult.getResults().get(i).getPublishedDate(),
-                                        nYresult.getResults().get(i).getSection()));
+                                monObjetList.add(new MonObjet(mostPopular.getResults().get(i).getTitle(),
+                                        mostPopular.getResults().get(i).getPublishedDate(),
+                                        mostPopular.getResults().get(i).getSection()));
 
                                 // Implement urlArray for get URL
-                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+                                urlArray.add(new String(mostPopular.getResults().get(i).getUrl()));
 
 
 
