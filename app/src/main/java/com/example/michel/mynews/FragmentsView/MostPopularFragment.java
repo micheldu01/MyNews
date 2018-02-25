@@ -119,17 +119,33 @@ public class MostPopularFragment extends Fragment {
                             //  IF THEY ARE OR NOT ARE PICTURE
                             //--------------------------------
 
+                            //--------------------------------
+                            //  CREATE IF AND ELSE
+                            //  IF THEY ARE OR NOT ARE PICTURE
+                            //--------------------------------
 
+                            if(mostPopular.getResults().get(i).getMedia().size() == 0){
 
+                                //implement monObjetList for set data in recycler view
                                 monObjetList.add(new MonObjet(mostPopular.getResults().get(i).getTitle(),
                                         mostPopular.getResults().get(i).getPublishedDate(),
                                         mostPopular.getResults().get(i).getSection()));
 
-                                // Implement urlArray for get URL
+                                // implement urlArray for get URL
                                 urlArray.add(new String(mostPopular.getResults().get(i).getUrl()));
+                            }
 
+                            else {
 
+                                //implement monObjetList for set data in recycler view
+                                monObjetList.add(new MonObjet(mostPopular.getResults().get(i).getTitle(),
+                                        mostPopular.getResults().get(i).getPublishedDate(),
+                                        mostPopular.getResults().get(i).getSection(),
+                                        mostPopular.getResults().get(i).getMedia().get(0).getMedia_metadata().get(0).getUrl()));
 
+                                // implement urlArray for get URL
+                                urlArray.add(new String(mostPopular.getResults().get(i).getUrl()));
+                            }
 
 
                         }
