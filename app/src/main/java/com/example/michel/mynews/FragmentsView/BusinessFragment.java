@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.michel.mynews.API.MostPopular.MostPopular;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
@@ -74,18 +75,18 @@ public class BusinessFragment extends Fragment {
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
         this.disposable = NytStreams.streamMostPopular()
-                .subscribeWith(new DisposableObserver<TopStoriesAPI>() {
+                .subscribeWith(new DisposableObserver<MostPopular>() {
 
                     @Override
-                    public void onNext(TopStoriesAPI nYresult) {
+                    public void onNext(MostPopular mostPopular) {
 
                         monObjetList.clear();
 
-                        String[] strstories = new String[nYresult.getResults().size()];
-                        for(int i = 0; i < nYresult.getResults().size(); i++){
-                            monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
-                                    nYresult.getResults().get(i).getPublishedDate(),
-                                    nYresult.getResults().get(i).getSection()));
+                        String[] strstories = new String[mostPopular.getResults().size()];
+                        for(int i = 0; i < mostPopular.getResults().size(); i++){
+                            monObjetList.add(new MonObjet(mostPopular.getResults().get(i).getTitle(),
+                                    mostPopular.getResults().get(i).getPublishedDate(),
+                                    mostPopular.getResults().get(i).getSection()));
 
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
