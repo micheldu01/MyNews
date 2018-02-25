@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.michel.mynews.API.MostPopular.MostPopular;
+import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
@@ -35,6 +36,8 @@ public class BusinessFragment extends Fragment {
     private TopStoriesAPI nYresult;
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
+    // CREATE ARRAY FOR GET URL
+    private List<String> urlArray = new ArrayList<>();
 
 
     @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
@@ -74,19 +77,48 @@ public class BusinessFragment extends Fragment {
     private void recyclerViewHTTPNYT(){
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamMostPopular()
-                .subscribeWith(new DisposableObserver<MostPopular>() {
+        this.disposable = NytStreams.streamBusiness()
+                .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
-                    public void onNext(MostPopular mostPopular) {
+                    public void onNext(SearchActicleAPI searchActicleAPI) {
 
                         monObjetList.clear();
 
-                        String[] strstories = new String[mostPopular.getResults().size()];
-                        for(int i = 0; i < mostPopular.getResults().size(); i++){
-                            monObjetList.add(new MonObjet(mostPopular.getResults().get(i).getTitle(),
-                                    mostPopular.getResults().get(i).getPublishedDate(),
-                                    mostPopular.getResults().get(i).getSection()));
+                        String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
+                        for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
+                            //--------------------------------
+                            //  CREATE IF AND ELSE
+                            //  IF THEY ARE OR NOT ARE PICTURE
+                            //--------------------------------
+
+                            //--------------------------------
+                            //  CREATE IF AND ELSE
+                            //  IF THEY ARE OR NOT ARE PICTURE
+                            //--------------------------------
+
+                            if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
+
+                                //implement monObjetList for set data in recycler view
+                                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
+                                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
+                                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName()));
+
+                                // implement urlArray for get URL
+                                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
+                            }
+
+                            else {
+
+                                //implement monObjetList for set data in recycler view
+                                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
+                                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
+                                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
+                                        searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+
+                                // implement urlArray for get URL
+                                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
+                            }
 
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
