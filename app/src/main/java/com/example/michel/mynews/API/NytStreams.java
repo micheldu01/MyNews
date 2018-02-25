@@ -1,6 +1,7 @@
 package com.example.michel.mynews.API;
 
 import com.example.michel.mynews.API.MostPopular.MostPopular;
+import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 
 import java.util.concurrent.TimeUnit;
@@ -31,6 +32,13 @@ public class NytStreams {
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
 
+    }
 
+    public static Observable<SearchActicleAPI> streamBusiness() {
+        NytService nytService = NytService.retrofit.create(NytService.class);
+        return nytService.getBusiness("business")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .timeout(10, TimeUnit.SECONDS);
     }
 }
