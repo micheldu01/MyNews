@@ -1,6 +1,8 @@
 package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +18,7 @@ import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
+import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 import com.example.michel.mynews.RecyclerView.NYTAdapter;
 
@@ -39,7 +42,7 @@ public class BusinessFragment extends Fragment {
     // CREATE ARRAY FOR GET URL
     private List<String> urlArray = new ArrayList<>();
 
-
+    //IMPLEMENT RECYCLER VIEW
     @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
@@ -53,10 +56,17 @@ public class BusinessFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_most_popular, container, false);
 
+
+        //DECLARE BUTTERKNIFE
         ButterKnife.bind(this,view);
 
+        //DECLARE THE SWIPE FOR ADD NEW ARTICLES
         this.configureSwipeRefreshLayout();
 
+        //DECLARE THE ONCLICK FOR USE THE  METHOD TO COLL THE ARTICLE VIEW IN A NEW VIEW
+        this.configureOnClickRecyclerView();
+
+        //DECLARE THE METHOD TO SHOW ARTICLES OF NYT
         this.recyclerViewHTTPNYT();
 
         return view;
@@ -71,6 +81,21 @@ public class BusinessFragment extends Fragment {
 
             }
         });
+    }
+
+    //configure item click on RecyclerView
+    private void configureOnClickRecyclerView(){
+        ItemClickSupport.addTo(recyclerView, R.layout.fragment_most_popular)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+
+                        // INTENT FOR SHOW ARTICLES NYT
+                        Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position)));
+                        startActivity(browserIntent);
+
+                    }
+                });
     }
 
     // 1 - Execute our Stream

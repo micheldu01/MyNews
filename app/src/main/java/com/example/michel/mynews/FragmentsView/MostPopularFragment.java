@@ -33,20 +33,16 @@ import io.reactivex.observers.DisposableObserver;
 
 public class MostPopularFragment extends Fragment {
 
+    //DECLARE DISPOSABLE FOR GET STREAMS
     private Disposable disposable;
-    //RECYCLER VIEW NYT
-    private NYTAdapter nytAdapter;
+    //DECLARE OBJECT FOR GET TREAMS DATA INSIDE
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
     // CREATE ARRAY FOR GET URL
     private List<String> urlArray = new ArrayList<>();
-    //SharedPreferences
-    protected SharedPreferences mSharedPreferences;
-    public static final String MYSHARED = "MyShared";
-    public static final String URL_NYT = "UrlNYT";
 
 
-
+    //IMPLEMENT RECYCLER VIEW
     @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
@@ -61,21 +57,24 @@ public class MostPopularFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_most_popular, container, false);
 
-        //implement SharedPreferences
-        mSharedPreferences = this.getActivity().getSharedPreferences(MYSHARED, context.MODE_PRIVATE);
 
+        //DECLARE BUTTERKNIFE
         ButterKnife.bind(this,view);
 
+        //DECLARE THE SWIPE FOR ADD NEW ARTICLES
         this.configureSwipeRefreshLayout();
 
+        //DECLARE THE ONCLICK FOR USE THE  METHOD TO COLL THE ARTICLE VIEW IN A NEW VIEW
         this.configureOnClickRecyclerView();
 
+        //DECLARE THE METHOD TO SHOW ARTICLES OF NYT
         this.recyclerViewHTTPNYT();
 
         return view;
 
     }
 
+    // METHOD SWIPE
     private void configureSwipeRefreshLayout() {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -157,6 +156,7 @@ public class MostPopularFragment extends Fragment {
 
 
                         }
+                        // IMPLEMENT RECYCLER VIEW
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
                         recyclerView.setAdapter(new NYTAdapter(monObjetList));
 
