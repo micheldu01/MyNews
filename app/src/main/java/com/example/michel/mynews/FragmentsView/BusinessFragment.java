@@ -33,6 +33,7 @@ import io.reactivex.observers.DisposableObserver;
 
 public class BusinessFragment extends Fragment {
 
+    //DECLARE DISPOSABLE
     private Disposable disposable;
     //RECYCLER VIEW NYT
     private NYTAdapter nytAdapter;
@@ -73,6 +74,7 @@ public class BusinessFragment extends Fragment {
 
     }
 
+    //IMPLEMENT METHOD FOR REFRESH ARTICLES
     private void configureSwipeRefreshLayout() {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
