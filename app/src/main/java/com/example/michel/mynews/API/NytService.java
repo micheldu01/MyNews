@@ -26,6 +26,16 @@ public interface NytService {
     @GET("svc/search/v2/articlesearch.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")
     Observable<SearchActicleAPI> getBusiness(@Query("q") String term);
 
+    @GET("svc/search/v2/articlesearch.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")
+    Observable<SearchActicleAPI> getSearchActicles(
+            @Query("q") String term,
+            @Query("begin_date") String beginDate,
+            @Query("end_date") String endDate,
+            @Query("fq=section_name:") String section,
+            @Query("facet_filter") boolean ff);
+
+
+
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/")
             .addConverterFactory(GsonConverterFactory.create())
