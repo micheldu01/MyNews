@@ -15,8 +15,10 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.example.michel.mynews.view.SearchActivity.MyCheckBox;
 import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
 import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
+import static com.example.michel.mynews.view.SearchActivity.MyEditText;
 import static com.example.michel.mynews.view.SearchActivity.MyShared;
 
 /**
@@ -24,7 +26,6 @@ import static com.example.michel.mynews.view.SearchActivity.MyShared;
  */
 
 public class NytStreams {
-
 
 
     public static Observable<TopStoriesAPI> streamTopStories() {
@@ -56,14 +57,20 @@ public class NytStreams {
                 .timeout(10, TimeUnit.SECONDS);
     }
 
-    public static Observable<SearchActicleAPI> streamSearchActivity() {
+    public static Observable<SearchActicleAPI> streamSearchActivity(Context ctx) {
 
-
+        SharedPreferences preferences = ctx.getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+        String term = preferences.getString(MyEditText, "");
+        String beginDate = preferences.getString(MyDateStart, "");
+        String endDate = preferences.getString(MyDateEnd, "");
+        String section = preferences.getString(MyCheckBox[0], "");
+        boolean bb = true;
 
         NytService nytService = NytService.retrofit.create(NytService.class);
-        return nytService.getBusiness(str)
+        return nytService.getSearchActicles(term, beginDate, endDate, section, bb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
+    }
 }
 

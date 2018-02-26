@@ -34,8 +34,6 @@ public interface NytService {
             @Query("fq=section_name:") String section,
             @Query("facet_filter") boolean ff);
 
-
-
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/")
             .addConverterFactory(GsonConverterFactory.create())
