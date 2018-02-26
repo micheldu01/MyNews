@@ -2,6 +2,7 @@ package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,11 +36,15 @@ public class MostPopularFragment extends Fragment {
     private Disposable disposable;
     //RECYCLER VIEW NYT
     private NYTAdapter nytAdapter;
-    private TopStoriesAPI nYresult;
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
     // CREATE ARRAY FOR GET URL
     private List<String> urlArray = new ArrayList<>();
+    //SharedPreferences
+    protected SharedPreferences mSharedPreferences;
+    public static final String MYSHARED = "MyShared";
+    public static final String URL_NYT = "UrlNYT";
+
 
 
     @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
@@ -55,6 +60,9 @@ public class MostPopularFragment extends Fragment {
     // Inflate the layout for this fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_most_popular, container, false);
+
+        //implement SharedPreferences
+        mSharedPreferences = this.getActivity().getSharedPreferences(MYSHARED, context.MODE_PRIVATE);
 
         ButterKnife.bind(this,view);
 

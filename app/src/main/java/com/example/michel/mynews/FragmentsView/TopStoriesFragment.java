@@ -33,20 +33,16 @@ import io.reactivex.observers.DisposableObserver;
 // create TopStoriesFragment
 public class TopStoriesFragment extends Fragment {
 
+    //DECLARE DISPOSABLE FOR GET STREAMS
     private Disposable disposable;
-    //RECYCLER VIEW NYT
-    private NYTAdapter nytAdapter;
-    private TopStoriesAPI nYresult;
+    //DECLARE MONOBJET FOR GET STREAM IN A OBJET
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
-    //SharedPreferences
-    protected SharedPreferences mSharedPreferences;
-    public static final String MYSHARED = "MyShared";
-    public static final String URL_NYT = "UrlNYT";
     // create Array for get and save URL
     private List<String> urlArray = new ArrayList<>();
 
 
+    // IMPLEMENT RECYCLER VIEW
     @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
@@ -61,9 +57,6 @@ public class TopStoriesFragment extends Fragment {
     // Inflate the layout for this fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_top_stories, container, false);
-
-        //implement SharedPreferences
-        mSharedPreferences = this.getActivity().getSharedPreferences(MYSHARED, context.MODE_PRIVATE);
 
         //implement butterKnife
         ButterKnife.bind(this,view);
@@ -92,18 +85,6 @@ public class TopStoriesFragment extends Fragment {
                         // INTENT FOR SHOW ARTICLES NYT
                         Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position)));
                         startActivity(browserIntent);
-
-
-                        //--------
-                        // TEST
-                        //--------
-                        //get URL for save it in a SharedPreferences
-                        //implement ShredPreferences
-                        mSharedPreferences.edit().putString(URL_NYT, urlArray.get(position)).commit();
-
-                        // create intent between this activity and ShowArticleActivity
-                        //startActivity(new Intent(getActivity(), ShowArticles.class));
-
                     }
                 });
     }
