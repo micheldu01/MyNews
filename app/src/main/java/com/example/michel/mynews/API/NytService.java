@@ -31,7 +31,13 @@ public interface NytService {
             @Query("q") String term,
             @Query("begin_date") String beginDate,
             @Query("end_date") String endDate,
-            @Query("fq=section_name:") String section,
+            @Query("fq=section_name:") String section1,
+            @Query("fq=section_name:") String section2,
+            @Query("fq=section_name:") String section3,
+            @Query("fq=section_name:") String section4,
+            @Query("fq=section_name:") String section5,
+            @Query("fq=section_name:") String section6,
+
             @Query("facet_filter") boolean ff);
 
     public static final Retrofit retrofit = new Retrofit.Builder()

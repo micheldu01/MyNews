@@ -63,11 +63,17 @@ public class NytStreams {
         String term = preferences.getString(MyEditText, "");
         String beginDate = preferences.getString(MyDateStart, "");
         String endDate = preferences.getString(MyDateEnd, "");
-        String section = preferences.getString(MyCheckBox[0], "");
+        int number = 0;
+                String[] section = {"section1","section2","section3","section4","section5","section6"};
+                if(number<6){
+                    section[number] = preferences.getString(MyCheckBox[number], "");
+                    number++;
+                }
+
         boolean bb = true;
 
         NytService nytService = NytService.retrofit.create(NytService.class);
-        return nytService.getSearchActicles(term, beginDate, endDate, section, bb)
+        return nytService.getSearchActicles(term, beginDate, endDate, section[0],section[1],section[2],section[3],section[4],section[5], bb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
