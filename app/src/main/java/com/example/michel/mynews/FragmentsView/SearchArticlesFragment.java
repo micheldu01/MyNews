@@ -46,21 +46,18 @@ public class SearchArticlesFragment extends Fragment {
     private List<String> urlArray = new ArrayList<>();
 
     //IMPLEMENT RECYCLER VIEW
-    @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
 
-    // create constructor
     public static SearchArticlesFragment newInstance() {
         return (new SearchArticlesFragment());
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search_articles, container, false);
+    // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_most_popular, container, false);
 
 
         //DECLARE BUTTERKNIFE
@@ -109,7 +106,7 @@ public class SearchArticlesFragment extends Fragment {
     private void recyclerViewHTTPNYT(){
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamSearchActivity(context)
+        this.disposable = NytStreams.streamBusiness()
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
@@ -183,3 +180,4 @@ public class SearchArticlesFragment extends Fragment {
         this.disposeWhenDestroy();
     }
 }
+
