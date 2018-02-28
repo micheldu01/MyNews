@@ -32,4 +32,7 @@ You have notofications in the right menu to warn you when a new article is publi
     // STRING NOTIFICATION ACTIVITY
     <string name="no_choice">You must choose a category and a key word</string>
 
+    // STRING SEARCHARTICLES
+    <string name="no_article">There is no article redone a search</string>
+
 </resources>

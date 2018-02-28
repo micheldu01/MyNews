@@ -3,6 +3,7 @@ package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
@@ -30,6 +32,11 @@ import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
+import static com.example.michel.mynews.view.SearchActivity.MyCheckBox;
+import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
+import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
+import static com.example.michel.mynews.view.SearchActivity.MyEditText;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -44,11 +51,15 @@ public class SearchArticlesFragment extends Fragment {
     private Context context;
     // CREATE ARRAY FOR GET URL
     private List<String> urlArray = new ArrayList<>();
+    //PREFERENCES
+    private SharedPreferences preferences;
 
     //IMPLEMENT RECYCLER VIEW
     @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
+    //IMPLEMENT TEXT VIEW IF THEY NO ARE RESPONSE IN API
+    @BindView(R.id.text_search_articles) TextView no_response;
 
     public static SearchArticlesFragment newInstance() {
         return (new SearchArticlesFragment());
@@ -105,8 +116,24 @@ public class SearchArticlesFragment extends Fragment {
     // 1 - Execute our Stream
     private void recyclerViewHTTPNYT(){
 
+        //---------------------------
+        //  IMPLEMENT AND USE SHARED
+        //---------------------------
+
+
+        String term = preferences.getString(MyEditText,"");
+        String dateStart = preferences.getString(MyDateStart,"");
+        String dateEnd = preferences.getString(MyDateEnd,"");
+        String[] choix = {"choix1","choix2","choix3","choix4","choix5","choix6"} ;
+
+        int a = 0;
+        while (a < 6){
+            choix[a] = preferences.getString(MyCheckBox[a],"");
+            a ++;
+        }
+
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamSearchActivity()
+        this.disposable = NytStreams.streamSearchActivity("michel",choix[0],choix[1],choix[2],choix[3],choix[4],choix[5], true)
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
@@ -114,49 +141,58 @@ public class SearchArticlesFragment extends Fragment {
 
                         monObjetList.clear();
 
-                        Log.e("mynews","(((((((((((((((((   URL  ))))))))))))))))" + searchActicleAPI.getResponse().getDocs().get(0).getMultimedia().get(0).getUrl());
+                        if (searchActicleAPI.getResponse().getDocs().size() == 0){
 
-                        String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
-                        for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
-                            //--------------------------------
-                            //  CREATE IF AND ELSE
-                            //  IF THEY ARE OR NOT ARE PICTURE
-                            //--------------------------------
+                            no_response.setText(R.string.no_article);
 
-                            //--------------------------------
-                            //  CREATE IF AND ELSE
-                            //  IF THEY ARE OR NOT ARE PICTURE
-                            //--------------------------------
+                            Log.e("mynew","zzzzzzzzzzzzzz  je fais un test zzzzzzzzzzzzzzz");
+                        }
+                        else {
 
-                            if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
+                            String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
+                            for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
+                                //--------------------------------
+                                //  CREATE IF AND ELSE
+                                //  IF THEY ARE OR NOT ARE PICTURE
+                                //--------------------------------
 
-                                //implement monObjetList for set data in recycler view
-                                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName()));
+                                //--------------------------------
+                                //  CREATE IF AND ELSE
+                                //  IF THEY ARE OR NOT ARE PICTURE
+                                //--------------------------------
 
-                                // implement urlArray for get URL
-                                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
+                                if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
+
+                                    //implement monObjetList for set data in recycler view
+                                    monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
+                                            searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
+                                            searchActicleAPI.getResponse().getDocs().get(i).getSectionName()));
+
+                                    // implement urlArray for get URL
+                                    urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
+                                }
+
+                                else {
+
+                                    //implement monObjetList for set data in recycler view
+                                    monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
+                                            searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
+                                            searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
+                                            searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+
+                                    // implement urlArray for get URL
+                                    urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
+                                }
+
                             }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                            recyclerView.setAdapter(new NYTAdapter(monObjetList));
 
-                            else {
-
-                                //implement monObjetList for set data in recycler view
-                                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
-
-                                // implement urlArray for get URL
-                                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
-                            }
+                            // 3 - Stop refreshing and clear actual list of users
+                            refreshLayout.setRefreshing(false);
 
                         }
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                        recyclerView.setAdapter(new NYTAdapter(monObjetList));
 
-                        // 3 - Stop refreshing and clear actual list of users
-                        refreshLayout.setRefreshing(false);
                     }
 
                     @Override
