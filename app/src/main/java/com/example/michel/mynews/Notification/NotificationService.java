@@ -130,11 +130,7 @@ public class NotificationService extends Service {
 
                         }
 
-                        //----------------
-                        // TEST RECUP SHARED
-                        //-------------------
 
-                        Log.e("mynews", "ALARMMMMMMMMMM = " + s);
                     }
 
                     @Override

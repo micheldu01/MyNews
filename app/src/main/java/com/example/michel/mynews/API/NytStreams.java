@@ -61,10 +61,21 @@ public class NytStreams {
 
 
         NytService nytService = NytService.retrofit.create(NytService.class);
+        return nytService.getNotification(term, section1,section2,section3,section4,section5,section6, bb)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .timeout(10, TimeUnit.SECONDS);
+    }
+
+    public static Observable<SearchActicleAPI> streamNotification(String term,String section1,String section2,String section3,String section4,String section5,String section6, Boolean bb) {
+
+
+        NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getSearchActicles(term, section1,section2,section3,section4,section5,section6, bb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
     }
 }
+
 

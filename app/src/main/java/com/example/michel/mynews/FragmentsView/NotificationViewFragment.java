@@ -140,7 +140,7 @@ public class NotificationViewFragment extends Fragment {
         }
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamSearchActivity("michel",choix[0],choix[1],choix[2],choix[3],choix[4],choix[5], true)
+        this.disposable = NytStreams.streamSearchActivity(term,choix[0],choix[1],choix[2],choix[3],choix[4],choix[5], true)
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
