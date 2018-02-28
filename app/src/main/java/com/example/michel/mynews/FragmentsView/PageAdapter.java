@@ -33,6 +33,8 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return BusinessFragment.newInstance();
             case 3: //Page number 4
                 return SearchArticlesFragment.newInstance();
+            case 4: //Page number 4
+                return NotificationViewFragment.newInstance();
             default:
                 return null;
         }
@@ -51,6 +53,8 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return "Business";
             case 3: //Page number 4
                 return "Search Articles";
+            case 4: //Page number 5
+                return "Notification Articles";
             default:
                 return null;
         }
