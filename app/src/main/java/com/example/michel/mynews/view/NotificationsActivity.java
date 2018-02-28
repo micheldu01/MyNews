@@ -56,6 +56,10 @@ public class NotificationsActivity extends AppCompatActivity {
     public static final String NOTIF = "NOTIF";
     //value for method checkbox
     private int num = 0;
+    // value for de hour of the notification
+    private int hour_of_day = 15;
+    private int minute = 32;
+    private int second = 0;
 
 
 
@@ -110,9 +114,9 @@ public class NotificationsActivity extends AppCompatActivity {
         //use calendar for define the hour
         Calendar calendar = Calendar.getInstance();
         //time for show the notification
-        calendar.set(Calendar.HOUR_OF_DAY, 17); // For 1 PM or 2 PM
-        calendar.set(Calendar.MINUTE, 47);
-        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, hour_of_day); // For 1 PM or 2 PM
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, second);
         // PendingIntent for AlarmReceiver
         PendingIntent pi = PendingIntent.getBroadcast(this, 0,
                 new Intent(this, AlarmReceiver.class), PendingIntent.FLAG_UPDATE_CURRENT);

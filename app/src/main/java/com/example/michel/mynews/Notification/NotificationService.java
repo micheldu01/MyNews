@@ -154,7 +154,7 @@ public class NotificationService extends Service {
                             preferences.edit().putString(TITRE, "").commit();
 
                             // set the number page for pager adapter in main activity
-                            preferences.edit().putString(NOTIF,"").commit();
+                            preferences.edit().putString(NOTIF,"page4").commit();
 
                         }
 
