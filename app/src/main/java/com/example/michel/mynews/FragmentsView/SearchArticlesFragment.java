@@ -57,7 +57,7 @@ public class SearchArticlesFragment extends Fragment {
     @Override
     // Inflate the layout for this fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_most_popular, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_articles, container, false);
 
 
         //DECLARE BUTTERKNIFE
@@ -106,7 +106,7 @@ public class SearchArticlesFragment extends Fragment {
     private void recyclerViewHTTPNYT(){
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamBusiness()
+        this.disposable = NytStreams.streamSearchActivity()
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
