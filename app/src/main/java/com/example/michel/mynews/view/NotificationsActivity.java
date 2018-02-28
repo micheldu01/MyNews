@@ -25,6 +25,8 @@ import com.example.michel.mynews.R;
 
 import java.util.Calendar;
 
+import static com.example.michel.mynews.view.SearchActivity.MySearchPage;
+
 public class NotificationsActivity extends AppCompatActivity {
 
     //Switch
@@ -51,8 +53,10 @@ public class NotificationsActivity extends AppCompatActivity {
     //Share for know if nothing box are checked and nothing edit text
     public static final String CHECK = "NO_CHECK";
     public static final String TEXT = "NO_TEXT";
+    public static final String NOTIF = "NOTIF";
     //value for method checkbox
     private int num = 0;
+
 
 
     @Override
@@ -145,10 +149,13 @@ public class NotificationsActivity extends AppCompatActivity {
                         methodAlarmManager();
                         // clear the shared
                         preferences.edit().putString(CHECK, "NO_CHECK").commit();
+                        // put the shared for get the number of pager adapter
+                        preferences.edit().putString(NOTIF,"pager4").commit();
                     }
                     else{
                         //get a Toast for ask to choice a check box
                         Toast.makeText(NotificationsActivity.this, R.string.no_choice, Toast.LENGTH_LONG).show();
+                        preferences.edit().putString(NOTIF,"").commit();
                     }
                 }
             }

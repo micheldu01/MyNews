@@ -15,10 +15,12 @@ import android.widget.Toast;
 import com.example.michel.mynews.FragmentsView.PageAdapter;
 import com.example.michel.mynews.R;
 
+import static com.example.michel.mynews.view.NotificationsActivity.NOTIF;
 import static com.example.michel.mynews.view.SearchActivity.MySearchPage;
 import static com.example.michel.mynews.view.SearchActivity.MyShared;
 
 public class MainActivity extends AppCompatActivity {
+
 
     // SharedPreferences
     private SharedPreferences preferences;
@@ -78,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
             //clear the Shared
             preferences.edit().putString(MySearchPage, "").commit();
             pager.setCurrentItem(3);
+        }
+        if(pageSave.equals("page4")){
+            //clear the Shared
+            preferences.edit().putString(NOTIF,"").commit();
+            pager.setCurrentItem(4);
         }
     }
 

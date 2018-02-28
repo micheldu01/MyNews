@@ -32,6 +32,8 @@ import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
+import static com.example.michel.mynews.view.NotificationsActivity.MyCheckBoxNoti;
+import static com.example.michel.mynews.view.NotificationsActivity.MyEditTextNoti;
 import static com.example.michel.mynews.view.SearchActivity.MyCheckBox;
 import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
 import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
@@ -126,14 +128,14 @@ public class NotificationViewFragment extends Fragment {
         //---------------------------
 
 
-        String term = preferences.getString(MyEditText,"");
+        String term = preferences.getString(MyEditTextNoti,"");
         String dateStart = preferences.getString(MyDateStart,"");
         String dateEnd = preferences.getString(MyDateEnd,"");
         String[] choix = {"choix1","choix2","choix3","choix4","choix5","choix6"} ;
 
         int a = 0;
         while (a < 6){
-            choix[a] = preferences.getString(MyCheckBox[a],"");
+            choix[a] = preferences.getString(MyCheckBoxNoti[a],"");
             a ++;
         }
 
