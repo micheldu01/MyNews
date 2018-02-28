@@ -28,7 +28,14 @@ public interface NytService {
 
     @GET("svc/search/v2/articlesearch.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")
     Observable<SearchActicleAPI> getSearchActicles(
-            @Query("q") String term);
+            @Query("q") String term,
+            @Query("fq=section_name:") String section1,
+            @Query("fq=section_name:") String section2,
+            @Query("fq=section_name:") String section3,
+            @Query("fq=section_name:") String section4,
+            @Query("fq=section_name:") String section5,
+            @Query("fq=section_name:") String section6,
+            @Query("facet_filter") boolean bb);
 
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/")

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
@@ -36,6 +37,7 @@ import static com.example.michel.mynews.view.SearchActivity.MyCheckBox;
 import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
 import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
 import static com.example.michel.mynews.view.SearchActivity.MyEditText;
+import static com.example.michel.mynews.view.SearchActivity.MyShared;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,12 +56,16 @@ public class SearchArticlesFragment extends Fragment {
     //PREFERENCES
     private SharedPreferences preferences;
 
+
     //IMPLEMENT RECYCLER VIEW
     @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
     @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout refreshLayout;
 
     //IMPLEMENT TEXT VIEW IF THEY NO ARE RESPONSE IN API
     @BindView(R.id.text_search_articles) TextView no_response;
+
+
+
 
     public static SearchArticlesFragment newInstance() {
         return (new SearchArticlesFragment());
@@ -70,6 +76,8 @@ public class SearchArticlesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_articles, container, false);
 
+        //DECLARE SHARED
+        preferences = this.getActivity().getSharedPreferences (MyShared, Context.MODE_PRIVATE);
 
         //DECLARE BUTTERKNIFE
         ButterKnife.bind(this,view);
