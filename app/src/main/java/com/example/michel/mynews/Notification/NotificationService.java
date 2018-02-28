@@ -12,12 +12,19 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.example.michel.mynews.API.NytStreams;
+import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.view.MainActivity;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
+
+import static com.example.michel.mynews.view.NotificationsActivity.MyCheckBoxNoti;
+import static com.example.michel.mynews.view.NotificationsActivity.MyEditTextNoti;
+import static com.example.michel.mynews.view.NotificationsActivity.NOTIF;
+import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
+import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
 
 /**
  * Created by michel on 03/01/2018.
@@ -97,12 +104,28 @@ public class NotificationService extends Service {
 
     private void myHTTPAlarm() {
 
+        //---------------------------
+        //  IMPLEMENT AND USE SHARED
+        //---------------------------
+
+
+        String term = preferences.getString(MyEditTextNoti,"");
+        String dateStart = preferences.getString(MyDateStart,"");
+        String dateEnd = preferences.getString(MyDateEnd,"");
+        String[] choix = {"choix1","choix2","choix3","choix4","choix5","choix6"} ;
+
+        int a = 0;
+        while (a < 6){
+            choix[a] = preferences.getString(MyCheckBoxNoti[a],"");
+            a ++;
+        }
+
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamTopStories()
-                .subscribeWith(new DisposableObserver<TopStoriesAPI>() {
+        this.disposable = NytStreams.streamNotification(term,choix[0],choix[1],choix[2],choix[3],choix[4],choix[5], true)
+                .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
-                    public void onNext(TopStoriesAPI nYresult) {
+                    public void onNext(SearchActicleAPI searchActicleAPI) {
 
                         //--------------------------------
                         //  I GET THE CURRENT TITRE
@@ -113,7 +136,7 @@ public class NotificationService extends Service {
                         //-----------------------------------
 
                         // I GET THE CURRENT TITRE
-                        str = nYresult.getResults().get(0).getTitle();
+                        str = searchActicleAPI.getResponse().getDocs().get(0).getHeadline().getMain();
                         // I GET THE SHARED
                         String s = preferences.getString(TITRE,"");
                         // I COMPARE THEM
@@ -126,10 +149,14 @@ public class NotificationService extends Service {
                         }
                         else{
                             Log.e("mynews","test du if WWWWWWWWWWWWWWWWWWWWWWWWW" + s);
-                            preferences.edit().putString(TITRE, "je suis laurent").commit();
+
+                            // clear the shared
+                            preferences.edit().putString(TITRE, "").commit();
+
+                            // set the number page for pager adapter in main activity
+                            preferences.edit().putString(NOTIF,"").commit();
 
                         }
-
 
                     }
 

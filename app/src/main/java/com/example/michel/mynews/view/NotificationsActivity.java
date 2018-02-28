@@ -155,7 +155,7 @@ public class NotificationsActivity extends AppCompatActivity {
                     else{
                         //get a Toast for ask to choice a check box
                         Toast.makeText(NotificationsActivity.this, R.string.no_choice, Toast.LENGTH_LONG).show();
-                        preferences.edit().putString(NOTIF,"").commit();
+
                     }
                 }
             }
