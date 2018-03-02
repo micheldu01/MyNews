@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -73,18 +74,23 @@ public class MainActivity extends AppCompatActivity {
         //------------------
         // Declare SharedPreferences
         preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
-        // get value in shared
+        // get value search articles in shared
         String pageSave = preferences.getString(MySearchPage,"");
         // if they are value in shared get the SearchArticlesFragment
         if(pageSave.equals("searchPage")){
             //clear the Shared
             preferences.edit().putString(MySearchPage, "").commit();
             pager.setCurrentItem(3);
+            Log.e("mynew","la page 3");
         }
-        if(pageSave.equals("page4")){
+        //get value notification in shared
+        String notification = preferences.getString(NOTIF, "");
+        if(notification.equals("page4")){
+
             //clear the Shared
             preferences.edit().putString(NOTIF,"").commit();
             pager.setCurrentItem(4);
+            Log.e("mynew","affichage de la page 4");
         }
     }
 
@@ -120,3 +126,5 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 }
+
+

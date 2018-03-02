@@ -57,10 +57,9 @@ public class NotificationsActivity extends AppCompatActivity {
     //value for method checkbox
     private int num = 0;
     // value for de hour of the notification
-    private int hour_of_day = 15;
-    private int minute = 32;
+    private int hour_of_day = 11;
+    private int minute = 27;
     private int second = 0;
-
 
 
     @Override
@@ -91,7 +90,6 @@ public class NotificationsActivity extends AppCompatActivity {
             this.methodClickCheckBox(num, arrayBox[num]);
             num++;
         }
-
 
     }
 
@@ -153,8 +151,7 @@ public class NotificationsActivity extends AppCompatActivity {
                         methodAlarmManager();
                         // clear the shared
                         preferences.edit().putString(CHECK, "NO_CHECK").commit();
-                        // put the shared for get the number of pager adapter
-                        preferences.edit().putString(NOTIF,"pager4").commit();
+
                     }
                     else{
                         //get a Toast for ask to choice a check box

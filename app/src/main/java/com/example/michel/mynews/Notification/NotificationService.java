@@ -14,6 +14,7 @@ import android.util.Log;
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
+import com.example.michel.mynews.FragmentsView.NotificationViewFragment;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.view.MainActivity;
 
@@ -53,34 +54,51 @@ public class NotificationService extends Service {
     // create method for create the notification (text, icon ...)
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+
+        // IMPLEMENT SHAREDPREFERENCES
+        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+
         //--------------------------------------
         // CALL METHOD START OR NOT START ALARM
         //--------------------------------------
         this.myHTTPAlarm();
 
-        // IMPLEMENT SHAREDPREFERENCES
-        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+        Log.e("mynews","je lance la methode");
 
-
-        // using NotificationManager for get Alarm
-        NotificationManager notify_manager = (NotificationManager)
-                getSystemService(NOTIFICATION_SERVICE);
-        // create intent
-        Intent intent_main_activity = new Intent(this.getApplicationContext(), MainActivity.class);
-        // create pendingIntent
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-                intent_main_activity, 0);
 
         //-------------------
         // GET SHARED YES_NO
         //-------------------
-        String stt = preferences.getString(YES_NO, "");
+        String yes_no = preferences.getString(YES_NO, "");
 
         //------------------------------
         // IF YES START THE NOTIFICATION
         //------------------------------
 
-        if(stt.equals("YES")) {
+        if(yes_no.equals("")) {
+
+            // clear YES_NO
+            preferences.edit().putString(YES_NO,"");
+
+            // put the shared for get the number of pager adapter
+            preferences.edit().putString(NOTIF,"pager4").commit();
+            //TEST DU SHARED
+            String page4 = preferences.getString(NOTIF,"");
+            Log.e("mynews","sauvegarde de la page4" + page4);
+
+
+            // using NotificationManager for get Alarm
+            NotificationManager notify_manager = (NotificationManager)
+                    getSystemService(NOTIFICATION_SERVICE);
+            // create intent
+            Intent intent_main_activity = new Intent(this.getApplicationContext(), MainActivity.class);
+            // create pendingIntent
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                    intent_main_activity, 0);
+
+
+
+            Log.e("mynews","je lance le yes");
 
             // create notification poupup
             Notification notification_poupup = new Notification.Builder(this)
@@ -97,6 +115,7 @@ public class NotificationService extends Service {
 
             // use notify
             notify_manager.notify(0, notification_poupup);
+
             }
 
             return START_NOT_STICKY;
@@ -140,22 +159,12 @@ public class NotificationService extends Service {
                         // I GET THE SHARED
                         String s = preferences.getString(TITRE,"");
                         // I COMPARE THEM
-                        Log.e("mynews","récupération du shared &&&&&&&&&&&&" + s);
 
                         if(!str.equals(s)){
-                            Log.e("mynews","test du if +++++++++++++++++++++++++" + s);
+
                             preferences.edit().putString(TITRE, str).commit();
+
                             preferences.edit().putString(YES_NO, "YES");
-                        }
-                        else{
-                            Log.e("mynews","test du if WWWWWWWWWWWWWWWWWWWWWWWWW" + s);
-
-                            // clear the shared
-                            preferences.edit().putString(TITRE, "").commit();
-
-                            // set the number page for pager adapter in main activity
-                            preferences.edit().putString(NOTIF,"page4").commit();
-
                         }
 
                     }
