@@ -18,7 +18,7 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return(5);
+        return(3);
     }
 
     // create 3 page 1 2 3
@@ -31,10 +31,6 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return MostPopularFragment.newInstance();
             case 2: //Page number 3
                 return BusinessFragment.newInstance();
-            case 3: //Page number 4
-                return SearchArticlesFragment.newInstance();
-            case 4: //Page number 4
-                return NotificationViewFragment.newInstance();
             default:
                 return null;
         }
@@ -51,10 +47,6 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return "Most Popular";
             case 2: //Page number 3
                 return "Business";
-            case 3: //Page number 4
-                return "Search Articles";
-            case 4: //Page number 5
-                return "Notification Articles";
             default:
                 return null;
         }
