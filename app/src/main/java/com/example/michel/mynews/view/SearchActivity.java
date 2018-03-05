@@ -128,7 +128,7 @@ public class SearchActivity extends AppCompatActivity
             preferences.edit().putString(MySearchPage, searchPage).commit();
 
             //Create intent for go to MainActivity for look the articles choices
-            startActivity(new Intent(SearchActivity.this, MainActivity.class));
+            startActivity(new Intent(SearchActivity.this, ViewSearchArticles.class));
         }
 
         // Method if nothing box are choice dont get the intent but get a toast
