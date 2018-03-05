@@ -17,6 +17,7 @@ import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.FragmentsView.NotificationViewFragment;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.view.MainActivity;
+import com.example.michel.mynews.view.ViewNotifications;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
@@ -91,7 +92,7 @@ public class NotificationService extends Service {
             NotificationManager notify_manager = (NotificationManager)
                     getSystemService(NOTIFICATION_SERVICE);
             // create intent
-            Intent intent_main_activity = new Intent(this.getApplicationContext(), MainActivity.class);
+            Intent intent_main_activity = new Intent(this.getApplicationContext(), ViewNotifications.class);
             // create pendingIntent
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                     intent_main_activity, 0);
