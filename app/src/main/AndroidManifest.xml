@@ -50,6 +50,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />
         </activity>
+        <activity android:name=".view.ViewSearchArticles"
+            android:label="View articles"
+            android:parentActivityName=".view.SearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.SearchActivity" />
+        </activity>
+
+
 
         <receiver android:name=".Notification.AlarmReceiver" />
 
@@ -60,3 +69,7 @@
     </application>
 
 </manifest>
+
+
+
+
