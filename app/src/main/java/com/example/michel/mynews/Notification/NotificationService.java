@@ -96,8 +96,6 @@ public class NotificationService extends Service {
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                     intent_main_activity, 0);
 
-
-
             Log.e("mynews","je lance le yes");
 
             // create notification poupup

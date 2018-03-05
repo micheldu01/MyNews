@@ -69,29 +69,6 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(pager);
         // 3 - Design purpose. Tabs have the same width
         tabs.setTabMode(TabLayout.MODE_FIXED);
-        //------------------
-        //get CurrentItem
-        //------------------
-        // Declare SharedPreferences
-        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
-        // get value search articles in shared
-        String pageSave = preferences.getString(MySearchPage,"");
-        // if they are value in shared get the SearchArticlesFragment
-        if(pageSave.equals("searchPage")){
-            //clear the Shared
-            preferences.edit().putString(MySearchPage, "").commit();
-            pager.setCurrentItem(3);
-            Log.e("mynew","la page 3");
-        }
-        //get value notification in shared
-        String notification = preferences.getString(NOTIF, "");
-        if(notification.equals("page4")){
-
-            //clear the Shared
-            preferences.edit().putString(NOTIF,"").commit();
-            pager.setCurrentItem(4);
-            Log.e("mynew","affichage de la page 4");
-        }
     }
 
     //2.Toolbar_menu implement button in Toolbar
