@@ -133,7 +133,6 @@ public class ViewNotificationArticles extends AppCompatActivity {
         //  IMPLEMENT AND USE SHARED
         //---------------------------
 
-
         String term = preferences.getString(MyEditTextNoti,"");
         String dateStart = preferences.getString(MyDateStart,"");
         String dateEnd = preferences.getString(MyDateEnd,"");
