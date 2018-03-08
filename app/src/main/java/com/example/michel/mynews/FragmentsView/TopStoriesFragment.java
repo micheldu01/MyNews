@@ -2,7 +2,6 @@ package com.example.michel.mynews.FragmentsView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.API.NytStreams;
+import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
@@ -115,7 +114,7 @@ public class TopStoriesFragment extends Fragment {
                         monObjetList.clear();
                         urlArray.clear();
 
-
+                        Log.e("mynews","TopStoriesFragment URL image" + nYresult.getResults().get(0).getMultimedia().get(0).getUrl());
                         //CREATE ARRAY FOR GET DATA FROM NYT AND RETURN IT IN RECYCLER VIEW
 
                         // Create array string for get data from nyt api
@@ -145,6 +144,7 @@ public class TopStoriesFragment extends Fragment {
                                         nYresult.getResults().get(i).getPublishedDate(),
                                         nYresult.getResults().get(i).getSection(),
                                         nYresult.getResults().get(i).getMultimedia().get(0).getUrl()));
+
 
                                 // implement urlArray for get URL
                                 urlArray.add(new String(nYresult.getResults().get(i).getUrl()));

@@ -13,10 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.michel.mynews.API.MostPopular.MostPopular;
+import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.API.TopStories.TopStoriesAPI;
-import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.R;
 import com.example.michel.mynews.RecyclerView.ItemClickSupport;
 import com.example.michel.mynews.RecyclerView.MonObjet;
@@ -112,7 +111,7 @@ public class BusinessFragment extends Fragment {
 
                         monObjetList.clear();
 
-                        Log.e("mynews","(((((((((((((((((   URL  ))))))))))))))))" + searchActicleAPI.getResponse().getDocs().get(0).getMultimedia().get(0).getUrl());
+                        Log.e("mynewsBusinessFragment","recupération de l'URL de la photo ="+searchActicleAPI.getResponse().getDocs().get(0).getMultimedia().get(0).getUrl());
 
                         String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
                         for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
@@ -144,6 +143,7 @@ public class BusinessFragment extends Fragment {
                                         searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
                                         searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
                                         searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+
 
                                 // implement urlArray for get URL
                                 urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));

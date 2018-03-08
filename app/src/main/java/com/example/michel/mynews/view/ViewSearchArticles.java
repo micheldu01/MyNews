@@ -166,14 +166,12 @@ public class ViewSearchArticles extends AppCompatActivity {
 
                             no_response.setText(R.string.no_article);
 
-                            Log.e("mynew","zzzzzzzzzzzzzz  je fais un test zzzzzzzzzzzzzzz");
                         }
                         else {
 
                             String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
                             for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
 
-                                Log.e("mynew","View Search Articles , récupération du titre = " + searchActicleAPI.getResponse().getDocs().get(0).getHeadline().getMain());
 
                                 //--------------------------------
                                 //  CREATE IF AND ELSE
@@ -182,12 +180,14 @@ public class ViewSearchArticles extends AppCompatActivity {
 
                                 if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
 
-                                    Log.e("mynews","recupération du titre de via l'API  = " + searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain());
 
                                     //implement monObjetList for set data in recycler view
                                     monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
                                             searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
                                             searchActicleAPI.getResponse().getDocs().get(i).getSectionName()));
+
+                                    Log.e("mynews","ViewSearchActivity  recupération de l'URL image  = imagehttps://static01.nyt.com/" + searchActicleAPI.getResponse().getDocs().get(0).getMultimedia().get(0).getUrl());
+
 
                                     // implement urlArray for get URL
                                     urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
@@ -199,7 +199,8 @@ public class ViewSearchArticles extends AppCompatActivity {
                                     monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
                                             searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
                                             searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
-                                            searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+                                            "imagehttps://static01.nyt.com/images/2018/03/08/briefing/08us-ambriefing-women-AMCORE/08us-ambriefing-women-thumbStandard.jpg"));
+                                            //"imagehttps://static01.nyt.com/"+searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
 
                                     // implement urlArray for get URL
                                     urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
@@ -237,7 +238,7 @@ public class ViewSearchArticles extends AppCompatActivity {
         this.disposeWhenDestroy();
     }
 }
-
+//imagehttps://static01.nyt.com/images/2018/03/08/briefing/08us-ambriefing-women-AMCORE/08us-ambriefing-women-thumbStandard.jpg
 
 
 
