@@ -34,10 +34,8 @@ import io.reactivex.observers.DisposableObserver;
 
 import static com.example.michel.mynews.view.NotificationsActivity.MyCheckBoxNoti;
 import static com.example.michel.mynews.view.NotificationsActivity.MyEditTextNoti;
-import static com.example.michel.mynews.view.SearchActivity.MyCheckBox;
 import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
 import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
-import static com.example.michel.mynews.view.SearchActivity.MyEditText;
 import static com.example.michel.mynews.view.SearchActivity.MyShared;
 
 /**
@@ -158,6 +156,7 @@ public class NotificationViewFragment extends Fragment {
 
                             String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
                             for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
+
                                 //--------------------------------
                                 //  CREATE IF AND ELSE
                                 //  IF THEY ARE OR NOT ARE PICTURE

@@ -116,7 +116,7 @@ public class ViewSearchArticles extends AppCompatActivity {
 
     //configure item click on RecyclerView
     private void configureOnClickRecyclerView(){
-        ItemClickSupport.addTo(recyclerView, R.layout.fragment_most_popular)
+        ItemClickSupport.addTo(recyclerView, R.layout.activity_view_search_articles)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -141,6 +141,9 @@ public class ViewSearchArticles extends AppCompatActivity {
         String dateEnd = preferences.getString(MyDateEnd,"");
         String[] choix = {"","","","","",""} ;
 
+        //TEST RECUPERATION TERM
+        Log.e("mynews", "recuperation du term = " + term);
+
 
         int a = 0;
         while (a < 6){
@@ -151,7 +154,7 @@ public class ViewSearchArticles extends AppCompatActivity {
         }
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamSearchActivity(term,"arts",choix[1],choix[2],choix[3],choix[4],choix[5], false)
+        this.disposable = NytStreams.streamSearchActivity(term,choix[0],choix[1],choix[2],choix[3],choix[4],choix[5], true)
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
@@ -169,10 +172,8 @@ public class ViewSearchArticles extends AppCompatActivity {
 
                             String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
                             for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
-                                //--------------------------------
-                                //  CREATE IF AND ELSE
-                                //  IF THEY ARE OR NOT ARE PICTURE
-                                //--------------------------------
+
+                                Log.e("mynew","View Search Articles , récupération du titre = " + searchActicleAPI.getResponse().getDocs().get(0).getHeadline().getMain());
 
                                 //--------------------------------
                                 //  CREATE IF AND ELSE
@@ -181,7 +182,7 @@ public class ViewSearchArticles extends AppCompatActivity {
 
                                 if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
 
-                                    Log.e("mynews","recupération du titre de via l'API  = " + searchActicleAPI.getResponse().getDocs().get(i).getHeadline());
+                                    Log.e("mynews","recupération du titre de via l'API  = " + searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain());
 
                                     //implement monObjetList for set data in recycler view
                                     monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
