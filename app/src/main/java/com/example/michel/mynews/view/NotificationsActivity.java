@@ -5,9 +5,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,13 +19,10 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.michel.mynews.Fragments.BoxFragment;
 import com.example.michel.mynews.Notification.AlarmReceiver;
 import com.example.michel.mynews.R;
 
 import java.util.Calendar;
-
-import static com.example.michel.mynews.view.SearchActivity.MySearchPage;
 
 public class NotificationsActivity extends AppCompatActivity {
 
@@ -57,8 +54,8 @@ public class NotificationsActivity extends AppCompatActivity {
     //value for method checkbox
     private int num = 0;
     // value for de hour of the notification
-    private int hour_of_day = 19;
-    private int minute = 24;
+    private int hour_of_day = 11;
+    private int minute = 14;
     private int second = 0;
 
 

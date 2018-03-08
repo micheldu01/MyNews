@@ -4,9 +4,9 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +20,6 @@ import com.example.michel.mynews.Fragments.BtnSearchFragment;
 import com.example.michel.mynews.Fragments.DateFragment;
 import com.example.michel.mynews.R;
 
-import java.lang.reflect.Array;
 import java.util.Calendar;
 
 public class SearchActivity extends AppCompatActivity

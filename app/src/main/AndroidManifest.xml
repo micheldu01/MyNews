@@ -66,6 +66,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />
         </activity>
+        <activity android:name=".view.ViewNotificationArticles"
+            android:label="Articles notifications"
+            android:parentActivityName=".view.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.MainActivity" />
+        </activity>
 
         <receiver android:name=".Notification.AlarmReceiver" />
 
@@ -73,7 +80,9 @@
             android:name=".Notification.NotificationService"
             android:enabled="true" />
 
-        <activity android:name=".view.ViewNotificationArticles"></activity>
+
     </application>
 
 </manifest>
+
+

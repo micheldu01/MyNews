@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -65,8 +67,9 @@ public class ViewNotificationArticles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notification_articles);
 
+
         //DECLARE SHARED
-        preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
+        preferences = getSharedPreferences (MyShared, Context.MODE_PRIVATE);
 
         //DECLARE BUTTERKNIFE
         ButterKnife.bind(this);
@@ -80,8 +83,22 @@ public class ViewNotificationArticles extends AppCompatActivity {
         //DECLARE THE METHOD TO SHOW ARTICLES OF NYT
         this.recyclerViewHTTPNYT();
 
+        //show the toolbar
+        this.configureToolbar();
+
+
     }
 
+    private void configureToolbar() {
+        //Get the toolbar (Serialise)
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Set the toolbar
+        setSupportActionBar(toolbar);
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+    }
 
     //IMPLEMENT METHOD FOR REFRESH ARTICLES
     private void configureSwipeRefreshLayout() {
@@ -96,7 +113,7 @@ public class ViewNotificationArticles extends AppCompatActivity {
 
     //configure item click on RecyclerView
     private void configureOnClickRecyclerView(){
-        ItemClickSupport.addTo(recyclerView, R.layout.fragment_most_popular)
+        ItemClickSupport.addTo(recyclerView, R.layout.activity_view_search_articles)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
