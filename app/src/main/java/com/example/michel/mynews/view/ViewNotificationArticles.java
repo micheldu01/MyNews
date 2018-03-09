@@ -157,7 +157,6 @@ public class ViewNotificationArticles extends AppCompatActivity {
 
                             no_response.setText(R.string.no_article);
 
-                            Log.e("mynew","zzzzzzzzzzzzzz  je fais un test zzzzzzzzzzzzzzz");
                         }
                         else {
 
@@ -169,10 +168,6 @@ public class ViewNotificationArticles extends AppCompatActivity {
                                 //  IF THEY ARE OR NOT ARE PICTURE
                                 //--------------------------------
 
-                                //--------------------------------
-                                //  CREATE IF AND ELSE
-                                //  IF THEY ARE OR NOT ARE PICTURE
-                                //--------------------------------
 
                                 if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
 

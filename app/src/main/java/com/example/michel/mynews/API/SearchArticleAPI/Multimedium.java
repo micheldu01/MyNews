@@ -29,10 +29,10 @@ public class Multimedium {
     public String url;
     @SerializedName("height")
     @Expose
-    public Integer height;
+    public Integer height = 75;
     @SerializedName("width")
     @Expose
-    public Integer width;
+    public Integer width = 75;
     @SerializedName("legacy")
     @Expose
     public Legacy legacy;
