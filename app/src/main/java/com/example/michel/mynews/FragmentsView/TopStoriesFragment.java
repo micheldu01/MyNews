@@ -132,6 +132,8 @@ public class TopStoriesFragment extends Fragment {
                                 monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
                                         nYresult.getResults().get(i).getPublishedDate(),
                                         nYresult.getResults().get(i).getSection()));
+                                Log.e("mynews","TopStorie  recupération du titre  = " + nYresult.getResults().get(i).getTitle());
+
 
                                 // implement urlArray for get URL
                                 urlArray.add(new String(nYresult.getResults().get(i).getUrl()));

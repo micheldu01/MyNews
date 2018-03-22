@@ -142,8 +142,7 @@ public class BusinessFragment extends Fragment {
                                 monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
                                         searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
                                         searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
-                                        "imagehttps://static01.nyt.com/images/2018/03/08/us/08us-ambriefing-snow-AMCORE/merlin_135165072_a92ac005-6f4e-4a2a-98b1-0d4df7c80609-thumbStandard.jpg"));
-                                        //"imagehttps://static01.nyt.com/"+searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+                                        "https://static01.nyt.com/"+searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
 
 
                                 // implement urlArray for get URL

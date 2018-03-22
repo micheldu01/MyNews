@@ -186,7 +186,8 @@ public class ViewNotificationArticles extends AppCompatActivity {
                                     monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
                                             searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
                                             searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
-                                            searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+                                    "https://static01.nyt.com/"+searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+
 
                                     // implement urlArray for get URL
                                     urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
