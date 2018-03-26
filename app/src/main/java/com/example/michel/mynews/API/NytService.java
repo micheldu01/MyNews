@@ -29,6 +29,7 @@ public interface NytService {
     @GET("svc/search/v2/articlesearch.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")
     Observable<SearchActicleAPI> getSearchActicles(
             @Query("q") String term,
+            @Query("begin_date") String begin_date,
             @Query("facet_filter") boolean bb);
 
     @GET("svc/search/v2/articlesearch.json?api-key=c69e095eadba4c708c5d4ffeb0699a41")

@@ -140,11 +140,13 @@ public class ViewSearchArticles extends AppCompatActivity {
 
         String term = preferences.getString(MyEditText,"");
         String dateStart = preferences.getString(MyDateStart,"");
+        Log.e("mynews","recuperation de la date = "+ dateStart);
         String dateEnd = preferences.getString(MyDateEnd,"");
 
 
         //TEST RECUPERATION TERM
         Log.e("mynews", "recuperation du term = " + term);
+
 
 
         int a = 0;
@@ -156,7 +158,7 @@ public class ViewSearchArticles extends AppCompatActivity {
         }
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamSearchActivity(term + choix[0] + choix[1] + choix[2] + choix[3] + choix[4] + choix[5], true)
+        this.disposable = NytStreams.streamSearchActivity(term + choix[0] + choix[1] + choix[2] + choix[3] + choix[4] + choix[5],"20180312", true)
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
 
@@ -166,6 +168,7 @@ public class ViewSearchArticles extends AppCompatActivity {
                         monObjetList.clear();
 
                         Log.e("mynews","choix des cases à cocher = " + choix[0]);
+
 
 
                         if (searchActicleAPI.getResponse().getDocs().size() == 0){

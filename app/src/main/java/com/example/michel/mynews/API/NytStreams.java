@@ -16,7 +16,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class NytStreams {
 
-
     public static Observable<TopStoriesAPI> streamTopStories() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getTopStories()
@@ -46,11 +45,10 @@ public class NytStreams {
                 .timeout(10, TimeUnit.SECONDS);
     }
 
-    public static Observable<SearchActicleAPI> streamSearchActivity(String term, Boolean bb) {
-
+    public static Observable<SearchActicleAPI> streamSearchActivity(String term,String beguin_date, Boolean bb) {
 
         NytService nytService = NytService.retrofit.create(NytService.class);
-        return nytService.getNotification(term, bb)
+        return nytService.getSearchActicles(term, beguin_date, bb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
@@ -60,11 +58,17 @@ public class NytStreams {
 
 
         NytService nytService = NytService.retrofit.create(NytService.class);
-        return nytService.getSearchActicles(term, bb)
+        return nytService.getNotification(term, bb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
     }
 }
+
+
+
+
+
+
 
 

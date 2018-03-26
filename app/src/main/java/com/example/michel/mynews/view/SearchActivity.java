@@ -151,7 +151,9 @@ public class SearchActivity extends AppCompatActivity
                         // Create String for get date
                         String dateStart = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
                         // use Shared for save dateStart
-                        preferences.edit().putString(MyDateStart, dateStart).commit();
+                        String dateStartShared = year+convertDate(month+1)+convertDate(day);
+                        preferences.edit().putString(MyDateStart, dateStartShared).commit();
+                        Log.e("mynews","sauvegarde de la date dans searchActivity" + dateStartShared);
 
                     }
                 }, year, month, day);
@@ -173,10 +175,10 @@ public class SearchActivity extends AppCompatActivity
                         // Create String for get date
                         String dateEnd = convertDate(day)+"/"+convertDate(month+1)+"/"+year;
                         // Use Shared for save dateEnd
-                        preferences.edit().putString(MyDateEnd, dateEnd).commit();
-
+                        String dateEndShared = year+convertDate(month+1)+convertDate(day);
+                        preferences.edit().putString(MyDateEnd, dateEndShared).commit();
                     }
-                }, year, month, day);
+                }, day, month, year);
         datePickerDialog.show();
     }
 
