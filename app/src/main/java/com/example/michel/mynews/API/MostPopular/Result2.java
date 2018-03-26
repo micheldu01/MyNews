@@ -19,7 +19,7 @@ public class Result2 {
     @Expose
     public List<Media> media;
 
-    @SerializedName("publishedDate")
+    @SerializedName("published_date")
     @Expose
     public String publishedDate;
 

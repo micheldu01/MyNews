@@ -104,7 +104,7 @@ public class SearchActivity extends AppCompatActivity
 
         // get value CheckBox
         // create array for save value of checkbox
-        arrayValue = new String[] {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
+        arrayValue = new String[] {",arts", ",business", ",entrepreneurs", ",politics", ",travel", ",sport"};
 
         // create while for check arrayBox
         int i = 0;

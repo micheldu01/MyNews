@@ -41,7 +41,7 @@ public class NotificationsActivity extends AppCompatActivity {
     private CheckBox[] arrayBox;
     private int[] arrayIdBox;
     private int numberarray = 0;
-    private String[] arrayValue = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
+    private String[] arrayValue = {",arts", ",business", ",entrepreneurs", ",politics", ",travel", ",sport"};
     // SharedPreferences
     private SharedPreferences preferences;
     public static final String MyShared = "MyShared";
