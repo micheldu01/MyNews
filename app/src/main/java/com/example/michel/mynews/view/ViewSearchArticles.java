@@ -5,17 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 
 import com.example.michel.mynews.API.NytStreams;
 import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
@@ -38,6 +37,7 @@ import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
 import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
 import static com.example.michel.mynews.view.SearchActivity.MyEditText;
 import static com.example.michel.mynews.view.SearchActivity.MyShared;
+import static com.example.michel.mynews.view.SearchActivity.Mytest;
 
 public class ViewSearchArticles extends AppCompatActivity {
 
@@ -52,9 +52,16 @@ public class ViewSearchArticles extends AppCompatActivity {
     // CREATE ARRAY FOR GET URL
     private List<String> urlArray = new ArrayList<>();
     //PREFERENCES
-    private SharedPreferences preferences;
+    private SharedPreferences mpreferences;
     //STRING
     private String[] choix = {"","","","","",""};
+    // TEST
+    String dateStart;
+    String dateEnd;
+    String term;
+    String testShared;
+
+
 
 
     //IMPLEMENT RECYCLER VIEW
@@ -74,7 +81,7 @@ public class ViewSearchArticles extends AppCompatActivity {
 
 
         //DECLARE SHARED
-        preferences = getSharedPreferences (MyShared, Context.MODE_PRIVATE);
+        mpreferences = getSharedPreferences (MyShared, Context.MODE_PRIVATE);
 
         //DECLARE BUTTERKNIFE
         ButterKnife.bind(this);
@@ -90,6 +97,7 @@ public class ViewSearchArticles extends AppCompatActivity {
 
         //show the toolbar
         this.configureToolbar();
+
 
 
     }
@@ -111,7 +119,6 @@ public class ViewSearchArticles extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 recyclerViewHTTPNYT();
-
             }
         });
     }
@@ -126,7 +133,6 @@ public class ViewSearchArticles extends AppCompatActivity {
                         // INTENT FOR SHOW ARTICLES NYT
                         Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position)));
                         startActivity(browserIntent);
-
                     }
                 });
     }
@@ -138,36 +144,39 @@ public class ViewSearchArticles extends AppCompatActivity {
         //  IMPLEMENT AND USE SHARED
         //---------------------------
 
-        String term = preferences.getString(MyEditText,"");
-        String dateStart = preferences.getString(MyDateStart,"");
+
+        dateStart = mpreferences.getString(MyDateStart,"");
+        dateEnd = mpreferences.getString(MyDateEnd,"");
+        term = mpreferences.getString(MyEditText,"");
+        Log.e("mynews","recuperation du term = "+ term);
+        Log.e("mynews","recuperation du term n°2 = "+ term);
         Log.e("mynews","recuperation de la date = "+ dateStart);
-        String dateEnd = preferences.getString(MyDateEnd,"");
 
-
-        //TEST RECUPERATION TERM
-        Log.e("mynews", "recuperation du term = " + term);
-
-
+        //-----------------------
+        // TEST RECUPERATION DATE
+        //-----------------------
+        String testShred = mpreferences.getString(Mytest,"");
+        Log.e("mynews","recuperation du test Shared = "+ testShred);
 
         int a = 0;
         while (a < 6){
-            choix[a] = preferences.getString(MyCheckBox[a],"");
-            preferences.edit().putString(MyCheckBox[a],"").commit();
+            choix[a] = mpreferences.getString(MyCheckBox[a],"");
+            mpreferences.edit().putString(MyCheckBox[a],"").commit();
             Log.e("mynews","choix des cases à cocher = " + choix[a]);
             a ++;
         }
 
-        // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamSearchActivity(term + choix[0] + choix[1] + choix[2] + choix[3] + choix[4] + choix[5],"20180312", true)
-                .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
+        // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
+        this.disposable = NytStreams.streamSearchActivity( term +choix[0] + choix[1] + choix[2] + choix[3] + choix[4] + choix[5],"20180312","20180328", true)
+                .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
                     public void onNext(SearchActicleAPI searchActicleAPI) {
 
                         monObjetList.clear();
 
-                        Log.e("mynews","choix des cases à cocher = " + choix[0]);
+                        Log.e("mynews","choix des cases à cocher n°2 = " + choix[0]);
 
 
 

@@ -45,10 +45,10 @@ public class NytStreams {
                 .timeout(10, TimeUnit.SECONDS);
     }
 
-    public static Observable<SearchActicleAPI> streamSearchActivity(String term,String beguin_date, Boolean bb) {
+    public static Observable<SearchActicleAPI> streamSearchActivity(String term,String beguin_date,String end_date, Boolean bb) {
 
         NytService nytService = NytService.retrofit.create(NytService.class);
-        return nytService.getSearchActicles(term, beguin_date, bb)
+        return nytService.getSearchActicles(term, beguin_date,end_date, bb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);

@@ -1,24 +1,17 @@
 package com.example.michel.mynews.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.michel.mynews.FragmentsView.PageAdapter;
 import com.example.michel.mynews.R;
-
-import static com.example.michel.mynews.view.NotificationsActivity.NOTIF;
-import static com.example.michel.mynews.view.SearchActivity.MySearchPage;
-import static com.example.michel.mynews.view.SearchActivity.MyShared;
 
 public class MainActivity extends AppCompatActivity {
 

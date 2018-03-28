@@ -108,7 +108,7 @@ public class NyStreamsTest {
         // 1 - Get the stream
         //     Recupération de la stream
         io.reactivex.Observable<SearchActicleAPI> observableBusiness =
-                NytStreams.streamSearchActivity("art","20180321",true);
+                NytStreams.streamSearchActivity("art","20180321","20180328",true);
 
         // - 2 Create a new TestObserver
         //     Création d'un nouveau TestObserver

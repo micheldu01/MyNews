@@ -53,9 +53,8 @@ public class SearchActivity extends AppCompatActivity
     public static final String MyDateStart = "";
     public static final String MyDateEnd = "";
     public static final String[] MyCheckBox = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
-    // for save the page for the intent
-    public static final String MySearchPage = "MySearchPage";
-    private String searchPage = "searchPage";
+    // TEST DATE
+    public static final String Mytest = "";
 
 
 
@@ -67,6 +66,12 @@ public class SearchActivity extends AppCompatActivity
         // Declare SharedPreferences
         preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
 
+        //-------------------
+        //    TEST
+        //-------------------
+        preferences.edit().putString(Mytest,"je suis michel").commit();
+        String myTest = preferences.getString(Mytest,"");
+        Log.e("mynews","sauvegard de Mytest = " + myTest);
 
 
         //Add toolbar
@@ -99,7 +104,7 @@ public class SearchActivity extends AppCompatActivity
         // get the editText
         String et = editText.getText().toString();
 
-        // Create SharedPreferences
+        // Create SharedPreferences for edit text
         preferences.edit().putString(MyEditText, et).commit();
 
         // get value CheckBox
@@ -120,21 +125,23 @@ public class SearchActivity extends AppCompatActivity
             i++;
         }
 
-        // Method if a box are choice get the intent
-        if(no_check == 1){
+        // SI IL Y A UN MOT CLES DE RECHERCHE
+        String stringTest = preferences.getString(MyEditText,"");
+        if(stringTest.equals("")){
+            Log.e("mynews","test en cas d'absence du mot cles");
 
-            //Create shared for get SearchArticles in mainActivity
-            preferences.edit().putString(MySearchPage, searchPage).commit();
+            // Method if a box are choice get the intent
+            if(no_check == 1){
 
-            //Create intent for go to MainActivity for look the articles choices
-            startActivity(new Intent(SearchActivity.this, ViewSearchArticles.class));
+                //Create intent for go to MainActivity for look the articles choices
+                startActivity(new Intent(SearchActivity.this, ViewSearchArticles.class));
+            }
+
+            // Method if nothing box are choice dont get the intent but get a toast
+            else{
+                Toast.makeText(SearchActivity.this, R.string.no_box_was_chosen, Toast.LENGTH_SHORT).show();
+            }
         }
-
-        // Method if nothing box are choice dont get the intent but get a toast
-        else{
-            Toast.makeText(SearchActivity.this, R.string.no_box_was_chosen, Toast.LENGTH_SHORT).show();
-        }
-
     }
 
 

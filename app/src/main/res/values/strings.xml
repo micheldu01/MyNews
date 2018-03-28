@@ -27,10 +27,10 @@ You have in the menu the possibility to search the articles of your choice, with
 You have notofications in the right menu to warn you when a new article is published.</string>
 
     // string Search Activity
-    <string name="no_box_was_chosen">no box was chosen</string>
+    <string name="no_box_was_chosen">You must choose a category and a keyword</string>
 
     // STRING NOTIFICATION ACTIVITY
-    <string name="no_choice">You must choose a category and a key word</string>
+    <string name="no_choice">You must choose a category and a keyword</string>
 
     // STRING SEARCHARTICLES
     <string name="no_article">There is no article redone a search</string>
