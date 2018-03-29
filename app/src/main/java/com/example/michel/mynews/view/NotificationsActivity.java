@@ -143,13 +143,21 @@ public class NotificationsActivity extends AppCompatActivity {
                     // get the shared CHECK for know the result
                     String str_box = preferences.getString(CHECK, "");
                     // call method if for start the alarmManager
-                    if(str_box.equals("CHECK") && str_edit_text.equals("TEXT")){
-                        //start alarmManager
-                        methodAlarmManager();
-                        // clear the shared
-                        preferences.edit().putString(CHECK, "NO_CHECK").commit();
+                    // if edit text is empty
+                    String str_shared = preferences.getString(MyEditTextNoti, "");
 
-                    }
+
+
+                    // IF BOX IF
+                        if(str_box.equals("CHECK") && !str_shared.equals("")){
+                            //start alarmManager
+                            methodAlarmManager();
+                            // clear the shared
+                            preferences.edit().putString(CHECK, "NO_CHECK").commit();
+                            Log.e("mynews", "il n'y a pas de texte");
+
+                        }
+
                     else{
                         //get a Toast for ask to choice a check box
                         Toast.makeText(NotificationsActivity.this, R.string.no_choice, Toast.LENGTH_LONG).show();
@@ -159,7 +167,6 @@ public class NotificationsActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void methodEditText() {
         editText = (EditText) findViewById(R.id.search_query_term);
@@ -192,20 +199,22 @@ public class NotificationsActivity extends AppCompatActivity {
 
                 //get shared
                 String str_shared = preferences.getString(MyEditTextNoti, "");
+
+
                 // if is not empty save NO_EMPTY in shared
                 if(str_shared.equals("")){
                     // save NO_TEXT in Shared
                     preferences.edit().putString(TEXT,"NO_TEXT").commit();
-                    Log.e("mynews", "il n'y a pas de texte");
+                    Log.e("mynews", "il n'y a pas de texte" + str_shared);
 
                 }
                 else {
                     preferences.edit().putString(TEXT, "TEXT").commit();
-                    Log.e("mynews", "il y a pas du texte");
+                    Log.e("mynews", "il y a du texte" + str_shared);
 
                 }
-
             }
+
         });
     }
 

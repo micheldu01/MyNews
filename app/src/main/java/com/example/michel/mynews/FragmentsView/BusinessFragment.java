@@ -120,11 +120,6 @@ public class BusinessFragment extends Fragment {
                             //  IF THEY ARE OR NOT ARE PICTURE
                             //--------------------------------
 
-                            //--------------------------------
-                            //  CREATE IF AND ELSE
-                            //  IF THEY ARE OR NOT ARE PICTURE
-                            //--------------------------------
-
                             if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
 
                                 //implement monObjetList for set data in recycler view

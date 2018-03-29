@@ -127,8 +127,9 @@ public class SearchActivity extends AppCompatActivity
 
         // SI IL Y A UN MOT CLES DE RECHERCHE
         String stringTest = preferences.getString(MyEditText,"");
-        if(stringTest.equals("")){
+        if(!stringTest.equals("")){
             Log.e("mynews","test en cas d'absence du mot cles");
+
 
             // Method if a box are choice get the intent
             if(no_check == 1){
@@ -141,6 +142,10 @@ public class SearchActivity extends AppCompatActivity
             else{
                 Toast.makeText(SearchActivity.this, R.string.no_box_was_chosen, Toast.LENGTH_SHORT).show();
             }
+        }
+
+        else{
+            Toast.makeText(SearchActivity.this, R.string.no_box_was_chosen, Toast.LENGTH_SHORT).show();
         }
     }
 

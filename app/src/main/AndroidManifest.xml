@@ -58,14 +58,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.SearchActivity" />
         </activity>
-        <activity
-            android:name=".view.ViewNotifications"
-            android:label="Articles notifications"
-            android:parentActivityName=".view.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.MainActivity" />
-        </activity>
         <activity android:name=".view.ViewNotificationArticles"
             android:label="Articles notifications"
             android:parentActivityName=".view.MainActivity">
