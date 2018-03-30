@@ -81,9 +81,12 @@ public class TopStoriesFragment extends Fragment {
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Log.e("TAG", "Position  :  " + position);
 
+
                         // INTENT FOR SHOW ARTICLES NYT
                         Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position)));
                         startActivity(browserIntent);
+
+
                     }
                 });
     }

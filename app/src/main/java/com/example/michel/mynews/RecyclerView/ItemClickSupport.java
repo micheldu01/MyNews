@@ -1,5 +1,6 @@
 package com.example.michel.mynews.RecyclerView;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -7,7 +8,7 @@ import android.view.View;
  * Created by michel on 06/02/2018.
  */
 
-// METHOD FOR USE CLICK SUPPOR INTO RECYCLERVIEW
+// METHOD FOR USE CLICK SUPPORT INTO RECYCLER VIEW
 
 public class ItemClickSupport {
 
@@ -21,6 +22,11 @@ public class ItemClickSupport {
             if (mOnItemClickListener != null) {
                 RecyclerView.ViewHolder holder = mRecyclerView.getChildViewHolder(v);
                 mOnItemClickListener.onItemClicked(mRecyclerView, holder.getAdapterPosition(), v);
+
+                //-----------------------------------------
+                // CHANGE BACKGROUND COLOR IF IS IT CLICKED
+                //------------------------------------------
+                v.setBackgroundColor(Color.parseColor("#6ff9ff"));
             }
         }
     };
@@ -71,6 +77,7 @@ public class ItemClickSupport {
         ItemClickSupport support = (ItemClickSupport) view.getTag(itemID);
         if (support != null) {
             support.detach(view);
+
         }
         return support;
     }
