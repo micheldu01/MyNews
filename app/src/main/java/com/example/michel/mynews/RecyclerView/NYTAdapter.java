@@ -15,16 +15,20 @@ import java.util.List;
 
 public class NYTAdapter extends RecyclerView.Adapter<NYTWiewHolder> {
 
+    // CREATE LIST OBJECT
     List<MonObjet> monObjets;
 
+    // CREATE CONSTRUCTOR WITH OBJECT VALUE
     public NYTAdapter(List<MonObjet> monObjets) {
         this.monObjets = monObjets;
     }
 
+    // CEATE METHOD MonObjet WHITH INT
     public MonObjet myObjectAdapter(int position){
         return this.monObjets.get(position);
     }
 
+    // CALL METHOD ONCREATEVIEWHOLDER TO CONNECT layout fragment item
     @Override
     public NYTWiewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -32,12 +36,16 @@ public class NYTAdapter extends RecyclerView.Adapter<NYTWiewHolder> {
         return new NYTWiewHolder(view);
     }
 
+    // CREATE METHOD ONBINDVIEWHOLDER
+    // GIVE POSITION
     @Override
     public void onBindViewHolder(NYTWiewHolder nytWiewHolder, int position) {
         MonObjet monObjet = monObjets.get(position);
         nytWiewHolder.bindtwo(monObjet);
     }
 
+    // CREATE GETITEMCOUNT
+    // CALCUL SIZE
     @Override
     public int getItemCount() {
         return monObjets.size();

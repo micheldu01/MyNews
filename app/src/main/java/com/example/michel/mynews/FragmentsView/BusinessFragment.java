@@ -111,8 +111,6 @@ public class BusinessFragment extends Fragment {
 
                         monObjetList.clear();
 
-                        Log.e("mynewsBusinessFragment","recupération de l'URL de la photo ="+searchActicleAPI.getResponse().getDocs().get(0).getMultimedia().get(0).getUrl());
-
                         String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
                         for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
                             //--------------------------------

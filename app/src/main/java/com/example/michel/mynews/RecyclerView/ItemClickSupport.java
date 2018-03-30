@@ -7,6 +7,8 @@ import android.view.View;
  * Created by michel on 06/02/2018.
  */
 
+// METHOD FOR USE CLICK SUPPOR INTO RECYCLERVIEW
+
 public class ItemClickSupport {
 
     private final RecyclerView mRecyclerView;

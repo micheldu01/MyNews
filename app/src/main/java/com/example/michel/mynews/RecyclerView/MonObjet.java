@@ -6,6 +6,7 @@ package com.example.michel.mynews.RecyclerView;
 
 public class MonObjet {
 
+    // CREATE VALUE
     private String Title;
 
     private String date;
@@ -14,7 +15,10 @@ public class MonObjet {
 
     private String image;
 
+    // CREATE CONSTRUCTOR WITHOUT VALUE
+    public MonObjet() {}
 
+    // CREATE CONSTRUCTOR WITH OVER VALUE
     public MonObjet(String title, String date, String section, String image) {
         Title = title;
         this.date = date;
@@ -22,12 +26,14 @@ public class MonObjet {
         this.image = image;
     }
 
+    // CREATE CONSTRUCTOR WITHOUT IMAGE VALUE
     public MonObjet(String title, String date, String section) {
         Title = title;
         this.date = date;
         this.section = section;
     }
 
+    // CREATE GETTER OF ALL VALUES
     public String getTitle() {
         return Title;
     }
