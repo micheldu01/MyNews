@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Multimedium {
 
+    // DECLARE VALUES
     @SerializedName("rank")
     @Expose
     public Integer rank;
@@ -43,6 +44,7 @@ public class Multimedium {
     @Expose
     public String cropName;
 
+    // CREATE CONSTRUCTOR
     public Multimedium(Integer rank, String subtype, Object caption, Object credit, String type, String url, Integer height, Integer width, Legacy legacy, String subType, String cropName) {
         this.rank = rank;
         this.subtype = subtype;
@@ -57,6 +59,7 @@ public class Multimedium {
         this.cropName = cropName;
     }
 
+    // CREATE GETTERS
     public Integer getRank() {
         return rank;
     }

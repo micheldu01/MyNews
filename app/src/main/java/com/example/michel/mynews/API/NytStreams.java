@@ -16,6 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class NytStreams {
 
+    // CREATE OBSERVABLE FOR GET STREAM TOP STORIES NYT
     public static Observable<TopStoriesAPI> streamTopStories() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getTopStories()
@@ -25,6 +26,7 @@ public class NytStreams {
 
     }
 
+    // CREATE OBSERVABLE FOR GET STREAM MOST POPULAR
     public static Observable<MostPopular> streamMostPopular() {
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getMostPopular()
@@ -34,10 +36,9 @@ public class NytStreams {
 
     }
 
+    // CREATE OBSERVABLE FOR GET STREAM BUSINESS
     public static Observable<SearchActicleAPI> streamBusiness() {
-
         String str = "business";
-
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getBusiness(str)
                 .subscribeOn(Schedulers.io())
@@ -45,6 +46,7 @@ public class NytStreams {
                 .timeout(10, TimeUnit.SECONDS);
     }
 
+    // CREATE OBSERVABLE FOR GET STREAM SEARCH ACTIVITY
     public static Observable<SearchActicleAPI> streamSearchActivity(String term,String beguin_date,String end_date, Boolean bb) {
 
         NytService nytService = NytService.retrofit.create(NytService.class);
@@ -54,9 +56,8 @@ public class NytStreams {
                 .timeout(10, TimeUnit.SECONDS);
     }
 
+    // CREATE OBSERVABLE FOR GET STREAM NOTIFICATION
     public static Observable<SearchActicleAPI> streamNotification(String term, Boolean bb) {
-
-
         NytService nytService = NytService.retrofit.create(NytService.class);
         return nytService.getNotification(term, bb)
                 .subscribeOn(Schedulers.io())

@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Meta {
 
+    // DECLARE VALUES
     @SerializedName("hits")
     @Expose
     public Integer hits;
@@ -19,12 +20,14 @@ public class Meta {
     @Expose
     public Integer time;
 
+    // CREATE CONSTRUCTOR
     public Meta(Integer hits, Integer offset, Integer time) {
         this.hits = hits;
         this.offset = offset;
         this.time = time;
     }
 
+    // CREATE GETTERS
     public Integer getHits() {
         return hits;
     }

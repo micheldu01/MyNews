@@ -10,6 +10,7 @@ import com.google.gson.annotations.SerializedName;
 public class Multimedium {
 
 
+    // DECLARE VALUES
     @SerializedName("url")
     @Expose
     public String url;
@@ -17,14 +18,17 @@ public class Multimedium {
     @Expose
     public String format;
 
+    // CREATE CONSTRUCTOR WITHOUT VALUE
     public Multimedium() {
     }
 
+    // CREATE CONSTRUCTOR
     public Multimedium(String url, String format) {
         this.url = url;
         this.format = format;
     }
 
+    // CREATE GETTERS
     public String getUrl() {
         return url;
     }

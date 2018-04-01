@@ -30,6 +30,7 @@ public class DateFragment extends Fragment implements View.OnClickListener {
         public void onButonClickedDateRight(View view);
     }
 
+    // CREATE CONSTRUCTOR
     public DateFragment() {
         // Required empty public constructor
     }
@@ -46,6 +47,7 @@ public class DateFragment extends Fragment implements View.OnClickListener {
         return result;
     }
 
+    // CALL METHOD FOR ATTACH PARENT ACTIVITY
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -53,6 +55,7 @@ public class DateFragment extends Fragment implements View.OnClickListener {
         this.createCallbackToParentActivity();
     }
 
+    // CALL METHOD ON CLICK
     @Override
     public void onClick(View view) {
         // Here is handled the button click

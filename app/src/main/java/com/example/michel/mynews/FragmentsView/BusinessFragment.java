@@ -106,18 +106,23 @@ public class BusinessFragment extends Fragment {
         this.disposable = NytStreams.streamBusiness()
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
+                    // CALL METHOD ON NEXT FOR GET DATE INTO ARRAYS
                     @Override
                     public void onNext(SearchActicleAPI searchActicleAPI) {
 
+                        // CLEAR MONOBJETLIST
                         monObjetList.clear();
 
+                        // CREATE ARRAY STRING strstories
                         String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
+
+                        // GET SIZE OF ARTICLES
                         for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
+
                             //--------------------------------
                             //  CREATE IF AND ELSE
                             //  IF THEY ARE OR NOT ARE PICTURE
                             //--------------------------------
-
                             if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
 
                                 //implement monObjetList for set data in recycler view
@@ -143,6 +148,7 @@ public class BusinessFragment extends Fragment {
                             }
 
                         }
+                        // IMPLEMENT RECYCLER VIEW WITH MON OBJET LIST
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
                         recyclerView.setAdapter(new NYTAdapter(monObjetList));
 
@@ -150,11 +156,13 @@ public class BusinessFragment extends Fragment {
                         refreshLayout.setRefreshing(false);
                     }
 
+                    // IF THERE ARE ERROR USE LOG
                     @Override
                     public void onError(Throwable e) {
                         Log.e("TAG","On Error"+Log.getStackTraceString(e));
                     }
 
+                    // IF THERE ARE OK USE LOG
                     @Override
                     public void onComplete() {
                         Log.e("TAG","On Complete !!");
@@ -162,10 +170,12 @@ public class BusinessFragment extends Fragment {
                 });
     }
 
+    // CLOSE THE STREAM FOR DISPOSABLE
     private void disposeWhenDestroy(){
         if (this.disposable != null && !this.disposable.isDisposed()) this.disposable.dispose();
     }
 
+    // CLOSE THE STREAM
     public void onDestroy(){
         super.onDestroy();
         this.disposeWhenDestroy();

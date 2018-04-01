@@ -9,14 +9,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class Media {
 
+    // DECLARE VALUE
     @SerializedName("url")
     @Expose
     public String url;
 
+    // CREATE CONSTRUCTOR
     public Media(String url) {
         this.url = url;
     }
 
+    // CREATE GETTER
     public String getUrl() {
         return url;
     }

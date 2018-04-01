@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Doc {
 
+    // DECLARE VALUES
     @SerializedName("web_url")
     @Expose
     public String webUrl;
@@ -63,6 +64,7 @@ public class Doc {
     @Expose
     public String uri;
 
+    // CREATE CONSTRUCTOR
     public Doc(String webUrl, String snippet, Blog blog, String source, List<Multimedium> multimedia, Headline headline, List<Keyword> keywords, String pubDate, String documentType, String newDesk, String sectionName, Byline byline, String typeOfMaterial, String id, Integer wordCount, Float score, String uri) {
         this.webUrl = webUrl;
         this.snippet = snippet;
@@ -83,6 +85,7 @@ public class Doc {
         this.uri = uri;
     }
 
+    // CREATE GETTER
     public String getWebUrl() {
         return webUrl;
     }

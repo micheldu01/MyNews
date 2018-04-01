@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Result2 {
 
+    // DECLARE VALUES
     @SerializedName("title")
     @Expose
     public String title;
@@ -31,6 +32,7 @@ public class Result2 {
     @Expose
     public String url;
 
+    // CREATE CONSTRUCTOR WITHOUT URL IMAGE (IF NO IMAGE)
     public Result2(String title, List<Media> media, String publishedDate, String section) {
         this.title = title;
         this.media = media;
@@ -38,6 +40,7 @@ public class Result2 {
         this.section = section;
     }
 
+    // CREATE CONSTRUCTOR WTIH URL IMAGE
     public Result2(String title, List<Media> media, String publishedDate, String section, String url) {
         this.title = title;
         this.media = media;
@@ -46,6 +49,7 @@ public class Result2 {
         this.url = url;
     }
 
+    // CREATE GETTERS
     public Result2(List<Media> media) {
         this.media = media;
     }

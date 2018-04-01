@@ -10,6 +10,7 @@ import com.google.gson.annotations.SerializedName;
 public class SearchActicleAPI {
 
 
+    // DECLARE VALUES
     @SerializedName("status")
     @Expose
     public String status;
@@ -20,12 +21,14 @@ public class SearchActicleAPI {
     @Expose
     public Response response;
 
+    // CREATE CONSTRUCTOR
     public SearchActicleAPI(String status, String copyright, Response response) {
         this.status = status;
         this.copyright = copyright;
         this.response = response;
     }
 
+    // CREATE GETTERS
     public String getStatus() {
         return status;
     }

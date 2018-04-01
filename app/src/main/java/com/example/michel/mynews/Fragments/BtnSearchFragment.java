@@ -51,6 +51,7 @@ public class BtnSearchFragment extends Fragment implements View.OnClickListener 
         this.createCallbackToParentActivity();
     }
 
+    // CREATE METHOD ONCLICK
     @Override
     public void onClick(View view) {
         // Here is handled the button click

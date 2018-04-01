@@ -16,11 +16,13 @@ import com.example.michel.mynews.R;
 public class BoxFragment extends Fragment {
 
 
+    // CREATE CONSTRUCTOR
     public BoxFragment() {
         // Required empty public constructor
     }
 
 
+    // CREATE VIEW
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

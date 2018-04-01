@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Headline {
 
+    // CREATE VALUES
     @SerializedName("main")
     @Expose
     public String main;
@@ -31,6 +32,7 @@ public class Headline {
     @Expose
     public Object sub;
 
+    // CREATE CONSTRUCTOR
     public Headline(String main, Object kicker, Object contentKicker, String printHeadline, Object name, Object seo, Object sub) {
         this.main = main;
         this.kicker = kicker;
@@ -41,6 +43,7 @@ public class Headline {
         this.sub = sub;
     }
 
+    // CREATE GETTER
     public String getMain() {
         return main;
     }

@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Byline {
 
+    // DECLARE VALUES
     @SerializedName("original")
     @Expose
     public String original;
@@ -21,12 +22,14 @@ public class Byline {
     @Expose
     public String organization;
 
+    // CREATE CONSTRUCTOR
     public Byline(String original, List<Person> person, String organization) {
         this.original = original;
         this.person = person;
         this.organization = organization;
     }
 
+    // CREATE GETTERS
     public String getOriginal() {
         return original;
     }

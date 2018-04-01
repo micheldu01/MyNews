@@ -12,16 +12,20 @@ import java.util.List;
 public class TopStoriesAPI {
 
 
+    // DECLARE VALUE
     @SerializedName("results")
     @Expose
     public List<Result> results = null;
 
+    // CREATE CONSTRUCTOR WITHOUT VALUE
     public TopStoriesAPI() {}
 
+    // CREATE CONSTRUCTOR
     public TopStoriesAPI(List<Result> results) {
         this.results = results;
     }
 
+    // CREATE GETTER
     public List<Result> getResults() {
         return results;
     }

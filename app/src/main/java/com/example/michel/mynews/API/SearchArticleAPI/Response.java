@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Response {
 
-
+    // DECLARE VALUES
     @SerializedName("docs")
     @Expose
     public List<Doc> docs = null;
@@ -19,11 +19,13 @@ public class Response {
     @Expose
     public Meta meta;
 
+    // CREATE CONSTRUCTOR
     public Response(List<Doc> docs, Meta meta) {
         this.docs = docs;
         this.meta = meta;
     }
 
+    // CREATE GETTERS
     public List<Doc> getDocs() {
         return docs;
     }

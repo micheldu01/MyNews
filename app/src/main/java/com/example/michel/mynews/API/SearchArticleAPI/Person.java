@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Person {
 
+    // DECLARE VALUES
     @SerializedName("firstname")
     @Expose
     public String firstname;
@@ -34,6 +35,7 @@ public class Person {
     @Expose
     public Integer rank;
 
+    // CREATE CONSTRUCTOR
     public Person(String firstname, Object middlename, String lastname, Object qualifier, Object title, String role, String organization, Integer rank) {
         this.firstname = firstname;
         this.middlename = middlename;
@@ -45,6 +47,7 @@ public class Person {
         this.rank = rank;
     }
 
+    // CREATE GETTERS
     public String getFirstname() {
         return firstname;
     }

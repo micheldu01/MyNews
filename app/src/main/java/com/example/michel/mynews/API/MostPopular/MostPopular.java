@@ -11,14 +11,17 @@ import java.util.List;
 
 public class MostPopular {
 
+    // CREATE VALUE
     @SerializedName("results")
     @Expose
     public List<Result2> results = null;
 
+    // CREATE CONSTRUCTOR
     public MostPopular(List<Result2> results) {
         this.results = results;
     }
 
+    // CREATE GETTER
     public List<Result2> getResults() {
         return results;
     }

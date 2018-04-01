@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Legacy {
 
+    // DECLARE VALUES
     @SerializedName("xlargewidth")
     @Expose
     public Integer xlargewidth;
@@ -37,6 +38,7 @@ public class Legacy {
     @Expose
     public Integer thumbnailwidth;
 
+    // CREATE CONSTRUCTOR
     public Legacy(Integer xlargewidth, String xlarge, Integer xlargeheight, String wide, Integer widewidth, Integer wideheight, Integer thumbnailheight, String thumbnail, Integer thumbnailwidth) {
         this.xlargewidth = xlargewidth;
         this.xlarge = xlarge;
@@ -49,6 +51,7 @@ public class Legacy {
         this.thumbnailwidth = thumbnailwidth;
     }
 
+    // CREATE GETTERS
     public Integer getXlargewidth() {
         return xlargewidth;
     }

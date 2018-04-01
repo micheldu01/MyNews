@@ -1,14 +1,11 @@
 package com.example.michel.mynews.Fragments;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.example.michel.mynews.R;
 
@@ -18,10 +15,12 @@ import com.example.michel.mynews.R;
  */
 public class EditTextQueryTermFragment extends Fragment {
 
+    // CREATE CONSTRUCTOR
     public EditTextQueryTermFragment() {
         // Required empty public constructor
     }
 
+    // CREATE VIEW
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

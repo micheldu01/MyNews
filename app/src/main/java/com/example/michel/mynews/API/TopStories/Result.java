@@ -11,6 +11,8 @@ import java.util.List;
 
 public class Result {
 
+
+    // DECLARE VALUES
     @SerializedName("section")
     @Expose
     public String section;
@@ -37,7 +39,7 @@ public class Result {
     public List<RelatedUrl> relatedUrls = null;
 
 
-
+    // CREATE CONSTRUCTOR
     public Result(String section, String subsection, String title, String _abstract, String url, String publishedDate, List<Multimedium> multimedia, List<RelatedUrl> relatedUrls) {
         this.section = section;
         this.subsection = subsection;
@@ -50,6 +52,7 @@ public class Result {
     }
 
 
+    // CREATE GETTERS
     public String getSection() {
         return section;
     }

@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Keyword {
 
+    // CREATE VALUES
     @SerializedName("name")
     @Expose
     public String name;
@@ -22,6 +23,7 @@ public class Keyword {
     @Expose
     public String major;
 
+    // CREATE CONSTRUCTOR
     public Keyword(String name, String value, Integer rank, String major) {
         this.name = name;
         this.value = value;
@@ -29,6 +31,7 @@ public class Keyword {
         this.major = major;
     }
 
+    // CREATE GETTER
     public String getName() {
         return name;
     }
