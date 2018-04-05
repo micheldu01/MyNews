@@ -112,11 +112,9 @@ public class MostPopularFragment extends Fragment {
                         monObjetList.clear();
                         urlArray.clear();
 
-
-
                         Log.e("mynews","test most populare ============   " + mostPopular.getResults().get(0).getTitle());
 
-                        String[] strstories = new String[mostPopular.getResults().size()];
+                        // GET SIZE
                         for(int i = 0; i < mostPopular.getResults().size(); i++){
 
                             //--------------------------------
@@ -150,7 +148,7 @@ public class MostPopularFragment extends Fragment {
 
                                 // implement urlArray for get URL
                                 urlArray.add(new String(mostPopular.getResults().get(i).getUrl()));
-                                Log.e("mynews","most popular la date = " + mostPopular.getResults().get(i).getPublishedDate());
+
                             }
 
 

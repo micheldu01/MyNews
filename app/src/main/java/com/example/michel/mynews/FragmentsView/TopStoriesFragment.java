@@ -120,8 +120,7 @@ public class TopStoriesFragment extends Fragment {
                         Log.e("mynews","TopStoriesFragment URL image" + nYresult.getResults().get(0).getMultimedia().get(0).getUrl());
                         //CREATE ARRAY FOR GET DATA FROM NYT AND RETURN IT IN RECYCLER VIEW
 
-                        // Create array string for get data from nyt api
-                        String[] strstories = new String[nYresult.getResults().size()];
+                        // GET SIZE
                         for(int i = 0; i < nYresult.getResults().size(); i++){
 
                             //--------------------------------

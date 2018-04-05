@@ -52,7 +52,6 @@ public class NYTWiewHolder extends RecyclerView.ViewHolder {
         // IMPLEMENT VALUE
         textView.setText(monObjet.getTitle());
 
-
         // ASK IF THERE ARE DATE
         if (monObjet.getDate() != null) {
 

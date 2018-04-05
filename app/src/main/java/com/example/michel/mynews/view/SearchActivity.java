@@ -49,12 +49,11 @@ public class SearchActivity extends AppCompatActivity
     // SharedPreferences
     private SharedPreferences preferences;
     public static final String MyShared = "MyShared";
-    public static final String MyEditText = "";
-    public static final String MyDateStart = "";
-    public static final String MyDateEnd = "";
+    public static final String MyEditText = "text";
+    public static final String MyDateStart = "date_start";
+    public static final String MyDateEnd = "date_end";
     public static final String[] MyCheckBox = {"arts", "business", "entrepreneurs", "politics", "travel", "sport"};
-    // TEST DATE
-    public static final String Mytest = "";
+
 
 
 
@@ -66,19 +65,9 @@ public class SearchActivity extends AppCompatActivity
         // Declare SharedPreferences
         preferences = getSharedPreferences(MyShared, Context.MODE_PRIVATE);
 
-        //-------------------
-        //    TEST
-        //-------------------
-        preferences.edit().putString(Mytest,"je suis michel").commit();
-        String myTest = preferences.getString(Mytest,"");
-        Log.e("mynews","sauvegard de Mytest = " + myTest);
-
 
         //Add toolbar
         this.configureToolbar();
-
-        //Add CurrentDate
-        currentDateMethod();
 
         //Add checkbox
         methodCheckBox();
@@ -128,8 +117,7 @@ public class SearchActivity extends AppCompatActivity
         // SI IL Y A UN MOT CLES DE RECHERCHE
         String stringTest = preferences.getString(MyEditText,"");
         if(!stringTest.equals("")){
-            Log.e("mynews","test en cas d'absence du mot cles");
-
+            //Log.e("mynews","test en cas d'absence du mot cles");
 
             // Method if a box are choice get the intent
             if(no_check == 1){
@@ -153,6 +141,10 @@ public class SearchActivity extends AppCompatActivity
     // method for get the date number 1
     @Override
     public void onButonClickedDateLeft(View view) {
+
+        // CALL CURRENT DATE METHOD
+        currentDateMethod();
+
         // using DatePickerDialog for show the date
         DatePickerDialog datePickerDialog = new DatePickerDialog
                 (SearchActivity.this, new DatePickerDialog.OnDateSetListener() {
@@ -171,12 +163,15 @@ public class SearchActivity extends AppCompatActivity
                 }, year, month, day);
         datePickerDialog.show();
 
-
     }
 
     // method for get the date number 2
     @Override
     public void onButonClickedDateRight(View view) {
+
+        // CALL CURRENT DATE METHOD
+        currentDateMethod();
+
         // using DatePickerDialog for show the date
         DatePickerDialog datePickerDialog = new DatePickerDialog
                 (SearchActivity.this, new DatePickerDialog.OnDateSetListener() {
@@ -190,9 +185,12 @@ public class SearchActivity extends AppCompatActivity
                         String dateEndShared = year+convertDate(month+1)+convertDate(day);
                         preferences.edit().putString(MyDateEnd, dateEndShared).commit();
                     }
-                }, day, month, year);
+                }, year, month,day);
         datePickerDialog.show();
     }
+
+
+
 
 
     // Method for add 0 in the date (day and month)
@@ -211,6 +209,7 @@ public class SearchActivity extends AppCompatActivity
         begin_date = (TextView) findViewById(R.id.show_date_begin);
         end_date = (TextView) findViewById(R.id.show_date_end);
         //get current date
+
         mCurrentDate = Calendar.getInstance();
         day = mCurrentDate.get(Calendar.DAY_OF_MONTH);
         month = mCurrentDate.get(Calendar.MONTH);

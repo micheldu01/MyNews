@@ -37,7 +37,6 @@ import static com.example.michel.mynews.view.SearchActivity.MyDateEnd;
 import static com.example.michel.mynews.view.SearchActivity.MyDateStart;
 import static com.example.michel.mynews.view.SearchActivity.MyEditText;
 import static com.example.michel.mynews.view.SearchActivity.MyShared;
-import static com.example.michel.mynews.view.SearchActivity.Mytest;
 
 public class ViewSearchArticles extends AppCompatActivity {
 
@@ -144,19 +143,15 @@ public class ViewSearchArticles extends AppCompatActivity {
         //  IMPLEMENT AND USE SHARED
         //---------------------------
 
-
         dateStart = mpreferences.getString(MyDateStart,"");
         dateEnd = mpreferences.getString(MyDateEnd,"");
         term = mpreferences.getString(MyEditText,"");
         Log.e("mynews","recuperation du term = "+ term);
-        Log.e("mynews","recuperation du term n°2 = "+ term);
+        // ----------------------------
+        // PROBLEM WITH SHARED
+        //-----------------------------
         Log.e("mynews","recuperation de la date = "+ dateStart);
 
-        //-----------------------
-        // TEST RECUPERATION DATE
-        //-----------------------
-        String testShred = mpreferences.getString(Mytest,"");
-        Log.e("mynews","recuperation du test Shared = "+ testShred);
 
         int a = 0;
         while (a < 6){
@@ -168,17 +163,13 @@ public class ViewSearchArticles extends AppCompatActivity {
 
 
         // 1.2 - Execute the stream subscribing to Observable defined inside GithubStream
-        this.disposable = NytStreams.streamSearchActivity( term +choix[0] + choix[1] + choix[2] + choix[3] + choix[4] + choix[5],"20180312","20180328", true)
+        this.disposable = NytStreams.streamSearchActivity( term +choix[0] + choix[1] + choix[2] + choix[3] + choix[4] + choix[5],dateStart,dateEnd, true)
                 .subscribeWith(new DisposableObserver<SearchActicleAPI>() {
 
                     @Override
                     public void onNext(SearchActicleAPI searchActicleAPI) {
 
                         monObjetList.clear();
-
-                        Log.e("mynews","choix des cases à cocher n°2 = " + choix[0]);
-
-
 
                         if (searchActicleAPI.getResponse().getDocs().size() == 0){
 
@@ -216,7 +207,6 @@ public class ViewSearchArticles extends AppCompatActivity {
                                             searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
                                             searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
                                             "https://static01.nyt.com/"+searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
-                                    Log.e("mynews","ViewSearchActivity  recupération du titre  = " + searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain());
 
 
                                     // implement urlArray for get URL

@@ -40,7 +40,8 @@ public class BusinessFragment extends Fragment {
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
     // CREATE ARRAY FOR GET URL
-    private List<String> urlArray = new ArrayList<>();
+    List<String> urlArray = new ArrayList<>();
+
 
     //IMPLEMENT RECYCLER VIEW
     @BindView(R.id.fragment_main_recycler_view)    RecyclerView recyclerView;
@@ -113,47 +114,7 @@ public class BusinessFragment extends Fragment {
                         // CLEAR MONOBJETLIST
                         monObjetList.clear();
 
-                        // CREATE ARRAY STRING strstories
-                        String[] strstories = new String[searchActicleAPI.getResponse().getDocs().size()];
-
-                        // GET SIZE OF ARTICLES
-                        for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
-
-                            //--------------------------------
-                            //  CREATE IF AND ELSE
-                            //  IF THEY ARE OR NOT ARE PICTURE
-                            //--------------------------------
-                            if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
-
-                                //implement monObjetList for set data in recycler view
-                                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName()));
-
-                                // implement urlArray for get URL
-                                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
-                            }
-
-                            else {
-
-                                //implement monObjetList for set data in recycler view
-                                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
-                                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
-                                        "https://static01.nyt.com/"+searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
-
-
-                                // implement urlArray for get URL
-                                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
-                            }
-
-                        }
-                        // IMPLEMENT RECYCLER VIEW WITH MON OBJET LIST
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                        recyclerView.setAdapter(new NYTAdapter(monObjetList));
-
-                        // 3 - Stop refreshing and clear actual list of users
-                        refreshLayout.setRefreshing(false);
+                        methodeGetArticles(searchActicleAPI,monObjetList);
                     }
 
                     // IF THERE ARE ERROR USE LOG
@@ -180,4 +141,101 @@ public class BusinessFragment extends Fragment {
         super.onDestroy();
         this.disposeWhenDestroy();
     }
+
+    public String methodeGetArticles(SearchActicleAPI searchActicleAPI, List<MonObjet> monObjetList) {
+
+
+
+        // GET SIZE OF ARTICLES
+        for(int i = 0; i < searchActicleAPI.getResponse().getDocs().size(); i++){
+
+
+            //--------------------------------
+            //  CREATE IF AND ELSE
+            //  IF THEY ARE OR NOT ARE PICTURE
+            //--------------------------------
+            if(searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().size() == 0){
+
+                //implement monObjetList for set data in recycler view
+                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
+                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
+                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName()));
+
+                // implement urlArray for get URL
+                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
+            }
+
+            else {
+
+                //implement monObjetList for set data in recycler view
+                monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(i).getHeadline().getMain(),
+                        searchActicleAPI.getResponse().getDocs().get(i).getPubDate(),
+                        searchActicleAPI.getResponse().getDocs().get(i).getSectionName(),
+                        "https://static01.nyt.com/"+searchActicleAPI.getResponse().getDocs().get(i).getMultimedia().get(0).getUrl()));
+
+                // implement urlArray for get URL
+                urlArray.add(new String(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()));
+            }
+
+        }
+        // IMPLEMENT RECYCLER VIEW WITH MON OBJET LIST
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new NYTAdapter(monObjetList));
+
+        // 3 - Stop refreshing and clear actual list of users
+        refreshLayout.setRefreshing(false);
+
+        return monObjetList.get(0).getTitle();
+    }
+
+
+    public String methodGetArticles() {
+
+        SearchActicleAPI searchActicleAPI = null;
+
+        monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(0).getHeadline().getMain(),
+                searchActicleAPI.getResponse().getDocs().get(0).getPubDate(),
+                searchActicleAPI.getResponse().getDocs().get(0).getSectionName()));
+
+        return monObjetList.get(0).getTitle();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
