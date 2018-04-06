@@ -10,6 +10,7 @@ import java.util.List;
 
 public class ArticlesTest {
 
+    // CREATE LIST MONOBJET
     private List<MonObjet> mesarticlesTest;
 
     public ArticlesTest() {
@@ -22,6 +23,7 @@ public class ArticlesTest {
     public List<MonObjet> getMesarticlesTest() {
         return mesarticlesTest;
     }
+
 }
 
 

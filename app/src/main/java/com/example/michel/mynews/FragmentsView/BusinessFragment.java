@@ -40,7 +40,7 @@ public class BusinessFragment extends Fragment {
     private List<MonObjet> monObjetList = new ArrayList<>();
     private Context context;
     // CREATE ARRAY FOR GET URL
-    List<String> urlArray = new ArrayList<>();
+    private List<String> urlArray = new ArrayList<>();
 
 
     //IMPLEMENT RECYCLER VIEW
@@ -114,7 +114,7 @@ public class BusinessFragment extends Fragment {
                         // CLEAR MONOBJETLIST
                         monObjetList.clear();
 
-                        methodeGetArticles(searchActicleAPI,monObjetList);
+                        methodGetArticles(searchActicleAPI,monObjetList);
                     }
 
                     // IF THERE ARE ERROR USE LOG
@@ -142,7 +142,7 @@ public class BusinessFragment extends Fragment {
         this.disposeWhenDestroy();
     }
 
-    public String methodeGetArticles(SearchActicleAPI searchActicleAPI, List<MonObjet> monObjetList) {
+    public String methodGetArticles(SearchActicleAPI searchActicleAPI, List<MonObjet> monObjetList) {
 
 
 
@@ -184,18 +184,6 @@ public class BusinessFragment extends Fragment {
 
         // 3 - Stop refreshing and clear actual list of users
         refreshLayout.setRefreshing(false);
-
-        return monObjetList.get(0).getTitle();
-    }
-
-
-    public String methodGetArticles() {
-
-        SearchActicleAPI searchActicleAPI = null;
-
-        monObjetList.add(new MonObjet(searchActicleAPI.getResponse().getDocs().get(0).getHeadline().getMain(),
-                searchActicleAPI.getResponse().getDocs().get(0).getPubDate(),
-                searchActicleAPI.getResponse().getDocs().get(0).getSectionName()));
 
         return monObjetList.get(0).getTitle();
     }

@@ -1,6 +1,7 @@
 package com.example.michel.mynews.FragmentsView;
 
 import com.example.michel.mynews.API.ArticlesTest;
+import com.example.michel.mynews.API.SearchArticleAPI.SearchActicleAPI;
 import com.example.michel.mynews.RecyclerView.MonObjet;
 
 import org.junit.Test;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by michel on 04/04/2018.
@@ -19,7 +22,10 @@ public class BusinessFragmentTest {
     private ArticlesTest articlesTest;
     private List<MonObjet> monObjets = new ArrayList<>();
     private List<MonObjet> monObjets2 = new ArrayList<>();
-
+    // ARRAY FOR GET URL
+    private List<String> urlArray = new ArrayList<>();
+    // DECLARE SEARCH ARTICLES API
+    SearchActicleAPI searchActicleAPI = mock(SearchActicleAPI.class);
 
 
 
@@ -27,70 +33,7 @@ public class BusinessFragmentTest {
     @Test
     public void myTest() throws Exception {
 
-        assertEquals(2,1+1);
-    }
-
-
-
-    @Test
-    public void TtestMethodGetArticle() throws Exception {
-
-
-
-        monObjets.add(new MonObjet("robert", "24/10", "Lyon", "image1"));
-        monObjets.add(new MonObjet("nathalie", "24/10", "Druillat"));
-
-
-        articlesTest = new ArticlesTest(monObjets);
-
-        for (int i = 0; i < articlesTest.getMesarticlesTest().size(); i++) {
-
-                if (articlesTest.getMesarticlesTest().get(i).getImage() == null) {
-
-                monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
-                        articlesTest.getMesarticlesTest().get(i).getDate(),
-                        articlesTest.getMesarticlesTest().get(i).getSection()));
-            } else {
-
-                monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
-                        articlesTest.getMesarticlesTest().get(i).getDate(),
-                        articlesTest.getMesarticlesTest().get(i).getSection(),
-                        articlesTest.getMesarticlesTest().get(i).getImage()));
-
-            }
-        }
-
-        //Assert.assertEquals(articlesTest.getMesarticlesTest().get(0).getTitle(),monObjets2.get(0).getTitle());
-
-    }
-
-    @Test
-    public void testObjectObject6() throws Exception {
-
-        monObjets.add(new MonObjet("robert", "24/10", "Lyon", "image1"));
-        monObjets.add(new MonObjet("nathalie", "24/10", "Druillat"));
-
-        ArticlesTest articles = new ArticlesTest(monObjets);
-
-        for (int i = 0; i < articles.getMesarticlesTest().size(); i++) {
-
-            if (articles.getMesarticlesTest().get(i).getImage() == null) {
-
-                monObjets2.add(new MonObjet(articles.getMesarticlesTest().get(i).getTitle(),
-                        articles.getMesarticlesTest().get(i).getDate(),
-                        articles.getMesarticlesTest().get(i).getSection()));
-            } else {
-
-                monObjets2.add(new MonObjet(articles.getMesarticlesTest().get(i).getTitle(),
-                        articles.getMesarticlesTest().get(i).getDate(),
-                        articles.getMesarticlesTest().get(i).getSection(),
-                        articles.getMesarticlesTest().get(i).getImage()));
-
-            }
-        }
-
-        assertEquals(articles.getMesarticlesTest().get(0).getTitle(),monObjets2.get(0).getTitle());
-
+        assertEquals(2, 1 + 1);
     }
 
     // TEST ADD DATA INTO OBJECT
@@ -101,7 +44,7 @@ public class BusinessFragmentTest {
         monObjets.add(new MonObjet("robert", "24/10", "Lyon"));
 
         // TEST METHOD
-        assertEquals("robert",monObjets.get(0).getTitle());
+        assertEquals("robert", monObjets.get(0).getTitle());
     }
 
 
@@ -113,22 +56,25 @@ public class BusinessFragmentTest {
 
 
         // ADD DATA FROM MONOBJECT INTO ARTICLESTEST OBJECT
-        articlesTest= new ArticlesTest(monObjets);
+        articlesTest = new ArticlesTest(monObjets);
 
 
-        // TEST METHOD IF TITLE MONOBJECTS EQUAL TITLE MONOBJECTS2
-        assertEquals(monObjets.get(0).getDate(),articlesTest.getMesarticlesTest().get(0).getDate());
+        // TEST METHOD IF TITLE MONOBJECTS EQUAL TITLE MONOBJECTS2 IN LOCAL
+        assertEquals(monObjets.get(0).getDate(), articlesTest.getMesarticlesTest().get(0).getDate());
+
     }
+
 
     // TEST ADD DATA INTO OBJECT
     @Test
     public void testAddData3() throws Exception {
 
+
         monObjets.add(new MonObjet("robert", "24/10", "Lyon"));
 
 
         // ADD DATA FROM MONOBJECT INTO ARTICLESTEST OBJECT
-        articlesTest= new ArticlesTest(monObjets);
+        articlesTest = new ArticlesTest(monObjets);
 
         monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(0).getTitle(),
                 articlesTest.getMesarticlesTest().get(0).getDate(),
@@ -136,8 +82,13 @@ public class BusinessFragmentTest {
 
 
         // TEST METHOD IF TITLE MONOBJECTS EQUAL TITLE MONOBJECTS2
-        assertEquals(articlesTest.getMesarticlesTest().get(0).getSection(),monObjets.get(0).getSection());
+        assertEquals(articlesTest.getMesarticlesTest().get(0).getSection(), monObjets.get(0).getSection());
+
+        // TEST WITH MOCKITO
+        assertEquals("Lyon", monObjets.get(0).getSection());
+
     }
+
 
     // TEST ADD DATA INTO OBJECT
     @Test
@@ -147,7 +98,7 @@ public class BusinessFragmentTest {
 
 
         // ADD DATA FROM MONOBJECT INTO ARTICLESTEST OBJECT
-        articlesTest= new ArticlesTest(monObjets);
+        articlesTest = new ArticlesTest(monObjets);
 
         monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(0).getTitle(),
                 articlesTest.getMesarticlesTest().get(0).getDate(),
@@ -155,8 +106,9 @@ public class BusinessFragmentTest {
 
 
         // TEST METHOD IF TITLE MONOBJECTS EQUAL TITLE MONOBJECTS2
-        assertEquals(articlesTest.getMesarticlesTest().get(0).getSection(),monObjets.get(0).getSection());
+        assertEquals(articlesTest.getMesarticlesTest().get(0).getSection(), monObjets.get(0).getSection());
     }
+
 
     // TEST ADD DATA INTO OBJECT
     @Test
@@ -164,23 +116,96 @@ public class BusinessFragmentTest {
 
         monObjets.add(new MonObjet("robert", "24/10", "Lyon"));
         // ADD NEW LINE
-        monObjets.add(new MonObjet("nathalie", "24/10","Druillat"));
+        monObjets.add(new MonObjet("nathalie", "24/10", "Druillat"));
 
 
-        articlesTest= new ArticlesTest(monObjets);
+        articlesTest = new ArticlesTest(monObjets);
 
         // USE IF FOR ADD DIFFERENTS LINE IN OBJECT
+        // TAKE THE SIZE FOR DEFINE i
+        for (int i = 0; i < articlesTest.getMesarticlesTest().size(); i++) {
+
+            monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
+                    articlesTest.getMesarticlesTest().get(i).getDate(),
+                    articlesTest.getMesarticlesTest().get(i).getSection()));
+        }
 
 
-        monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(0).getTitle(),
-                articlesTest.getMesarticlesTest().get(0).getDate(),
-                articlesTest.getMesarticlesTest().get(0).getSection()));
-
-
-        // TEST METHOD IF TITLE MONOBJECTS EQUAL TITLE MONOBJECTS2
-        assertEquals(articlesTest.getMesarticlesTest().get(0).getSection(),monObjets.get(0).getSection());
+        // TEST METHOD IF TITLE MONOBJECTS EQUAL TITLE MONOBJECTS2 (SECOND FLOOR)
+        assertEquals("Druillat", monObjets.get(1).getSection());
     }
 
+
+    // TEST ADD DATA INTO OBJECT
+    @Test
+    public void testAddData6() throws Exception {
+
+        monObjets.add(new MonObjet("robert", "4/10", "Lyon"));
+        monObjets.add(new MonObjet("nathalie", "2/11", "Druillat"));
+
+        // ADD NEW LINE WITH IMAGE
+        monObjets.add(new MonObjet("pierre", "24/03", "Marseille", "image1"));
+
+
+        articlesTest = new ArticlesTest(monObjets);
+
+        for (int i = 0; i < articlesTest.getMesarticlesTest().size(); i++) {
+
+            // ADD IF FOR AKS IF THERE ARE IMAGE AND SAVE WHITOUT IMAGE / WITH IMAGE
+            if (articlesTest.getMesarticlesTest().get(i).getImage() == null) {
+                monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
+                        articlesTest.getMesarticlesTest().get(i).getDate(),
+                        articlesTest.getMesarticlesTest().get(i).getSection()));
+
+            }
+            // ADD LINE FOR SAVE IMAGE
+            monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
+                    articlesTest.getMesarticlesTest().get(i).getDate(),
+                    articlesTest.getMesarticlesTest().get(i).getSection(),
+                    articlesTest.getMesarticlesTest().get(i).getImage()));
+
+        }
+
+        // TEST METHOD image1
+        assertEquals("image1", monObjets.get(2).getImage());
+    }
+
+    // ADD URL FOR GET URL
+    @Test
+    public void testAddData7() throws Exception {
+
+        monObjets.add(new MonObjet("robert", "4/10", "Lyon"));
+        monObjets.add(new MonObjet("nathalie", "2/11", "Druillat"));
+        monObjets.add(new MonObjet("pierre", "24/03", "Marseille", "image1"));
+
+        articlesTest = new ArticlesTest(monObjets);
+
+        for (int i = 0; i < articlesTest.getMesarticlesTest().size(); i++) {
+
+            // DECLARE WHEN THEN RETURN MOCK
+            when(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()).thenReturn("url");
+
+            if (articlesTest.getMesarticlesTest().get(i).getImage() == null) {
+                monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
+                        articlesTest.getMesarticlesTest().get(i).getDate(),
+                        articlesTest.getMesarticlesTest().get(i).getSection()));
+
+                // GET URL
+                when(searchActicleAPI.getResponse().getDocs().get(0).getWebUrl()).thenReturn("url");
+
+            }
+
+            monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
+                    articlesTest.getMesarticlesTest().get(i).getDate(),
+                    articlesTest.getMesarticlesTest().get(i).getSection(),
+                    articlesTest.getMesarticlesTest().get(i).getImage()));
+
+        }
+
+        // TEST ARRAY URL
+        assertEquals("url", searchActicleAPI.getResponse().getDocs().get(0).getWebUrl());
+
+    }
 }
 
 

@@ -15,6 +15,7 @@ public class MonObjet {
 
     private String image;
 
+
     // CREATE CONSTRUCTOR WITHOUT VALUE
     public MonObjet() {}
 
