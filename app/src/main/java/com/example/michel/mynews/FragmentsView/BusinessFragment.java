@@ -113,7 +113,9 @@ public class BusinessFragment extends Fragment {
 
                         // CLEAR MONOBJETLIST
                         monObjetList.clear();
+                        urlArray.clear();
 
+                        // CALL METHOD FOR GET ARTICLES INTO RECYCLER VIEW
                         methodGetArticles(searchActicleAPI,monObjetList);
                     }
 
@@ -142,7 +144,7 @@ public class BusinessFragment extends Fragment {
         this.disposeWhenDestroy();
     }
 
-    public String methodGetArticles(SearchActicleAPI searchActicleAPI, List<MonObjet> monObjetList) {
+    private void methodGetArticles(SearchActicleAPI searchActicleAPI, List<MonObjet> monObjetList) {
 
 
 
@@ -185,8 +187,9 @@ public class BusinessFragment extends Fragment {
         // 3 - Stop refreshing and clear actual list of users
         refreshLayout.setRefreshing(false);
 
-        return monObjetList.get(0).getTitle();
     }
+
+
 }
 
 

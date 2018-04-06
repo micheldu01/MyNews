@@ -114,19 +114,16 @@ public class MostPopularFragment extends Fragment {
 
                         Log.e("mynews","test most populare ============   " + mostPopular.getResults().get(0).getTitle());
 
+
                         // GET SIZE
-                        for(int i = 0; i < mostPopular.getResults().size(); i++){
+                        for(int i = 0; i <mostPopular.getResults().size(); i++){
 
                             //--------------------------------
                             //  CREATE IF AND ELSE
                             //  IF THEY ARE OR NOT ARE PICTURE
                             //--------------------------------
 
-                            //--------------------------------
-                            //  CREATE IF AND ELSE
-                            //  IF THEY ARE OR NOT ARE PICTURE
-                            //--------------------------------
-
+                            // GET SIZE OF MOST POPULAR OBJECT
                             if(mostPopular.getResults().get(i).getMedia().size() == 0){
 
                                 //implement monObjetList for set data in recycler view

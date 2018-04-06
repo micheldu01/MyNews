@@ -39,6 +39,8 @@ public class TopStoriesFragment extends Fragment {
     private Context context;
     // create Array for get and save URL
     private List<String> urlArray = new ArrayList<>();
+    // DECLARE TOPSTORIES
+    private TopStoriesAPI nYresult = new TopStoriesAPI();
 
 
     // IMPLEMENT RECYCLER VIEW
@@ -118,53 +120,14 @@ public class TopStoriesFragment extends Fragment {
                         urlArray.clear();
 
                         Log.e("mynews","TopStoriesFragment URL image" + nYresult.getResults().get(0).getMultimedia().get(0).getUrl());
-                        //CREATE ARRAY FOR GET DATA FROM NYT AND RETURN IT IN RECYCLER VIEW
 
-                        // GET SIZE
-                        for(int i = 0; i < nYresult.getResults().size(); i++){
+                        // CREATE ARRAY FOR GET DATA FROM NYT AND RETURN IT IN RECYCLER VIEW
 
-                            //--------------------------------
-                            //  CREATE IF AND ELSE
-                            //  IF THEY ARE OR NOT ARE PICTURE
-                            //--------------------------------
-
-                            if(nYresult.getResults().get(i).getMultimedia().size() == 0){
-
-                                //implement monObjetList for set data in recycler view
-                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
-                                        nYresult.getResults().get(i).getPublishedDate(),
-                                        nYresult.getResults().get(i).getSection()));
-                                Log.e("mynews","TopStorie  recupération du titre  = " + nYresult.getResults().get(i).getTitle());
+                        methodGetArticles(nYresult, monObjetList);
 
 
-                                // implement urlArray for get URL
-                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
-                            }
-
-                            else {
-
-                                //implement monObjetList for set data in recycler view
-                                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
-                                        nYresult.getResults().get(i).getPublishedDate(),
-                                        nYresult.getResults().get(i).getSection(),
-                                        nYresult.getResults().get(i).getMultimedia().get(0).getUrl()));
-
-
-                                // implement urlArray for get URL
-                                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
-                            }
-
-
-
-                        }
-                        // implement recycler view with setLayoutManager
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                        // implement recycler view with adapter
-                        recyclerView.setAdapter(new NYTAdapter(monObjetList));
-
-                        // 3 - Stop refreshing and clear actual list of users
-                        refreshLayout.setRefreshing(false);
                     }
+
 
                     @Override
                     public void onError(Throwable e) {
@@ -186,5 +149,56 @@ public class TopStoriesFragment extends Fragment {
         super.onDestroy();
         this.disposeWhenDestroy();
     }
+
+    private void methodGetArticles(TopStoriesAPI nYresult, List<MonObjet> monObjetList){
+
+
+        // GET SIZE
+        for(int i = 0; i < nYresult.getResults().size(); i++){
+
+            //--------------------------------
+            //  CREATE IF AND ELSE
+            //  IF THEY ARE OR NOT ARE PICTURE
+            //--------------------------------
+
+            if(nYresult.getResults().get(i).getMultimedia().size() == 0){
+
+                //implement monObjetList for set data in recycler view
+                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
+                        nYresult.getResults().get(i).getPublishedDate(),
+                        nYresult.getResults().get(i).getSection()));
+                Log.e("mynews","TopStorie  recupération du titre  = " + nYresult.getResults().get(i).getTitle());
+
+
+                // implement urlArray for get URL
+                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+            }
+
+            else {
+
+                //implement monObjetList for set data in recycler view
+                monObjetList.add(new MonObjet(nYresult.getResults().get(i).getTitle(),
+                        nYresult.getResults().get(i).getPublishedDate(),
+                        nYresult.getResults().get(i).getSection(),
+                        nYresult.getResults().get(i).getMultimedia().get(0).getUrl()));
+
+
+                // implement urlArray for get URL
+                urlArray.add(new String(nYresult.getResults().get(i).getUrl()));
+            }
+
+
+
+        }
+        // implement recycler view with setLayoutManager
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        // implement recycler view with adapter
+        recyclerView.setAdapter(new NYTAdapter(monObjetList));
+
+        // 3 - Stop refreshing and clear actual list of users
+        refreshLayout.setRefreshing(false);
+
+    }
+
 }
 
