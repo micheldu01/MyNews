@@ -153,6 +153,8 @@ public class ViewNotificationArticles extends AppCompatActivity {
 
                         monObjetList.clear();
 
+
+
                         if (searchActicleAPI.getResponse().getDocs().size() == 0){
 
                             no_response.setText(R.string.no_article);
@@ -224,4 +226,5 @@ public class ViewNotificationArticles extends AppCompatActivity {
         super.onDestroy();
         this.disposeWhenDestroy();
     }
+
 }

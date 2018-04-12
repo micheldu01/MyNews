@@ -231,4 +231,9 @@ public class SearchActivity extends AppCompatActivity
             numberarray++;
         }
     }
+
+    private void methodGetArticles(){
+
+
+    }
 }
