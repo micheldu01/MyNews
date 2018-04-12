@@ -123,7 +123,6 @@ public class NotificationService extends Service {
         //  IMPLEMENT AND USE SHARED
         //---------------------------
 
-
         String term = preferences.getString(MyEditTextNoti,"");
         String dateStart = preferences.getString(MyDateStart,"");
         String dateEnd = preferences.getString(MyDateEnd,"");
@@ -160,7 +159,7 @@ public class NotificationService extends Service {
 
                             preferences.edit().putString(TITRE, str).commit();
 
-                            preferences.edit().putString(YES_NO, "YES");
+                            preferences.edit().putString(YES_NO, "YES").commit();
                         }
 
                     }

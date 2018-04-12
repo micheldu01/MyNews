@@ -138,31 +138,8 @@ public class NotificationsActivity extends AppCompatActivity {
                     // accept to start method alarmManager else get a Toast//
                     //-----------------------------------------------------//
 
-                    // get the shared EditText for know if is null
-                    String str_edit_text = preferences.getString(TEXT, "");
-                    // get the shared CHECK for know the result
-                    String str_box = preferences.getString(CHECK, "");
-                    // call method if for start the alarmManager
-                    // if edit text is empty
-                    String str_shared = preferences.getString(MyEditTextNoti, "");
-
-
-
-                    // IF BOX IF
-                        if(str_box.equals("CHECK") && !str_shared.equals("")){
-                            //start alarmManager
-                            methodAlarmManager();
-                            // clear the shared
-                            preferences.edit().putString(CHECK, "NO_CHECK").commit();
-                            Log.e("mynews", "il n'y a pas de texte");
-
-                        }
-
-                    else{
-                        //get a Toast for ask to choice a check box
-                        Toast.makeText(NotificationsActivity.this, R.string.no_choice, Toast.LENGTH_LONG).show();
-
-                    }
+                    // START METHOD
+                    methodOnCheck();
                 }
             }
         });
@@ -186,6 +163,7 @@ public class NotificationsActivity extends AppCompatActivity {
             // after the edit text is changed
             @Override
             public void afterTextChanged(Editable editable) {
+
                 // get edit text
                 String edt = editText.getText().toString();
 
@@ -209,10 +187,12 @@ public class NotificationsActivity extends AppCompatActivity {
 
                 }
                 else {
+                    // SAVE TEXT IN SHARED
                     preferences.edit().putString(TEXT, "TEXT").commit();
                     Log.e("mynews", "il y a du texte" + str_shared);
 
                 }
+
             }
 
         });
@@ -250,5 +230,37 @@ public class NotificationsActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+
+        // METHOD FOR ASK IF TEXT AND CHECK IS OKAY
+        private void methodOnCheck(){
+
+            // get the shared EditText for know if is null
+            String str_edit_text = preferences.getString(TEXT, "");
+
+            // get the shared CHECK for know the result
+            String str_box = preferences.getString(CHECK, "");
+
+            // if edit text is empty
+            String str_shared = preferences.getString(MyEditTextNoti, "");
+
+
+
+            // IF BOX IF CHEKED
+            if(str_box.equals("CHECK") && !str_shared.equals("")){
+                //start alarmManager
+                methodAlarmManager();
+                // clear the shared
+                preferences.edit().putString(CHECK, "NO_CHECK").commit();
+                Log.e("mynews", "il n'y a pas de texte");
+
+            }
+
+            else{
+                //get a Toast for ask to choice a check box
+                Toast.makeText(NotificationsActivity.this, R.string.no_choice, Toast.LENGTH_LONG).show();
+
+            }
+
         }
 }

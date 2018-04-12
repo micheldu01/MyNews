@@ -11,7 +11,6 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by michel on 04/04/2018.
@@ -170,42 +169,6 @@ public class BusinessFragmentTest {
         assertEquals("image1", monObjets.get(2).getImage());
     }
 
-    // ADD URL FOR GET URL
-    @Test
-    public void testAddData7() throws Exception {
-
-        monObjets.add(new MonObjet("robert", "4/10", "Lyon"));
-        monObjets.add(new MonObjet("nathalie", "2/11", "Druillat"));
-        monObjets.add(new MonObjet("pierre", "24/03", "Marseille", "image1"));
-
-        articlesTest = new ArticlesTest(monObjets);
-
-        for (int i = 0; i < articlesTest.getMesarticlesTest().size(); i++) {
-
-            // DECLARE WHEN THEN RETURN MOCK
-            when(searchActicleAPI.getResponse().getDocs().get(i).getWebUrl()).thenReturn("url");
-
-            if (articlesTest.getMesarticlesTest().get(i).getImage() == null) {
-                monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
-                        articlesTest.getMesarticlesTest().get(i).getDate(),
-                        articlesTest.getMesarticlesTest().get(i).getSection()));
-
-                // GET URL
-                when(searchActicleAPI.getResponse().getDocs().get(0).getWebUrl()).thenReturn("url");
-
-            }
-
-            monObjets2.add(new MonObjet(articlesTest.getMesarticlesTest().get(i).getTitle(),
-                    articlesTest.getMesarticlesTest().get(i).getDate(),
-                    articlesTest.getMesarticlesTest().get(i).getSection(),
-                    articlesTest.getMesarticlesTest().get(i).getImage()));
-
-        }
-
-        // TEST ARRAY URL
-        assertEquals("url", searchActicleAPI.getResponse().getDocs().get(0).getWebUrl());
-
-    }
 }
 
 

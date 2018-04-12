@@ -21,6 +21,12 @@ public class SearchActicleAPI {
     @Expose
     public Response response;
 
+    // CREATE CONSTRUCTOR EMPTY
+
+
+    public SearchActicleAPI() {
+    }
+
     // CREATE CONSTRUCTOR
     public SearchActicleAPI(String status, String copyright, Response response) {
         this.status = status;
